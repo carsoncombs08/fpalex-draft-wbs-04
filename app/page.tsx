@@ -17,10 +17,18 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
         <div className="flex items-center justify-between px-4 sm:px-6 py-4">
           {/* Logo Section */}
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <Image src="/assets/image/assistloop.svg" className="h-6 sm:h-8 dark:invert" alt="AssistLoop" width={120} height={24} />
-            <div className="w-px h-5 sm:h-6 bg-border mx-1 sm:mx-2" />
-            <Image src="/assets/image/vercel.svg" className="h-8 sm:h-10 dark:invert" alt="Vercel" width={100} height={100} />
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <Image
+              src="/assets/image/fpa-logo-icon.svg"
+              className="h-9 w-9 sm:h-11 sm:w-11"
+              alt=""
+              width={70}
+              height={70}
+            />
+            <div className="leading-tight">
+              <p className="font-bold text-base sm:text-lg text-foreground">Family Practice Associates</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">of Lexington, P.S.C.</p>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
