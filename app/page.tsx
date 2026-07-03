@@ -98,35 +98,17 @@ export default function Home() {
       {/* Hero Section */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm font-medium text-muted-foreground mb-4 tracking-wide uppercase">
-            Next.js Template
-          </p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6 text-balance">
-            AssistLoop Template
+            Family Practice Associates
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-balance">
-            Build AI support agents that understand your business. Train on your
-            docs, knowledge base, and chat history to give accurate answers 24/7.
+            Serving Central Kentucky for over 40 Years
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Button asChild size="lg" className="px-6">
-              <Link
-                href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAssistLoop%2Fnextjs-template&env=NEXT_PUBLIC_ASSISTLOOP_AGENT_ID&envDescription=Agent%20ID%20from%20AssistLoop%20dashboard&integration-ids=oac_JcDufklR2a4mGqWCzSOB1klc&products=%5B%7B%22type%22%3A%22integration%22%2C%22integrationSlug%22%3A%22assistloop%22%2C%22productSlug%22%3A%22assistloop%22%2C%22protocol%22%3A%22ai%22%7D%5D"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg
-                  className="mr-2 h-4 w-4"
-                  viewBox="0 0 76 65"
-                  fill="currentColor"
-                >
-                  <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-                </svg>
-                <div className="w-px h-4 bg-border mx-2" />
-                Deploy to Vercel
-              </Link>
+              <Link href="#">Book Today</Link>
             </Button>
            
           </div>
