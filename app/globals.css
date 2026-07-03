@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --brand-blue: #1b6fa0;
+  --brand-blue: #016ba7;
   --background: oklch(0.99 0 0);
   --foreground: var(--brand-blue);
   --card: oklch(0.97 0 0);
