@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { BookOpen, Users, Zap, BarChart3, MessageCircle, Menu, X, ChevronDown } from "lucide-react"
+import { MessageCircle, Menu, X, ChevronDown } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Image from "next/image"
 import Link from "next/link"
@@ -196,28 +196,20 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Features Grid */}
-        <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden">
-          <FeatureCard
-            icon={<BookOpen className="w-5 h-5" />}
-            title="Train on Your Data"
-            description="Docs, FAQs, and links"
-          />
-          <FeatureCard
-            icon={<Users className="w-5 h-5" />}
-            title="Human Handoff"
-            description="Smooth escalation when needed"
-          />
-          <FeatureCard
-            icon={<Zap className="w-5 h-5" />}
-            title="Custom AI Actions"
-            description="Collect leads, book meetings"
-          />
-          <FeatureCard
-            icon={<BarChart3 className="w-5 h-5" />}
-            title="Analytics & History"
-            description="Review and improve performance"
-          />
+        {/* Quick Links */}
+        <div className="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Button asChild size="lg" className="w-full">
+            <Link href="#">Make A Payment</Link>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="w-full">
+            <Link href="#">Patient Portal</Link>
+          </Button>
+          <Button asChild size="lg" className="w-full">
+            <Link href="#">Patient Forms and Records Request</Link>
+          </Button>
+          <Button asChild size="lg" className="w-full">
+            <Link href="#">Medical Cannabis Clinic</Link>
+          </Button>
         </div>
       </section>
 
@@ -285,23 +277,5 @@ export default function Home() {
         </div>
       </footer>
     </main>
-  )
-}
-
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode
-  title: string
-  description: string
-}) {
-  return (
-    <div className="bg-card p-6 flex flex-col gap-3">
-      <div className="text-muted-foreground">{icon}</div>
-      <h3 className="font-extrabold text-foreground">{title}</h3>
-      <p className="text-sm text-muted-foreground">{description}</p>
-    </div>
   )
 }
