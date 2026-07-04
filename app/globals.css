@@ -76,7 +76,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
+  --font-sans: 'Roboto', 'Roboto Fallback';
+  --font-heading: 'Rethink Sans', 'Rethink Sans Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-brand-blue: var(--brand-blue);
   --color-background: var(--background);
@@ -123,5 +124,8 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 }
