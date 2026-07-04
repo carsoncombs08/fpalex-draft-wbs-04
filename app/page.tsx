@@ -236,7 +236,7 @@ export default function Home() {
             <span className="font-bold text-foreground">Your Family. Your Health. Our Passion.</span>
           </p>
           <h3 className="font-extrabold text-foreground mb-2">Our Practice:</h3>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed mb-6">
             Family Practice Associates of Lexington (FPA) was founded by Dr. Jeffrey Foxx in 1983 and has
             since become one of the largest family practice groups in Central Kentucky. With over 20 primary
             care providers, including physicians, nurse practitioners, physician assistants, and a Licensed
@@ -244,6 +244,28 @@ export default function Home() {
             later years. Recognized as a Patient-Centered Medical Home (PCMH) by the National Commission on
             Quality Assurance, FPA&apos;s professionally trained staff ensures award-winning care.
           </p>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            The PCMH model emphasizes accessibility, continuity, and comprehensive care, with patients
+            actively involved in decision-making. FPA&apos;s patient care teams, under the direction of the
+            primary care provider (PCP), collectively take responsibility for ongoing patient care. Through
+            integration with health information technology, including a patient portal and electronic health
+            records (EHR), FPA enhances patient care, communication, and education. By offering extended
+            hours and same-day scheduling, FPA aims to provide ultimate convenience to simplify managing your
+            health.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Click here to discover why understanding what it means to be a Patient Center Medical Home is
+            important for you:
+          </p>
+          <Button asChild variant="outline">
+            <Link
+              href="https://cdn.hibuwebsites.com/7e29e1036607439698f5a108b9fc30dd/files/uploaded/FAP-What-+is-PCMH-Patient-Brochure-revised+9.16.2024.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn More about PCMH
+            </Link>
+          </Button>
         </div>
       </section>
 
