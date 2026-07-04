@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { BookOpen, Users, Zap, BarChart3, MessageCircle, Menu, X } from "lucide-react"
+import { BookOpen, Users, Zap, BarChart3, MessageCircle, Menu, X, ChevronDown } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Image from "next/image"
 import Link from "next/link"
@@ -29,15 +29,27 @@ export default function Home() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
-            <Link target="_blank" href="https://assistloop.ai" className="hover:text-foreground transition-colors">
-              Features
+          <nav className="hidden md:flex items-center gap-5 text-sm text-muted-foreground">
+            <Link href="#" className="text-foreground border-b-2 border-primary pb-1">
+              Home
             </Link>
-            <Link target="_blank" href="https://assistloop.ai/docs/integrations/vercel" className="hover:text-foreground transition-colors">
-              Docs
+            <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              About FPA <ChevronDown className="h-3.5 w-3.5" />
             </Link>
-            <Link target="_blank" href="https://assistloop.ai/pricing" className="hover:text-foreground transition-colors">
-              Pricing
+            <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              Our Services <ChevronDown className="h-3.5 w-3.5" />
+            </Link>
+            <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              Patient Resources <ChevronDown className="h-3.5 w-3.5" />
+            </Link>
+            <Link href="#" className="hover:text-foreground transition-colors">
+              Explore Our Content
+            </Link>
+            <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              Contact Us <ChevronDown className="h-3.5 w-3.5" />
+            </Link>
+            <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              Our Locations <ChevronDown className="h-3.5 w-3.5" />
             </Link>
           </nav>
 
@@ -67,28 +79,53 @@ export default function Home() {
           <div className="md:hidden border-t border-border">
             <nav className="flex flex-col px-4 py-3 space-y-3">
               <Link
-                target="_blank"
-                href="https://assistloop.ai"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                href="#"
+                className="text-sm text-foreground py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Features
+                Home
               </Link>
               <Link
-                target="_blank"
-                href="https://assistloop.ai/docs/integrations/vercel"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                href="#"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Docs
+                About FPA <ChevronDown className="h-3.5 w-3.5" />
               </Link>
               <Link
-                target="_blank"
-                href="https://assistloop.ai/pricing"
+                href="#"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Our Services <ChevronDown className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Patient Resources <ChevronDown className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="#"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Pricing
+                Explore Our Content
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact Us <ChevronDown className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Our Locations <ChevronDown className="h-3.5 w-3.5" />
               </Link>
             </nav>
           </div>
