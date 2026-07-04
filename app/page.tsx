@@ -96,20 +96,20 @@ export default function Home() {
       </header>
 
       {/* Building Photo */}
-      <div className="group relative w-full h-[35vh] bg-background overflow-hidden">
+      <div className="group relative w-full h-[35vh] hover:h-[calc(100vw*0.458)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-building.webp"
           alt=""
           aria-hidden="true"
           fill
-          className="object-contain"
+          className="object-cover"
           priority
         />
         <Image
           src="/assets/image/fpa-building.webp"
           alt="Family Practice Associates of Lexington building exterior"
           fill
-          className="object-cover transition-opacity duration-300 group-hover:opacity-0"
+          className="object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0"
           priority
         />
       </div>
