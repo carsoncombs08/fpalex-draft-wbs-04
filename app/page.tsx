@@ -154,7 +154,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6 text-balance">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
             Family Practice Associates
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-balance">
@@ -226,7 +226,7 @@ function FeatureCard({
   return (
     <div className="bg-card p-6 flex flex-col gap-3">
       <div className="text-muted-foreground">{icon}</div>
-      <h3 className="font-semibold text-foreground">{title}</h3>
+      <h3 className="font-extrabold text-foreground">{title}</h3>
       <p className="text-sm text-muted-foreground">{description}</p>
     </div>
   )
