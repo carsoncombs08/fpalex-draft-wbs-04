@@ -95,6 +95,17 @@ export default function Home() {
         )}
       </header>
 
+      {/* Building Photo */}
+      <div className="relative w-full h-[35vh]">
+        <Image
+          src="/assets/image/fpa-building.webp"
+          alt="Family Practice Associates of Lexington building exterior"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
       {/* Hero Section */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
         <div className="max-w-4xl mx-auto text-center">
