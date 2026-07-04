@@ -1,13 +1,12 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Rethink_Sans, Roboto } from 'next/font/google'
+import { Rethink_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { AssistLoopWidget } from '@/components/assistloop-widget'
 import './globals.css'
 
 const _rethinkSans = Rethink_Sans({ subsets: ["latin"] });
-const _roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
   title: 'AssistLoop - AI Agents for Customer Support',
