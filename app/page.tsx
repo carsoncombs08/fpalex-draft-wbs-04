@@ -33,9 +33,21 @@ export default function Home() {
             <Link href="#" className="text-foreground border-b-2 border-primary pb-1">
               Home
             </Link>
-            <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              About FPA <ChevronDown className="h-3.5 w-3.5" />
-            </Link>
+            <div className="group relative">
+              <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+                About FPA <ChevronDown className="h-3.5 w-3.5" />
+              </Link>
+              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
+                <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-md">
+                  <Link href="#about-us" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+                    About Us
+                  </Link>
+                  <Link href="#" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+                    Our Providers
+                  </Link>
+                </div>
+              </div>
+            </div>
             <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
               Our Services <ChevronDown className="h-3.5 w-3.5" />
             </Link>
@@ -91,6 +103,20 @@ export default function Home() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About FPA <ChevronDown className="h-3.5 w-3.5" />
+              </Link>
+              <Link
+                href="#about-us"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 pl-4"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About Us
+              </Link>
+              <Link
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 pl-4"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Our Providers
               </Link>
               <Link
                 href="#"
@@ -192,6 +218,32 @@ export default function Home() {
             title="Analytics & History"
             description="Review and improve performance"
           />
+        </div>
+      </section>
+
+      {/* About Us */}
+      <section id="about-us" className="scroll-mt-24 px-6 py-16 md:py-24 border-t border-border">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
+            About Us
+          </h2>
+          <h3 className="font-extrabold text-foreground mb-2">Our Mission:</h3>
+          <p className="text-muted-foreground leading-relaxed mb-8">
+            Serving Central Kentucky for over 40 years, Family Practice Associates of Lexington&mdash;our
+            mission is simple: to provide preventive, diagnostic, and therapeutic health services with
+            attention to individual needs. We are dedicated to delivering family-centered care from birth
+            through the later years in an affordable, high-quality manner.{" "}
+            <span className="font-bold text-foreground">Your Family. Your Health. Our Passion.</span>
+          </p>
+          <h3 className="font-extrabold text-foreground mb-2">Our Practice:</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            Family Practice Associates of Lexington (FPA) was founded by Dr. Jeffrey Foxx in 1983 and has
+            since become one of the largest family practice groups in Central Kentucky. With over 20 primary
+            care providers, including physicians, nurse practitioners, physician assistants, and a Licensed
+            Professional Clinical Counselor, FPA is dedicated to providing family-centered care from birth to
+            later years. Recognized as a Patient-Centered Medical Home (PCMH) by the National Commission on
+            Quality Assurance, FPA&apos;s professionally trained staff ensures award-winning care.
+          </p>
         </div>
       </section>
 
