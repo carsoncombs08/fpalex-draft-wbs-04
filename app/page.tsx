@@ -20,7 +20,7 @@ export default function Home() {
           <div className="flex items-center flex-shrink-0">
             <Image
               src="/assets/image/fpa-logo.png"
-              className="h-9 sm:h-11 w-auto"
+              className="h-[2.7rem] sm:h-[3.3rem] w-auto"
               alt="Family Practice Associates of Lexington, P.S.C."
               width={1585}
               height={288}
@@ -96,12 +96,12 @@ export default function Home() {
       </header>
 
       {/* Building Photo */}
-      <div className="relative w-full h-[35vh]">
+      <div className="relative w-full h-[35vh] bg-background">
         <Image
           src="/assets/image/fpa-building.webp"
           alt="Family Practice Associates of Lexington building exterior"
           fill
-          className="object-cover"
+          className="object-contain"
           priority
         />
       </div>
