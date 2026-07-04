@@ -12,7 +12,7 @@
   --popover: oklch(0.99 0 0);
   --popover-foreground: var(--brand-blue);
   --primary: var(--brand-blue);
-  --primary-foreground: #000000;
+  --primary-foreground: oklch(0.45 0 0);
   --secondary: oklch(0.95 0 0);
   --secondary-foreground: var(--brand-blue);
   --muted: oklch(0.95 0 0);

@@ -55,11 +55,11 @@ export default function Home() {
 
           {/* Right Section */}
           <div className="flex items-center gap-2">
-            <Button onClick={openChatWidget} variant="outline" size="sm" className="text-sm bg-transparent hidden sm:flex">
+            <Button onClick={openChatWidget} variant="outline" size="sm" className="text-sm bg-transparent text-black hidden sm:flex">
               <MessageCircle className="h-4 w-4 mr-1.5" />
               Open Chat
             </Button>
-            <Button onClick={openChatWidget} variant="outline" size="sm" className="bg-transparent sm:hidden" aria-label="Open chat">
+            <Button onClick={openChatWidget} variant="outline" size="sm" className="bg-transparent text-black sm:hidden" aria-label="Open chat">
               <MessageCircle className="h-4 w-4" />
             </Button>
             <Button
