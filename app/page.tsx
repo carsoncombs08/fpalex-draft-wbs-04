@@ -234,16 +234,14 @@ export default function Home() {
       </div>
 
       {/* Awards and Certificates */}
-      <section className="px-6 py-4">
-        <div className="max-w-5xl mx-auto">
-          <Image
-            src="/assets/image/fpa-awards-certificates.webp"
-            alt="Awards and Certificates: Best of Lexington 2024 Winner, NCQA Patient-Centered Medical Home Recognized Practice, NCQA Recognized Patient-Centered Medical Home"
-            width={2000}
-            height={442}
-            className="w-full h-auto rounded-lg"
-          />
-        </div>
+      <section className="w-full">
+        <Image
+          src="/assets/image/fpa-awards-certificates.webp"
+          alt="Awards and Certificates: Best of Lexington 2024 Winner, NCQA Patient-Centered Medical Home Recognized Practice, NCQA Recognized Patient-Centered Medical Home"
+          width={2000}
+          height={442}
+          className="w-full h-auto"
+        />
       </section>
 
       {/* About Us */}
@@ -291,6 +289,20 @@ export default function Home() {
               Learn More about PCMH
             </Link>
           </Button>
+        </div>
+      </section>
+
+      {/* About Our Providers */}
+      <section id="about-our-providers" className="scroll-mt-24 px-6 py-16 md:py-24 border-t border-border text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
+            About Our Providers
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
+            Our board-certified providers are committed to providing compassionate, personalized care for
+            you and your family.
+          </p>
         </div>
       </section>
 
