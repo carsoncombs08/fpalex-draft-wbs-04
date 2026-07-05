@@ -187,7 +187,7 @@ export default function Home() {
               className="pointer-events-none absolute -inset-x-[45vw] -inset-y-32 md:-inset-y-40 -z-10 opacity-[0.65] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
               style={{
                 background:
-                  "radial-gradient(ellipse 60% 55% at 50% 50%, transparent 0%, transparent 22%, var(--brand-blue) 42%, var(--brand-blue) 66%, transparent 90%)",
+                  "radial-gradient(ellipse 22% 70% at 14% 50%, transparent 0%, transparent 25%, var(--brand-blue) 45%, var(--brand-blue) 65%, transparent 90%), radial-gradient(ellipse 22% 70% at 86% 50%, transparent 0%, transparent 25%, var(--brand-blue) 45%, var(--brand-blue) 65%, transparent 90%)",
               }}
             />
 
