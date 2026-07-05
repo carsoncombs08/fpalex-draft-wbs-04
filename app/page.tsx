@@ -184,10 +184,10 @@ export default function Home() {
             {/* Blue glow */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-[45vw] -inset-y-32 md:-inset-y-40 -z-10 opacity-[0.65] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+              className="pointer-events-none absolute -inset-x-6 sm:-inset-x-10 -inset-y-10 md:-inset-y-14 -z-10 opacity-[0.65] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
               style={{
                 background:
-                  "radial-gradient(ellipse 22% 70% at 14% 50%, transparent 0%, transparent 25%, var(--brand-blue) 45%, var(--brand-blue) 65%, transparent 90%), radial-gradient(ellipse 22% 70% at 86% 50%, transparent 0%, transparent 25%, var(--brand-blue) 45%, var(--brand-blue) 65%, transparent 90%)",
+                  "radial-gradient(ellipse 40% 85% at 0% 50%, transparent 0%, transparent 15%, var(--brand-blue) 40%, var(--brand-blue) 60%, transparent 85%), radial-gradient(ellipse 40% 85% at 100% 50%, transparent 0%, transparent 15%, var(--brand-blue) 40%, var(--brand-blue) 60%, transparent 85%)",
               }}
             />
 
