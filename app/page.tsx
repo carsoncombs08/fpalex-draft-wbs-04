@@ -198,16 +198,16 @@ export default function Home() {
 
         {/* Quick Links */}
         <div className="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Button asChild size="lg" className="w-full">
+          <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
             <Link href="#">Make A Payment</Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="w-full">
+          <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
             <Link href="#">Patient Portal</Link>
           </Button>
-          <Button asChild size="lg" className="w-full">
+          <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
             <Link href="#">Patient Forms and Records Request</Link>
           </Button>
-          <Button asChild size="lg" className="w-full">
+          <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
             <Link href="#">Medical Cannabis Clinic</Link>
           </Button>
         </div>
