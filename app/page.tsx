@@ -158,60 +158,72 @@ export default function Home() {
         )}
       </header>
 
-      {/* Building Photo */}
-      <div className="group relative w-full h-[35vh] hover:h-[calc(100vw*0.458)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
-        <Image
-          src="/assets/image/fpa-building.webp"
-          alt=""
-          aria-hidden="true"
-          fill
-          className="object-cover"
-          priority
-        />
-        <Image
-          src="/assets/image/fpa-building.webp"
-          alt="Family Practice Associates of Lexington building exterior"
-          fill
-          className="object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0"
-          priority
-        />
-      </div>
+      {/* Building Photo + Hero (grouped so hovering the photo also fades the glow below) */}
+      <div className="group/hero">
+        <div className="group/photo relative w-full h-[35vh] hover:h-[calc(100vw*0.458)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
+          <Image
+            src="/assets/image/fpa-building.webp"
+            alt=""
+            aria-hidden="true"
+            fill
+            className="object-cover"
+            priority
+          />
+          <Image
+            src="/assets/image/fpa-building.webp"
+            alt="Family Practice Associates of Lexington building exterior"
+            fill
+            className="object-cover transition-opacity duration-500 ease-in-out group-hover/photo:opacity-0"
+            priority
+          />
+        </div>
 
-      {/* Hero Section */}
-      <section className="flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
-            Family Practice Associates
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-balance">
-            Serving Central Kentucky for over 40 Years
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Button asChild size="lg" className="px-6">
-              <Link href="#">Book Today</Link>
-            </Button>
-           
+        {/* Hero Section */}
+        <section className="relative flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
+          {/* Blue glow */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 z-0 flex justify-center transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+          >
+            <div
+              className="mt-4 h-72 w-[36rem] max-w-[90vw] rounded-full opacity-40 blur-3xl"
+              style={{ backgroundColor: "var(--brand-blue)" }}
+            />
           </div>
-        </div>
 
-        {/* Quick Links */}
-        <div className="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
-            <Link href="#">Make A Payment</Link>
-          </Button>
-          <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
-            <Link href="#">Patient Portal</Link>
-          </Button>
-          <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
-            <Link href="#">Patient Forms and Records Request</Link>
-          </Button>
-          <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
-            <Link href="#">Medical Cannabis Clinic</Link>
-          </Button>
-        </div>
-      </section>
+          <div className="relative z-10 max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
+              Family Practice Associates
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-balance">
+              Serving Central Kentucky for over 40 Years
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+              <Button asChild size="lg" className="px-6">
+                <Link href="#">Book Today</Link>
+              </Button>
+
+            </div>
+          </div>
+
+          <div className="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
+              <Link href="#">Make A Payment</Link>
+            </Button>
+            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
+              <Link href="#">Patient Portal</Link>
+            </Button>
+            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
+              <Link href="#">Patient Forms and Records Request</Link>
+            </Button>
+            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
+              <Link href="#">Medical Cannabis Clinic</Link>
+            </Button>
+          </div>
+        </section>
+      </div>
 
       {/* About Us */}
       <section id="about-us" className="scroll-mt-24 px-6 py-16 md:py-24 border-t border-border">
