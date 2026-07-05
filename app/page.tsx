@@ -180,18 +180,17 @@ export default function Home() {
 
         {/* Hero Section */}
         <section className="relative flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
-          {/* Blue glow */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 60% 70% at 50% 40%, var(--brand-blue) 0%, color-mix(in srgb, var(--brand-blue) 45%, transparent) 45%, transparent 75%)",
-              opacity: 0.6,
-            }}
-          />
+          <div className="relative max-w-4xl mx-auto text-center">
+            {/* Blue glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-10 -inset-y-16 md:-inset-x-20 md:-inset-y-24 -z-10 opacity-[0.65] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 60% 55% at 50% 50%, transparent 0%, transparent 30%, var(--brand-blue) 62%, transparent 85%)",
+              }}
+            />
 
-          <div className="relative z-10 max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
               Family Practice Associates
             </h1>
