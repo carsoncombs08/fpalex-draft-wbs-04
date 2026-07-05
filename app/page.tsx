@@ -184,7 +184,7 @@ export default function Home() {
             {/* Blue glow — a pair of parenthesis-shaped crescents, "(  )" */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-16 sm:-inset-x-24 md:-inset-x-32 -inset-y-20 md:-inset-y-28 -z-10 flex items-center justify-between opacity-[0.8] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+              className="pointer-events-none absolute -inset-x-16 sm:-inset-x-24 md:-inset-x-32 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-[0.8] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
             >
               <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-32 sm:w-40 md:w-52 blur-md" style={{ color: "var(--brand-blue)" }}>
                 <path
