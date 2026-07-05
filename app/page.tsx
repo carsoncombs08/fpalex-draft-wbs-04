@@ -233,6 +233,19 @@ export default function Home() {
         </section>
       </div>
 
+      {/* Awards and Certificates */}
+      <section className="px-6 py-4">
+        <div className="max-w-5xl mx-auto">
+          <Image
+            src="/assets/image/fpa-awards-certificates.webp"
+            alt="Awards and Certificates: Best of Lexington 2024 Winner, NCQA Patient-Centered Medical Home Recognized Practice, NCQA Recognized Patient-Centered Medical Home"
+            width={2000}
+            height={442}
+            className="w-full h-auto rounded-lg"
+          />
+        </div>
+      </section>
+
       {/* About Us */}
       <section id="about-us" className="scroll-mt-24 px-6 py-16 md:py-24 border-t border-border">
         <div className="max-w-3xl mx-auto">
