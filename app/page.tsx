@@ -183,13 +183,13 @@ export default function Home() {
           {/* Blue glow */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 z-0 flex justify-center transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
-          >
-            <div
-              className="mt-4 h-72 w-[36rem] max-w-[90vw] rounded-full opacity-40 blur-3xl"
-              style={{ backgroundColor: "var(--brand-blue)" }}
-            />
-          </div>
+            className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 70% at 50% 40%, var(--brand-blue) 0%, color-mix(in srgb, var(--brand-blue) 45%, transparent) 45%, transparent 75%)",
+              opacity: 0.6,
+            }}
+          />
 
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
