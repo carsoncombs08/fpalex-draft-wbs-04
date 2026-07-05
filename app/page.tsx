@@ -293,8 +293,8 @@ export default function Home() {
       </section>
 
       {/* About Our Providers */}
-      <section id="about-our-providers" className="scroll-mt-24 px-6 py-16 md:py-24 border-t border-border text-center">
-        <div className="max-w-3xl mx-auto">
+      <section id="about-our-providers" className="scroll-mt-24 py-16 md:py-24 border-t border-border text-center">
+        <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
             About Our Providers
           </h2>
@@ -303,6 +303,22 @@ export default function Home() {
             Our board-certified providers are committed to providing compassionate, personalized care for
             you and your family.
           </p>
+        </div>
+
+        <div className="w-full mt-10">
+          <Image
+            src="/assets/image/fpa-providers.webp"
+            alt="Our providers: Keith Applegate, MD, FAAFP; Rajeana Conway, MD; Aletia Farmer, MD; Amanda Foxx, MD"
+            width={2000}
+            height={483}
+            className="w-full h-auto"
+          />
+        </div>
+
+        <div className="px-6 mt-6 flex justify-end">
+          <Button asChild size="lg" className="mr-[8%]">
+            <Link href="#">Learn More</Link>
+          </Button>
         </div>
       </section>
 
