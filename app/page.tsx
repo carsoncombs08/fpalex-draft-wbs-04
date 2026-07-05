@@ -295,10 +295,10 @@ export default function Home() {
       {/* About Our Providers */}
       <section id="about-our-providers" className="scroll-mt-24 py-16 md:py-24 border-t border-border text-center">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
+          <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
             About Our Providers
           </h2>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-xl text-muted-foreground leading-relaxed">
             Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
             Our board-certified providers are committed to providing compassionate, personalized care for
             you and your family.
@@ -326,16 +326,16 @@ export default function Home() {
       <section className="w-full py-16 md:py-20 px-6" style={{ backgroundColor: "var(--brand-blue)" }}>
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <h3 className="text-xl font-extrabold uppercase tracking-wide text-white mb-3">
+            <h3 className="text-[1.563rem] font-extrabold uppercase tracking-wide text-white mb-3">
               Hamburg Pavilion, Lexington
             </h3>
             <div className="w-10 border-t-2 border-white/60 mb-4" />
-            <p className="text-white leading-relaxed mb-2">
+            <p className="text-xl text-white leading-relaxed mb-2">
               1775 Alysheba Way, Suite 201
               <br />
               Lexington, KY 40509
             </p>
-            <p className="font-bold text-white mb-6">(859) 278-5007</p>
+            <p className="text-xl font-bold text-white mb-6">(859) 278-5007</p>
             <Button asChild size="lg" variant="secondary" className="bg-white text-[var(--brand-blue)] hover:bg-white/90">
               <Link
                 href="https://www.google.com/maps/search/?api=1&query=1775+Alysheba+Way+Suite+201+Lexington+KY+40509"
@@ -348,16 +348,16 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className="text-xl font-extrabold uppercase tracking-wide text-white mb-3">
+            <h3 className="text-[1.563rem] font-extrabold uppercase tracking-wide text-white mb-3">
               Brannon Crossing, Nicholasville
             </h3>
             <div className="w-10 border-t-2 border-white/60 mb-4" />
-            <p className="text-white leading-relaxed mb-2">
+            <p className="text-xl text-white leading-relaxed mb-2">
               615 East Brannon Road
               <br />
               Nicholasville, KY 40356
             </p>
-            <p className="font-bold text-white mb-6">(859) 278-5007</p>
+            <p className="text-xl font-bold text-white mb-6">(859) 278-5007</p>
             <Button asChild size="lg" variant="secondary" className="bg-white text-[var(--brand-blue)] hover:bg-white/90">
               <Link
                 href="https://www.google.com/maps/search/?api=1&query=615+East+Brannon+Road+Nicholasville+KY+40356"
@@ -370,11 +370,11 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className="text-xl font-extrabold uppercase tracking-wide text-white mb-3">
+            <h3 className="text-[1.563rem] font-extrabold uppercase tracking-wide text-white mb-3">
               Business Hours
             </h3>
             <div className="w-10 border-t-2 border-white/60 mb-4" />
-            <p className="text-white leading-relaxed">
+            <p className="text-xl text-white leading-relaxed">
               Monday 8:00 AM - 5:00 PM
               <br />
               Tuesday 8:00 AM - 5:00 PM
@@ -387,7 +387,7 @@ export default function Home() {
               <br />
               Saturday 9:00am-1:00pm at Hamburg for acute visits only
             </p>
-            <p className="font-bold text-white mt-4">
+            <p className="text-xl font-bold text-white mt-4">
               Evening hours available at both locations.
               <br />
               Call to schedule.
