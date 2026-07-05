@@ -181,15 +181,24 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
           <div className="relative max-w-4xl mx-auto text-center">
-            {/* Blue glow */}
+            {/* Blue glow — a pair of parenthesis-shaped crescents, "(  )" */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-6 sm:-inset-x-10 -inset-y-10 md:-inset-y-14 -z-10 opacity-[0.65] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse 40% 85% at 0% 50%, transparent 0%, transparent 15%, var(--brand-blue) 40%, var(--brand-blue) 60%, transparent 85%), radial-gradient(ellipse 40% 85% at 100% 50%, transparent 0%, transparent 15%, var(--brand-blue) 40%, var(--brand-blue) 60%, transparent 85%)",
-              }}
-            />
+              className="pointer-events-none absolute -inset-x-16 sm:-inset-x-24 md:-inset-x-32 -inset-y-20 md:-inset-y-28 -z-10 flex items-center justify-between opacity-[0.8] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+            >
+              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-32 sm:w-40 md:w-52 blur-md" style={{ color: "var(--brand-blue)" }}>
+                <path
+                  fill="currentColor"
+                  d="M170,0 C20,80 20,520 170,600 C100,520 100,80 170,0 Z"
+                />
+              </svg>
+              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-32 sm:w-40 md:w-52 blur-md" style={{ color: "var(--brand-blue)" }}>
+                <path
+                  fill="currentColor"
+                  d="M30,0 C180,80 180,520 30,600 C100,520 100,80 30,0 Z"
+                />
+              </svg>
+            </div>
 
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
               Family Practice Associates
