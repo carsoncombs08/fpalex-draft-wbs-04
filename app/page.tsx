@@ -407,7 +407,7 @@ export default function Home() {
             className="object-cover"
           />
           <div className="absolute inset-0" style={{ backgroundColor: "var(--brand-blue)", opacity: 0.45 }} />
-          <Button asChild size="lg" variant="secondary" className="relative bg-white text-[var(--brand-blue)] hover:bg-white/90">
+          <Button asChild size="lg" variant="secondary" className="relative bg-white text-[var(--brand-blue)] hover:bg-white/90 h-auto py-5 px-10 text-lg">
             <Link href="#">Sign Up for Our Newsletter</Link>
           </Button>
         </div>
