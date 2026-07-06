@@ -145,7 +145,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div id="quick-links" className="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 scroll-mt-24">
             <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
               <Link href="#">Make A Payment</Link>
             </Button>
