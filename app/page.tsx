@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { MessageCircle, Menu, X, ChevronDown } from "lucide-react"
+import { MessageCircle, Menu, X, ChevronDown, Facebook, Instagram, Linkedin, Newspaper } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Image from "next/image"
 import Link from "next/link"
@@ -393,6 +393,81 @@ export default function Home() {
           <Button asChild size="lg" className="mr-[8%]">
             <Link href="#">Learn More</Link>
           </Button>
+        </div>
+      </section>
+
+      {/* Newsletter Signup & Socials */}
+      <section className="w-full border-t-4 border-[var(--brand-blue)]">
+        <div className="relative w-full py-16 md:py-20 px-6 flex items-center justify-center overflow-hidden">
+          <Image
+            src="/assets/image/fpa-newsletter-bg.webp"
+            alt=""
+            aria-hidden="true"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0" style={{ backgroundColor: "var(--brand-blue)", opacity: 0.45 }} />
+          <Button asChild size="lg" variant="secondary" className="relative bg-white text-[var(--brand-blue)] hover:bg-white/90">
+            <Link href="#">Sign Up for Our Newsletter</Link>
+          </Button>
+        </div>
+
+        <div className="py-16 md:py-20 px-6 text-center">
+          <h3 className="text-xl font-extrabold uppercase tracking-wide text-foreground mb-6">
+            Our Socials
+          </h3>
+          <div className="flex items-center justify-center gap-4">
+            <Link
+              href="https://www.facebook.com/FPALexington/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="flex items-center justify-center size-12 rounded-full bg-[#1877F2] text-white hover:opacity-90 transition-opacity"
+            >
+              <Facebook className="size-6" fill="currentColor" />
+            </Link>
+            <Link
+              href="https://www.instagram.com/fpa_lexington/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="flex items-center justify-center size-12 rounded-full text-white hover:opacity-90 transition-opacity"
+              style={{ background: "linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7)" }}
+            >
+              <Instagram className="size-6" />
+            </Link>
+            <Link
+              href="https://www.youtube.com/channel/UCUKnBm_TxilL_kEARbmIe3Q"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              className="flex items-center justify-center size-12 rounded-full bg-[#FF0000] text-white hover:opacity-90 transition-opacity"
+            >
+              <svg viewBox="0 0 24 24" className="size-6">
+                <path
+                  fill="white"
+                  d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"
+                />
+                <path fill="#FF0000" d="m10 15 5-3-5-3z" />
+              </svg>
+            </Link>
+            <Link
+              href="https://www.linkedin.com/company/family-practice-associates-of-lexington"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="flex items-center justify-center size-12 rounded-full bg-[#0A66C2] text-white hover:opacity-90 transition-opacity"
+            >
+              <Linkedin className="size-6" fill="currentColor" />
+            </Link>
+            <Link
+              href="#"
+              aria-label="Articles"
+              className="flex items-center justify-center size-12 rounded-full bg-[var(--brand-blue)] text-white hover:opacity-90 transition-opacity"
+            >
+              <Newspaper className="size-6" />
+            </Link>
+          </div>
         </div>
       </section>
 
