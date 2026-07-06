@@ -49,11 +49,6 @@ const SERVICES: ServiceItem[] = [
       "Protect yourself and your loved ones from the flu with our seasonal flu shot clinic. Getting vaccinated annually is the best way to reduce your risk of flu and its complications. Our clinic is convenient and efficient, making it easy for you to get the protection you need during flu season.",
   },
   {
-    title: "Same-Day Sick Visit Care",
-    description:
-      "When illness strikes, you shouldn't have to wait days for an appointment. We offer same-day sick visits for acute conditions like colds, flu, infections, and minor injuries, so you can get seen and start feeling better sooner.",
-  },
-  {
     title: "Minor Injury Treatment",
     description:
       "Accidents happen, and when they do, our team is here to provide prompt and effective treatment for minor injuries. Whether it's a sprain, cut, or burn, you can rely on us for compassionate care and quick recovery. We offer on-site treatment for a variety of minor injuries, minimizing the need for emergency room visits and ensuring you get back to your daily activities as soon as possible.",
@@ -69,11 +64,6 @@ const SERVICES: ServiceItem[] = [
       "From prostate health to cardiovascular screenings, our men's health services are designed to address the specific concerns of male patients. We offer routine screenings, preventive care, and treatments tailored to men's health issues, ensuring comprehensive care supporting your well-being.",
   },
   {
-    title: "Pediatric & Adolescent Care",
-    description:
-      "From newborn checkups to teenage wellness visits, our team provides compassionate, family-centered care for your children as they grow, including well-child exams, immunizations, and guidance for parents along the way.",
-  },
-  {
     title: "Geriatric Care",
     description:
       "Aging gracefully involves specialized care tailored to the unique needs of older adults. We offer comprehensive senior care that focuses on maintaining health, managing chronic conditions, and improving the quality of life for our senior patients. We strive to provide compassionate care that respects the dignity and independence of our elderly patients.",
@@ -87,11 +77,6 @@ const SERVICES: ServiceItem[] = [
     title: "Lifestyle Counseling",
     description:
       "Healthy lifestyle choices are essential to long-term wellness. Our lifestyle counseling services are designed to support you in making positive changes that enhance your health and well-being. Our weight management program offers personalized plans that include nutrition guidance, exercise recommendations, and behavioral strategies. For those looking to quit smoking, we provide resources, counseling, and support to help you overcome addiction and improve your overall health.",
-  },
-  {
-    title: "Behavioral & Mental Health Support",
-    description:
-      "Mental health is a core part of overall wellness. Our team provides support and referrals for anxiety, depression, and other behavioral health concerns, working alongside your primary care to address your whole-person health.",
   },
   {
     title: "Telehealth",

@@ -150,7 +150,7 @@ export default function Home() {
               <Link href="#">Make A Payment</Link>
             </Button>
             <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
-              <Link href="#">Patient Portal</Link>
+              <Link href="/patient-portal">Patient Portal</Link>
             </Button>
             <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
               <Link href="#">Patient Forms and Records Request</Link>
