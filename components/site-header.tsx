@@ -16,7 +16,14 @@ const SERVICES = [
 
 const PATIENT_RESOURCES = [{ href: "/patient-portal", label: "Patient Portal" }]
 
-const CONTACT_LINKS = [{ href: "/contact-us", label: "Contact Us" }]
+const CONTACT_LINKS = [
+  { href: "/contact-us", label: "Contact Us" },
+  {
+    href: "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=605a374f-b89d-4204-95b1-565fa0583dd8&ccId=19000101_000001&type=MP&lang=en_US",
+    label: "Careers",
+    external: true,
+  },
+]
 
 export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "other" }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
@@ -108,6 +115,8 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
                   <Link
                     key={c.label}
                     href={c.href}
+                    target={c.external ? "_blank" : undefined}
+                    rel={c.external ? "noopener noreferrer" : undefined}
                     className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
                   >
                     {c.label}
@@ -222,6 +231,8 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               <Link
                 key={c.label}
                 href={c.href}
+                target={c.external ? "_blank" : undefined}
+                rel={c.external ? "noopener noreferrer" : undefined}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 pl-4"
                 onClick={() => setMobileMenuOpen(false)}
               >
