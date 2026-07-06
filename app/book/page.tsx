@@ -55,27 +55,27 @@ const DAY_LABELS: Record<DayKey, string> = {
   dayAfter: "Day After Tomorrow",
 }
 
-function Stepper({ current }: { current: number }) {
+function Stepper({ doneSteps, active }: { doneSteps: boolean[]; active: number }) {
   return (
     <div className="flex items-center justify-center gap-2 sm:gap-4 overflow-x-auto">
       {STEPS.map((label, i) => {
         const stepNum = i + 1
-        const done = stepNum < current
-        const active = stepNum === current
+        const done = doneSteps[i]
+        const isActive = stepNum === active
         return (
           <React.Fragment key={label}>
             <div className="flex items-center gap-2 shrink-0">
               <div
-                className={`flex items-center justify-center size-8 rounded-full text-sm font-bold shrink-0 transition-colors ${
-                  done || active ? "text-white" : "bg-muted text-muted-foreground"
-                }`}
-                style={done || active ? { backgroundColor: "var(--brand-blue)" } : undefined}
+                className={`flex items-center justify-center size-8 rounded-full text-sm font-bold shrink-0 transition-all duration-200 ${
+                  done || isActive ? "text-white" : "bg-muted text-muted-foreground"
+                } ${isActive ? "scale-110 shadow-[0_0_14px_var(--brand-blue)]" : ""}`}
+                style={done || isActive ? { backgroundColor: "var(--brand-blue)" } : undefined}
               >
                 {done ? <Check className="size-4" /> : stepNum}
               </div>
               <span
-                className={`text-sm font-bold whitespace-nowrap ${
-                  active ? "text-foreground" : done ? "text-foreground" : "text-muted-foreground"
+                className={`text-sm font-bold whitespace-nowrap transition-colors ${
+                  isActive ? "text-[var(--brand-blue)]" : done ? "text-foreground" : "text-muted-foreground"
                 }`}
               >
                 {label}
@@ -180,15 +180,16 @@ export default function BookPage() {
   const [phone, setPhone] = React.useState("")
   const [email, setEmail] = React.useState("")
   const [submitted, setSubmitted] = React.useState(false)
+  const [activeStep, setActiveStep] = React.useState(1)
 
   const locationLabel = LOCATIONS.find((l) => l.key === location)?.label
   const reasonLabel = REASONS.find((r) => r.key === reason)?.label
   const patientTypeLabel = PATIENT_TYPES.find((p) => p.key === patientType)?.label
 
-  // The stepper stays in sync with what the visitor has actually filled in,
-  // rather than which page is showing, since steps 1-3 all live on one screen.
-  const currentStep = !patientType ? 1 : !reason ? 2 : !time ? 3 : 4
-  const stepperValue = submitted ? 5 : page === "confirm" ? 4 : currentStep
+  // Each step's "done" state reflects its own field, independent of order, so
+  // clicking any icon lights up that icon's own step right away.
+  const doneSteps = [patientType !== null, reason !== null, time !== null, submitted]
+  const stepperActive = submitted ? 4 : page === "confirm" ? 4 : activeStep
 
   const canContinue = patientType !== null && reason !== null && time !== null
   const canConfirm = name.trim() !== "" && phone.trim() !== "" && email.trim() !== ""
@@ -204,6 +205,7 @@ export default function BookPage() {
     setName("")
     setPhone("")
     setEmail("")
+    setActiveStep(1)
   }
 
   return (
@@ -242,7 +244,7 @@ export default function BookPage() {
       <div className="flex-1 px-6 py-10 md:py-14">
         <div className="max-w-5xl mx-auto">
           <div className="mb-10">
-            <Stepper current={stepperValue} />
+            <Stepper doneSteps={doneSteps} active={stepperActive} />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -271,7 +273,10 @@ export default function BookPage() {
                         <SelectCard
                           key={p.key}
                           selected={patientType === p.key}
-                          onClick={() => setPatientType(p.key)}
+                          onClick={() => {
+                            setPatientType(p.key)
+                            setActiveStep(1)
+                          }}
                           icon={p.icon}
                           label={p.label}
                         />
@@ -288,7 +293,10 @@ export default function BookPage() {
                         <SelectCard
                           key={r.key}
                           selected={reason === r.key}
-                          onClick={() => setReason(r.key)}
+                          onClick={() => {
+                            setReason(r.key)
+                            setActiveStep(2)
+                          }}
                           icon={r.icon}
                           label={r.label}
                         />
@@ -302,7 +310,10 @@ export default function BookPage() {
                     </h3>
                     <select
                       value={location}
-                      onChange={(e) => setLocation(e.target.value as LocationKey)}
+                      onChange={(e) => {
+                        setLocation(e.target.value as LocationKey)
+                        setActiveStep(2)
+                      }}
                       className="w-full rounded-lg border border-border px-4 py-3 font-bold text-foreground bg-background"
                     >
                       {LOCATIONS.map((l) => (
@@ -325,6 +336,7 @@ export default function BookPage() {
                           onClick={() => {
                             setDay(d)
                             setTime(null)
+                            setActiveStep(3)
                           }}
                           aria-pressed={day === d}
                           className={`rounded-full px-4 py-1.5 text-sm font-bold border-2 border-black transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)] ${
@@ -341,7 +353,10 @@ export default function BookPage() {
                         <button
                           key={t}
                           type="button"
-                          onClick={() => setTime(t)}
+                          onClick={() => {
+                            setTime(t)
+                            setActiveStep(3)
+                          }}
                           aria-pressed={time === t}
                           className={`rounded-lg border-2 border-black px-4 py-3 font-bold text-sm transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)] ${
                             time === t ? "text-[var(--brand-blue)]" : "text-foreground hover:bg-accent"
@@ -359,7 +374,15 @@ export default function BookPage() {
                   </div>
 
                   <div className="flex items-center justify-end">
-                    <Button onClick={() => canContinue && setPage("confirm")} disabled={!canContinue}>
+                    <Button
+                      onClick={() => {
+                        if (canContinue) {
+                          setPage("confirm")
+                          setActiveStep(4)
+                        }
+                      }}
+                      disabled={!canContinue}
+                    >
                       Continue
                     </Button>
                   </div>
@@ -427,7 +450,13 @@ export default function BookPage() {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <Button variant="outline" onClick={() => setPage("booking")}>
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        setPage("booking")
+                        setActiveStep(3)
+                      }}
+                    >
                       Back
                     </Button>
                     <Button onClick={() => canConfirm && setSubmitted(true)} disabled={!canConfirm}>
