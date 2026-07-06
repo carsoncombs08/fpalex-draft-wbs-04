@@ -212,6 +212,37 @@ export default function Home() {
               </svg>
             </div>
 
+            {/* Second, outer pair of parenthesis-shaped crescents, placed between the inner glow and the page edge */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-36 sm:-inset-x-52 md:-inset-x-72 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-40 transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+            >
+              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
+                <defs>
+                  <linearGradient id="glowFadeLeftOuter" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
+                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <path
+                  fill="url(#glowFadeLeftOuter)"
+                  d="M170,0 C20,80 20,520 170,600 C100,520 100,80 170,0 Z"
+                />
+              </svg>
+              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
+                <defs>
+                  <linearGradient id="glowFadeRightOuter" x1="1" y1="0" x2="0" y2="0">
+                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
+                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <path
+                  fill="url(#glowFadeRightOuter)"
+                  d="M30,0 C180,80 180,520 30,600 C100,520 100,80 30,0 Z"
+                />
+              </svg>
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
               Family Practice Associates
             </h1>
