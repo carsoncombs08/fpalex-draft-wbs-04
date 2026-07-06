@@ -110,8 +110,8 @@ function SelectCard({
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      className={`flex items-center justify-center gap-2 rounded-lg border-2 px-4 py-4 font-bold text-sm sm:text-base transition-colors ${
-        selected ? "text-[var(--brand-blue)]" : "border-border text-foreground hover:bg-accent"
+      className={`flex items-center justify-center gap-2 rounded-lg border-2 border-black px-4 py-4 font-bold text-sm sm:text-base transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)] ${
+        selected ? "text-[var(--brand-blue)]" : "text-foreground hover:bg-accent"
       }`}
       style={selected ? { borderColor: "var(--brand-blue)", backgroundColor: "color-mix(in oklab, var(--brand-blue) 8%, transparent)" } : undefined}
     >
@@ -327,8 +327,8 @@ export default function BookPage() {
                             setTime(null)
                           }}
                           aria-pressed={day === d}
-                          className={`rounded-full px-4 py-1.5 text-sm font-bold border-2 transition-colors ${
-                            day === d ? "text-white" : "border-border text-muted-foreground hover:bg-accent"
+                          className={`rounded-full px-4 py-1.5 text-sm font-bold border-2 border-black transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)] ${
+                            day === d ? "text-white" : "text-muted-foreground hover:bg-accent"
                           }`}
                           style={day === d ? { backgroundColor: "var(--brand-blue)", borderColor: "var(--brand-blue)" } : undefined}
                         >
@@ -343,8 +343,8 @@ export default function BookPage() {
                           type="button"
                           onClick={() => setTime(t)}
                           aria-pressed={time === t}
-                          className={`rounded-lg border-2 px-4 py-3 font-bold text-sm transition-colors ${
-                            time === t ? "text-[var(--brand-blue)]" : "border-border text-foreground hover:bg-accent"
+                          className={`rounded-lg border-2 border-black px-4 py-3 font-bold text-sm transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)] ${
+                            time === t ? "text-[var(--brand-blue)]" : "text-foreground hover:bg-accent"
                           }`}
                           style={
                             time === t
