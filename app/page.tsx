@@ -138,7 +138,7 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <Button asChild size="lg" className="px-6">
+              <Button asChild size="lg" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
                 <Link href="/book">Book Today</Link>
               </Button>
 
@@ -146,16 +146,16 @@ export default function Home() {
           </div>
 
           <div id="quick-links" className="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 scroll-mt-24">
-            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
+            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
               <Link href="#">Make A Payment</Link>
             </Button>
-            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
+            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
               <Link href="/patient-portal">Patient Portal</Link>
             </Button>
-            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
+            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
               <Link href="#">Patient Forms and Records Request</Link>
             </Button>
-            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug">
+            <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
               <Link href="#">Medical Cannabis Clinic</Link>
             </Button>
           </div>
