@@ -27,9 +27,9 @@ const SERVICES: ServiceItem[] = [
     list: ["Diabetes", "Hypertension", "Asthma"],
   },
   {
-    title: "Immunizations & Vaccinations",
+    title: "Immunizations",
     description:
-      "We offer a full range of immunizations for patients of all ages, from childhood vaccine schedules to seasonal flu shots and adult boosters. Staying current on vaccinations is one of the simplest ways to protect yourself and your family from preventable illness.",
+      "Vaccinations are a crucial part of preventive healthcare. We provide a full range of immunizations for children, adults, and seniors to protect against various diseases and keep your family healthy. From childhood vaccines to boosters and travel immunizations, our team ensures you stay up-to-date on essential shots.",
   },
   {
     title: "Same-Day Sick Visit Care",
@@ -42,6 +42,11 @@ const SERVICES: ServiceItem[] = [
       "Our providers offer comprehensive women's health services, including annual wellness exams, family planning counseling, and preventive screenings, all delivered with the personalized attention you deserve at every stage of life.",
   },
   {
+    title: "Men's Health Services",
+    description:
+      "From prostate health to cardiovascular screenings, our men's health services are designed to address the specific concerns of male patients. We offer routine screenings, preventive care, and treatments tailored to men's health issues, ensuring comprehensive care supporting your well-being.",
+  },
+  {
     title: "Pediatric & Adolescent Care",
     description:
       "From newborn checkups to teenage wellness visits, our team provides compassionate, family-centered care for your children as they grow, including well-child exams, immunizations, and guidance for parents along the way.",
@@ -49,7 +54,17 @@ const SERVICES: ServiceItem[] = [
   {
     title: "Geriatric Care",
     description:
-      "Aging brings unique health considerations, and our providers are experienced in the coordinated, compassionate care older adults need, including chronic condition management, medication review, and preventive care tailored to seniors.",
+      "Aging gracefully involves specialized care tailored to the unique needs of older adults. We offer comprehensive senior care that focuses on maintaining health, managing chronic conditions, and improving the quality of life for our senior patients. We strive to provide compassionate care that respects the dignity and independence of our elderly patients.",
+  },
+  {
+    title: "Medicare Wellness Exams",
+    description:
+      "Medicare wellness exams are an important aspect of preventive healthcare for seniors. Our comprehensive exams help identify potential health issues early, ensuring you receive the necessary care to maintain your health. These annual exams include a thorough medical history review, risk assessments, and personalized health advice. We aim to help you stay healthy, active, and independent for as long as possible.",
+  },
+  {
+    title: "Lifestyle Counseling",
+    description:
+      "Healthy lifestyle choices are essential to long-term wellness. Our lifestyle counseling services are designed to support you in making positive changes that enhance your health and well-being. Our weight management program offers personalized plans that include nutrition guidance, exercise recommendations, and behavioral strategies. For those looking to quit smoking, we provide resources, counseling, and support to help you overcome addiction and improve your overall health.",
   },
   {
     title: "Behavioral & Mental Health Support",
