@@ -16,6 +16,8 @@ const SERVICES = [
 
 const PATIENT_RESOURCES = [{ href: "/patient-portal", label: "Patient Portal" }]
 
+const CONTACT_LINKS = [{ href: "/contact-us", label: "Contact Us" }]
+
 export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "other" }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
@@ -93,12 +95,27 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               </div>
             </div>
           </div>
-          <Link href="/#quick-links" className="hover:text-foreground transition-colors">
+          <Link href="/#newsletter-socials" className="hover:text-foreground transition-colors">
             Explore Our Content
           </Link>
-          <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
-            Contact Us <ChevronDown className="h-3.5 w-3.5" />
-          </Link>
+          <div className="group relative">
+            <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+              Contact Us <ChevronDown className="h-3.5 w-3.5" />
+            </Link>
+            <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
+              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-md">
+                {CONTACT_LINKS.map((c) => (
+                  <Link
+                    key={c.label}
+                    href={c.href}
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    {c.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
           <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
             Our Locations <ChevronDown className="h-3.5 w-3.5" />
           </Link>
@@ -188,7 +205,7 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               </Link>
             ))}
             <Link
-              href="/#quick-links"
+              href="/#newsletter-socials"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -201,6 +218,16 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
             >
               Contact Us <ChevronDown className="h-3.5 w-3.5" />
             </Link>
+            {CONTACT_LINKS.map((c) => (
+              <Link
+                key={c.label}
+                href={c.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 pl-4"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {c.label}
+              </Link>
+            ))}
             <Link
               href="#"
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"

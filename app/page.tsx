@@ -252,7 +252,7 @@ export default function Home() {
       </section>
 
       {/* Newsletter Signup & Socials */}
-      <section className="w-full border-t-4 border-[var(--brand-blue)]">
+      <section id="newsletter-socials" className="w-full border-t-4 border-[var(--brand-blue)] scroll-mt-20">
         <div className="relative w-full py-16 md:py-20 px-6 flex items-center justify-center overflow-hidden">
           <Image
             src="/assets/image/fpa-newsletter-bg.webp"
