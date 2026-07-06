@@ -181,20 +181,32 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
           <div className="relative max-w-4xl mx-auto text-center">
-            {/* Blue glow — a pair of parenthesis-shaped crescents, "(  )" */}
+            {/* Blue glow — a pair of parenthesis-shaped crescents, "(  )", fading in from their thick outer edge across the page */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-16 sm:-inset-x-24 md:-inset-x-32 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-[0.8] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+              className="pointer-events-none absolute -inset-x-24 sm:-inset-x-36 md:-inset-x-48 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-[0.8] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
             >
-              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-32 sm:w-40 md:w-52 blur-md" style={{ color: "var(--brand-blue)" }}>
+              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
+                <defs>
+                  <linearGradient id="glowFadeLeft" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
+                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
                 <path
-                  fill="currentColor"
+                  fill="url(#glowFadeLeft)"
                   d="M170,0 C20,80 20,520 170,600 C100,520 100,80 170,0 Z"
                 />
               </svg>
-              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-32 sm:w-40 md:w-52 blur-md" style={{ color: "var(--brand-blue)" }}>
+              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
+                <defs>
+                  <linearGradient id="glowFadeRight" x1="1" y1="0" x2="0" y2="0">
+                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
+                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
                 <path
-                  fill="currentColor"
+                  fill="url(#glowFadeRight)"
                   d="M30,0 C180,80 180,520 30,600 C100,520 100,80 30,0 Z"
                 />
               </svg>
