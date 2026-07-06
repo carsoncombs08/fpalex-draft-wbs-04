@@ -18,7 +18,7 @@ export default function ContactUsPage() {
       <SiteHeader activePage="other" />
 
       <section className="px-6 py-12 md:py-16 flex-1">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <ContactForm />
 
           <div>
