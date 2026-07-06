@@ -8,6 +8,8 @@ type ServiceItem = {
   title: string
   description: string
   image?: string
+  listLabel?: string
+  list?: string[]
 }
 
 const SERVICES: ServiceItem[] = [
@@ -20,7 +22,9 @@ const SERVICES: ServiceItem[] = [
   {
     title: "Chronic Disease Management",
     description:
-      "Living with a chronic condition like diabetes, hypertension, or asthma requires ongoing, coordinated care. Our providers work with you to monitor your condition, adjust treatment plans as needed, and provide the education and support you need to manage your health day to day.",
+      "Managing chronic conditions requires ongoing care and attention. Our team provides personalized management plans, ensuring you receive the best possible care to keep your condition under control. We work closely with you to monitor your symptoms, adjust treatments as needed, and offer education and support to help you manage your condition effectively.",
+    listLabel: "Chronic Conditions We Treat:",
+    list: ["Diabetes", "Hypertension", "Asthma"],
   },
   {
     title: "Immunizations & Vaccinations",
@@ -94,7 +98,27 @@ export function ServicesAccordion() {
               </span>
             </button>
             {isOpen && (
-              <p className="text-muted-foreground leading-relaxed pt-4 pb-2 px-1">{service.description}</p>
+              <div className="pt-4 pb-2 px-1">
+                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                {service.list && (
+                  <div className="mt-4">
+                    {service.listLabel && (
+                      <p className="font-bold text-foreground mb-2">{service.listLabel}</p>
+                    )}
+                    <ul className="space-y-1">
+                      {service.list.map((item) => (
+                        <li key={item} className="flex items-center gap-2 text-muted-foreground">
+                          <span
+                            className="size-1.5 rounded-full shrink-0"
+                            style={{ backgroundColor: "var(--brand-blue)" }}
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             )}
           </div>
         )
