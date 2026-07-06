@@ -52,7 +52,7 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
             Home
           </Link>
           <div className="group relative">
-            <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+            <Link href="/#about-us" className="flex items-center gap-1 hover:text-foreground transition-colors">
               About FPA <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
@@ -125,7 +125,7 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               </div>
             </div>
           </div>
-          <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
+          <Link href="/#locations" className="flex items-center gap-1 hover:text-foreground transition-colors">
             Our Locations <ChevronDown className="h-3.5 w-3.5" />
           </Link>
         </nav>
@@ -159,7 +159,7 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               Home
             </Link>
             <Link
-              href="#"
+              href="/#about-us"
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -240,7 +240,7 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               </Link>
             ))}
             <Link
-              href="#"
+              href="/#locations"
               className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
