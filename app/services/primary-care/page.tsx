@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { ServicesAccordion } from "@/components/services-accordion"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -11,17 +12,6 @@ export const metadata: Metadata = {
   description:
     "Comprehensive primary care services in Central Kentucky, including annual physicals, chronic disease management, immunizations, and same-day sick visits.",
 }
-
-const SERVICES = [
-  "Annual Physical Exams & Preventive Screenings",
-  "Chronic Disease Management (diabetes, hypertension, asthma, and more)",
-  "Immunizations & Vaccinations",
-  "Same-Day Sick Visit Care",
-  "Women's Health Services",
-  "Pediatric & Adolescent Care",
-  "Geriatric Care",
-  "Behavioral & Mental Health Support",
-]
 
 export default function PrimaryCarePage() {
   return (
@@ -71,17 +61,7 @@ export default function PrimaryCarePage() {
             diverse health needs of Central Kentucky residents. Your first line of defense for optimal health
             and wellness. We offer:
           </p>
-          <ul className="space-y-3 mb-10">
-            {SERVICES.map((s) => (
-              <li key={s} className="flex items-start gap-3 text-muted-foreground leading-relaxed">
-                <span
-                  className="mt-2 size-1.5 rounded-full shrink-0"
-                  style={{ backgroundColor: "var(--brand-blue)" }}
-                />
-                {s}
-              </li>
-            ))}
-          </ul>
+          <ServicesAccordion />
           <Button asChild size="lg">
             <Link href="/book">Book Today</Link>
           </Button>
