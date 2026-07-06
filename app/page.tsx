@@ -284,7 +284,7 @@ export default function Home() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Button asChild size="lg" className="px-6">
-                <Link href="#">Book Today</Link>
+                <Link href="/book">Book Today</Link>
               </Button>
 
             </div>
