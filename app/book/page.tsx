@@ -24,6 +24,7 @@ type PatientType = "new" | "existing"
 type ReasonKey = "sick" | "wellness" | "followup" | "pediatric"
 type LocationKey = "hamburg" | "brannon"
 type DayKey = "tomorrow" | "dayAfter"
+type Page = "booking" | "confirm"
 
 const STEPS = ["Patient Type", "Reason & Location", "Pick a Time", "Confirm"]
 
@@ -65,10 +66,8 @@ function Stepper({ current }: { current: number }) {
           <React.Fragment key={label}>
             <div className="flex items-center gap-2 shrink-0">
               <div
-                className={`flex items-center justify-center size-8 rounded-full text-sm font-bold shrink-0 ${
-                  done || active
-                    ? "text-white"
-                    : "bg-muted text-muted-foreground"
+                className={`flex items-center justify-center size-8 rounded-full text-sm font-bold shrink-0 transition-colors ${
+                  done || active ? "text-white" : "bg-muted text-muted-foreground"
                 }`}
                 style={done || active ? { backgroundColor: "var(--brand-blue)" } : undefined}
               >
@@ -84,7 +83,7 @@ function Stepper({ current }: { current: number }) {
             </div>
             {stepNum < STEPS.length && (
               <div
-                className="h-0.5 w-6 sm:w-12 shrink-0"
+                className="h-0.5 w-6 sm:w-12 shrink-0 transition-colors"
                 style={{ backgroundColor: done ? "var(--brand-blue)" : "var(--border)" }}
               />
             )}
@@ -110,6 +109,7 @@ function SelectCard({
     <button
       type="button"
       onClick={onClick}
+      aria-pressed={selected}
       className={`flex items-center justify-center gap-2 rounded-lg border-2 px-4 py-4 font-bold text-sm sm:text-base transition-colors ${
         selected ? "text-[var(--brand-blue)]" : "border-border text-foreground hover:bg-accent"
       }`}
@@ -170,7 +170,7 @@ function Sidebar() {
 }
 
 export default function BookPage() {
-  const [step, setStep] = React.useState(1)
+  const [page, setPage] = React.useState<Page>("booking")
   const [patientType, setPatientType] = React.useState<PatientType | null>(null)
   const [reason, setReason] = React.useState<ReasonKey | null>(null)
   const [location, setLocation] = React.useState<LocationKey>("hamburg")
@@ -185,10 +185,26 @@ export default function BookPage() {
   const reasonLabel = REASONS.find((r) => r.key === reason)?.label
   const patientTypeLabel = PATIENT_TYPES.find((p) => p.key === patientType)?.label
 
-  const canContinueStep1 = patientType !== null
-  const canContinueStep2 = reason !== null
-  const canContinueStep3 = time !== null
+  // The stepper stays in sync with what the visitor has actually filled in,
+  // rather than which page is showing, since steps 1-3 all live on one screen.
+  const currentStep = !patientType ? 1 : !reason ? 2 : !time ? 3 : 4
+  const stepperValue = submitted ? 5 : page === "confirm" ? 4 : currentStep
+
+  const canContinue = patientType !== null && reason !== null && time !== null
   const canConfirm = name.trim() !== "" && phone.trim() !== "" && email.trim() !== ""
+
+  const resetAll = () => {
+    setSubmitted(false)
+    setPage("booking")
+    setPatientType(null)
+    setReason(null)
+    setLocation("hamburg")
+    setDay("tomorrow")
+    setTime(null)
+    setName("")
+    setPhone("")
+    setEmail("")
+  }
 
   return (
     <main className="min-h-[100dvh] flex flex-col bg-background">
@@ -226,7 +242,7 @@ export default function BookPage() {
       <div className="flex-1 px-6 py-10 md:py-14">
         <div className="max-w-5xl mx-auto">
           <div className="mb-10">
-            <Stepper current={submitted ? 5 : step} />
+            <Stepper current={stepperValue} />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -241,219 +257,184 @@ export default function BookPage() {
                   </div>
                   <h2 className="text-2xl font-extrabold text-foreground mb-3">Appointment Requested!</h2>
                   <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-                    Thanks, {name.split(" ")[0] || "there"}! We&apos;ll call {phone} to confirm your {reasonLabel?.toLowerCase()}{" "}
-                    at {locationLabel} for {DAY_LABELS[day].toLowerCase()} at {time}.
+                    Thanks, {name.split(" ")[0] || "there"}! We&apos;ll call {phone} to confirm your{" "}
+                    {reasonLabel?.toLowerCase()} at {locationLabel} for {DAY_LABELS[day].toLowerCase()} at {time}.
                   </p>
-                  <Button
-                    onClick={() => {
-                      setSubmitted(false)
-                      setStep(1)
-                      setPatientType(null)
-                      setReason(null)
-                      setLocation("hamburg")
-                      setDay("tomorrow")
-                      setTime(null)
-                      setName("")
-                      setPhone("")
-                      setEmail("")
-                    }}
-                  >
-                    Book Another Appointment
-                  </Button>
+                  <Button onClick={resetAll}>Book Another Appointment</Button>
+                </div>
+              ) : page === "booking" ? (
+                <div className="space-y-8">
+                  <div>
+                    <h2 className="font-extrabold text-foreground text-lg mb-4">What are you booking?</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {PATIENT_TYPES.map((p) => (
+                        <SelectCard
+                          key={p.key}
+                          selected={patientType === p.key}
+                          onClick={() => setPatientType(p.key)}
+                          icon={p.icon}
+                          label={p.label}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-3">
+                      Reason for Visit
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {REASONS.map((r) => (
+                        <SelectCard
+                          key={r.key}
+                          selected={reason === r.key}
+                          onClick={() => setReason(r.key)}
+                          icon={r.icon}
+                          label={r.label}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-3">
+                      Location
+                    </h3>
+                    <select
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value as LocationKey)}
+                      className="w-full rounded-lg border border-border px-4 py-3 font-bold text-foreground bg-background"
+                    >
+                      {LOCATIONS.map((l) => (
+                        <option key={l.key} value={l.key}>
+                          {l.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-3">
+                      Available Times &mdash; {DAY_LABELS[day]}
+                    </h3>
+                    <div className="flex gap-2 mb-4">
+                      {(Object.keys(DAY_LABELS) as DayKey[]).map((d) => (
+                        <button
+                          key={d}
+                          type="button"
+                          onClick={() => {
+                            setDay(d)
+                            setTime(null)
+                          }}
+                          aria-pressed={day === d}
+                          className={`rounded-full px-4 py-1.5 text-sm font-bold border-2 transition-colors ${
+                            day === d ? "text-white" : "border-border text-muted-foreground hover:bg-accent"
+                          }`}
+                          style={day === d ? { backgroundColor: "var(--brand-blue)", borderColor: "var(--brand-blue)" } : undefined}
+                        >
+                          {DAY_LABELS[d]}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {TIMES_BY_DAY[day].map((t) => (
+                        <button
+                          key={t}
+                          type="button"
+                          onClick={() => setTime(t)}
+                          aria-pressed={time === t}
+                          className={`rounded-lg border-2 px-4 py-3 font-bold text-sm transition-colors ${
+                            time === t ? "text-[var(--brand-blue)]" : "border-border text-foreground hover:bg-accent"
+                          }`}
+                          style={
+                            time === t
+                              ? { borderColor: "var(--brand-blue)", backgroundColor: "color-mix(in oklab, var(--brand-blue) 8%, transparent)" }
+                              : undefined
+                          }
+                        >
+                          {t}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-end">
+                    <Button onClick={() => canContinue && setPage("confirm")} disabled={!canContinue}>
+                      Continue
+                    </Button>
+                  </div>
                 </div>
               ) : (
-                <>
-                  {step === 1 && (
-                    <div>
-                      <h2 className="font-extrabold text-foreground text-lg mb-4">What are you booking?</h2>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {PATIENT_TYPES.map((p) => (
-                          <SelectCard
-                            key={p.key}
-                            selected={patientType === p.key}
-                            onClick={() => setPatientType(p.key)}
-                            icon={p.icon}
-                            label={p.label}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {step === 2 && (
-                    <div className="space-y-6">
-                      <div>
-                        <h3 className="text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-3">
-                          Reason for Visit
-                        </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          {REASONS.map((r) => (
-                            <SelectCard
-                              key={r.key}
-                              selected={reason === r.key}
-                              onClick={() => setReason(r.key)}
-                              icon={r.icon}
-                              label={r.label}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <h3 className="text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-3">
-                          Location
-                        </h3>
-                        <select
-                          value={location}
-                          onChange={(e) => setLocation(e.target.value as LocationKey)}
-                          className="w-full rounded-lg border border-border px-4 py-3 font-bold text-foreground bg-background"
-                        >
-                          {LOCATIONS.map((l) => (
-                            <option key={l.key} value={l.key}>
-                              {l.label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                  )}
-
-                  {step === 3 && (
-                    <div>
-                      <h3 className="text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-3">
-                        Available Times
-                      </h3>
-                      <div className="flex gap-2 mb-4">
-                        {(Object.keys(DAY_LABELS) as DayKey[]).map((d) => (
-                          <button
-                            key={d}
-                            type="button"
-                            onClick={() => {
-                              setDay(d)
-                              setTime(null)
-                            }}
-                            className={`rounded-full px-4 py-1.5 text-sm font-bold border-2 transition-colors ${
-                              day === d ? "text-white" : "border-border text-muted-foreground hover:bg-accent"
-                            }`}
-                            style={day === d ? { backgroundColor: "var(--brand-blue)", borderColor: "var(--brand-blue)" } : undefined}
-                          >
-                            {DAY_LABELS[d]}
-                          </button>
-                        ))}
-                      </div>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        {TIMES_BY_DAY[day].map((t) => (
-                          <button
-                            key={t}
-                            type="button"
-                            onClick={() => setTime(t)}
-                            className={`rounded-lg border-2 px-4 py-3 font-bold text-sm transition-colors ${
-                              time === t ? "text-[var(--brand-blue)]" : "border-border text-foreground hover:bg-accent"
-                            }`}
-                            style={
-                              time === t
-                                ? { borderColor: "var(--brand-blue)", backgroundColor: "color-mix(in oklab, var(--brand-blue) 8%, transparent)" }
-                                : undefined
-                            }
-                          >
-                            {t}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {step === 4 && (
-                    <div className="space-y-6">
-                      <div className="rounded-lg bg-muted p-4 space-y-1 text-sm">
-                        <p>
-                          <span className="font-bold text-foreground">Patient Type:</span>{" "}
-                          <span className="text-muted-foreground">{patientTypeLabel}</span>
-                        </p>
-                        <p>
-                          <span className="font-bold text-foreground">Reason:</span>{" "}
-                          <span className="text-muted-foreground">{reasonLabel}</span>
-                        </p>
-                        <p>
-                          <span className="font-bold text-foreground">Location:</span>{" "}
-                          <span className="text-muted-foreground">{locationLabel}</span>
-                        </p>
-                        <p>
-                          <span className="font-bold text-foreground">When:</span>{" "}
-                          <span className="text-muted-foreground">
-                            {DAY_LABELS[day]} at {time}
-                          </span>
-                        </p>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="sm:col-span-2">
-                          <label className="block text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-1.5">
-                            Full Name
-                          </label>
-                          <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="w-full rounded-lg border border-border px-4 py-3 text-foreground bg-background"
-                            placeholder="Jane Doe"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-1.5">
-                            Phone
-                          </label>
-                          <input
-                            type="tel"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            className="w-full rounded-lg border border-border px-4 py-3 text-foreground bg-background"
-                            placeholder="(859) 555-0142"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-1.5">
-                            Email
-                          </label>
-                          <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full rounded-lg border border-border px-4 py-3 text-foreground bg-background"
-                            placeholder="jane@example.com"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between mt-8">
-                    {step > 1 ? (
-                      <Button variant="outline" onClick={() => setStep((s) => s - 1)}>
-                        Back
-                      </Button>
-                    ) : (
-                      <span />
-                    )}
-
-                    {step < 4 && (
-                      <Button
-                        onClick={() => setStep((s) => s + 1)}
-                        disabled={
-                          (step === 1 && !canContinueStep1) ||
-                          (step === 2 && !canContinueStep2) ||
-                          (step === 3 && !canContinueStep3)
-                        }
-                      >
-                        Continue
-                      </Button>
-                    )}
-                    {step === 4 && (
-                      <Button onClick={() => canConfirm && setSubmitted(true)} disabled={!canConfirm}>
-                        Confirm Appointment
-                      </Button>
-                    )}
+                <div className="space-y-6">
+                  <div className="rounded-lg bg-muted p-4 space-y-1 text-sm">
+                    <p>
+                      <span className="font-bold text-foreground">Patient Type:</span>{" "}
+                      <span className="text-muted-foreground">{patientTypeLabel}</span>
+                    </p>
+                    <p>
+                      <span className="font-bold text-foreground">Reason:</span>{" "}
+                      <span className="text-muted-foreground">{reasonLabel}</span>
+                    </p>
+                    <p>
+                      <span className="font-bold text-foreground">Location:</span>{" "}
+                      <span className="text-muted-foreground">{locationLabel}</span>
+                    </p>
+                    <p>
+                      <span className="font-bold text-foreground">When:</span>{" "}
+                      <span className="text-muted-foreground">
+                        {DAY_LABELS[day]} at {time}
+                      </span>
+                    </p>
                   </div>
-                </>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-1.5">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full rounded-lg border border-border px-4 py-3 text-foreground bg-background"
+                        placeholder="Jane Doe"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-1.5">
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="w-full rounded-lg border border-border px-4 py-3 text-foreground bg-background"
+                        placeholder="(859) 555-0142"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-1.5">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full rounded-lg border border-border px-4 py-3 text-foreground bg-background"
+                        placeholder="jane@example.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <Button variant="outline" onClick={() => setPage("booking")}>
+                      Back
+                    </Button>
+                    <Button onClick={() => canConfirm && setSubmitted(true)} disabled={!canConfirm}>
+                      Confirm Appointment
+                    </Button>
+                  </div>
+                </div>
               )}
             </div>
 
