@@ -20,6 +20,11 @@ const SERVICES: ServiceItem[] = [
       "Regular check-ups are essential for maintaining good health. Our annual physical exams include a comprehensive assessment of your overall health, helping to detect any potential issues early and keeping you on track with your wellness goals. During these exams, we review your medical history, perform necessary screenings, and discuss any health concerns you might have. This proactive approach helps us tailor a healthcare plan that supports your long-term health.",
   },
   {
+    title: "Wellness Exams",
+    description:
+      "Regular wellness exams are a cornerstone of our primary care services. These comprehensive check-ups help ensure you're in good health and provide an opportunity to address any concerns with your healthcare provider. During a wellness exam, we perform a thorough physical assessment, review your medical history, and discuss your health goals. These exams are crucial for the early detection of potential issues and for maintaining overall well-being.",
+  },
+  {
     title: "Chronic Disease Management",
     description:
       "Managing chronic conditions requires ongoing care and attention. Our team provides personalized management plans, ensuring you receive the best possible care to keep your condition under control. We work closely with you to monitor your symptoms, adjust treatments as needed, and offer education and support to help you manage your condition effectively.",
@@ -27,9 +32,21 @@ const SERVICES: ServiceItem[] = [
     list: ["Diabetes", "Hypertension", "Asthma"],
   },
   {
+    title: "Preventative Screenings",
+    description:
+      "Preventive screenings are essential for early detection of health issues. We offer a range of screenings for cholesterol, blood pressure, and diabetes to help you stay ahead of potential health problems. By identifying risk factors early, we can implement strategies to prevent the development of serious conditions and manage your health proactively.",
+    listLabel: "Our Preventative Screenings Include:",
+    list: ["Cholesterol Screenings", "Blood Pressure Screenings", "Diabetes Screenings"],
+  },
+  {
     title: "Immunizations",
     description:
       "Vaccinations are a crucial part of preventive healthcare. We provide a full range of immunizations for children, adults, and seniors to protect against various diseases and keep your family healthy. From childhood vaccines to boosters and travel immunizations, our team ensures you stay up-to-date on essential shots.",
+  },
+  {
+    title: "Seasonal Flu Shot Clinic",
+    description:
+      "Protect yourself and your loved ones from the flu with our seasonal flu shot clinic. Getting vaccinated annually is the best way to reduce your risk of flu and its complications. Our clinic is convenient and efficient, making it easy for you to get the protection you need during flu season.",
   },
   {
     title: "Same-Day Sick Visit Care",
@@ -37,9 +54,14 @@ const SERVICES: ServiceItem[] = [
       "When illness strikes, you shouldn't have to wait days for an appointment. We offer same-day sick visits for acute conditions like colds, flu, infections, and minor injuries, so you can get seen and start feeling better sooner.",
   },
   {
+    title: "Minor Injury Treatment",
+    description:
+      "Accidents happen, and when they do, our team is here to provide prompt and effective treatment for minor injuries. Whether it's a sprain, cut, or burn, you can rely on us for compassionate care and quick recovery. We offer on-site treatment for a variety of minor injuries, minimizing the need for emergency room visits and ensuring you get back to your daily activities as soon as possible.",
+  },
+  {
     title: "Women's Health Services",
     description:
-      "Our providers offer comprehensive women's health services, including annual wellness exams, family planning counseling, and preventive screenings, all delivered with the personalized attention you deserve at every stage of life.",
+      "Women have unique healthcare needs that change throughout their lives. Our women's health services include gynecological exams, breast health screenings, and reproductive health care, all tailored to support women's health at every stage. Whether you need a routine pap smear, mammogram, or menopause management, our compassionate team is here to provide the care and support you need.",
   },
   {
     title: "Men's Health Services",
