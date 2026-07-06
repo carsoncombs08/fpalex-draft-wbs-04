@@ -93,6 +93,11 @@ const SERVICES: ServiceItem[] = [
     description:
       "Mental health is a core part of overall wellness. Our team provides support and referrals for anxiety, depression, and other behavioral health concerns, working alongside your primary care to address your whole-person health.",
   },
+  {
+    title: "Telehealth",
+    description:
+      "We encourage face-to-face visits for most issues, so that your provider can physically examine you and do any lab work necessary. Not all visits are appropriate for Telehealth appointments, however, we understand that patients may have safety concerns and might want a telehealth visit. Please visit our FAQ page for more information.",
+  },
 ]
 
 export function ServicesAccordion() {
