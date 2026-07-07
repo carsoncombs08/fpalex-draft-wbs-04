@@ -3,6 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export type Provider = {
@@ -60,6 +61,7 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
               className="relative"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => setHoveredIndex(index)}
             >
               <div className="relative w-full aspect-[448/279] overflow-hidden rounded-xl">
                 <Image src={provider.image} alt={provider.name} fill className="object-cover" />
@@ -75,6 +77,17 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
               >
                 <div className="relative w-full aspect-[448/279] overflow-hidden rounded-xl shadow-2xl">
                   <Image src={provider.image} alt={provider.name} fill className="object-cover" />
+                  <button
+                    type="button"
+                    aria-label="Close"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setHoveredIndex(null)
+                    }}
+                    className="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+                  >
+                    <X className="size-4" />
+                  </button>
                 </div>
                 <div className="rounded-b-xl bg-white p-4 shadow-2xl">
                   <h3 className="text-lg font-extrabold mb-1" style={{ color: "var(--brand-blue)" }}>
