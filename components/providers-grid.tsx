@@ -9,10 +9,15 @@ import { Button } from "@/components/ui/button"
 export type Provider = {
   name: string
   image: string
+  bio?: string
 }
 
 export const MD_PROVIDERS: Provider[] = [
-  { name: "Keith Applegate, MD, FAAFP", image: "/assets/image/providers/keith-applegate.webp" },
+  {
+    name: "Keith Applegate, MD, FAAFP",
+    image: "/assets/image/providers/keith-applegate.webp",
+    bio: "Dr. Applegate joined FPA in 1987 and is originally from Louisville, KY. He earned his medical degree at the University of Kentucky in 1984. He completed his residency at the University of Cincinnati and went on to complete his fellowship at the American Academy of Family Physicians in 1985. Dr. Applegate specializes in family medicine and can see patients of all ages.\n\nFor fun, Dr. Applegate enjoys bicycling, gardening, and traveling.",
+  },
   { name: "Rajeana Conway, MD", image: "/assets/image/providers/rajeana-conway.webp" },
   { name: "Aletia Farmer, MD", image: "/assets/image/providers/aletia-farmer.webp" },
   { name: "Amanda Foxx, MD", image: "/assets/image/providers/amanda-foxx.webp" },
@@ -93,10 +98,20 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
                   <h3 className="text-lg font-extrabold mb-1" style={{ color: "var(--brand-blue)" }}>
                     {provider.name}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
-                    Ready to schedule a visit with {provider.name.split(",")[0]}? Contact our office or book an
-                    appointment online.
-                  </p>
+                  <div className="max-h-[45vh] overflow-y-auto mb-3 pr-1">
+                    {provider.bio ? (
+                      provider.bio.split("\n\n").map((paragraph, i) => (
+                        <p key={i} className="text-muted-foreground leading-relaxed text-sm mb-3 last:mb-0">
+                          {paragraph}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        Ready to schedule a visit with {provider.name.split(",")[0]}? Contact our office or book an
+                        appointment online.
+                      </p>
+                    )}
+                  </div>
                   <Button asChild size="sm" className="w-full">
                     <Link href="/book">Book Appointment</Link>
                   </Button>
