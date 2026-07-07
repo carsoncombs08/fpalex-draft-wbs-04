@@ -58,13 +58,29 @@ export const MD_PROVIDERS: Provider[] = [
     image: "/assets/image/providers/ashley-rollins.webp",
     bio: "Dr. Rollins joined FPA in 2018 and is originally from Lexington, KY. Dr. Rollins earned her medical degree from The University of Kentucky in 2014 and completed her residency in Internal Medicine at the University of Kentucky Hospital in 2018. Dr. Rollins specializes in Internal Medicine and Pediatrics. She also has an interest in women's health and preventative medicine. Dr. Rollins enjoys taking care of all patients, from newborns to the elderly.\n\nIn her free time, Dr. Rollins enjoys spending time with her family, skiing, camping, and going to the lake.",
   },
-  { name: "James Rossi, MD", image: "/assets/image/providers/james-rossi.webp" },
-  { name: "Hasanki Warnakula, MD", image: "/assets/image/providers/hasanki-warnakula.webp" },
+  {
+    name: "James Rossi, MD",
+    image: "/assets/image/providers/james-rossi.webp",
+    bio: "Dr. Rossi graduated from medical school at the University of Kentucky in 2017. He went on to complete his residency in Family Medicine and joined FPA in 2020. While at UK, he received numerous awards and recognitions, including the Otis Singletary Scholarship. Dr. Rossi is trained in all aspects of family medicine and primary care, including management of acute & chronic conditions for patients of all ages.",
+  },
+  {
+    name: "Hasanki Warnakula, MD",
+    image: "/assets/image/providers/hasanki-warnakula.webp",
+    bio: "Dr. Warnakula joined FPA in 2025 and is originally from Lexington, KY. She earned her medical degree at the University of Kentucky in 2020. Dr. Warnakula completed her dual residency in Internal Medicine and Pediatrics at the University of Illinois in 2024 and then completed a year as a Chief Resident following graduation. While in residency, she was also inducted into the Alpha Omega Alpha Medical Honors Society. Dr. Warnakula has an interest in preventative medicine, chronic disease management, newborn care, and medical education. She enjoys caring for patients of all ages, from newborns to the elderly.\n\nDuring her free time, Dr. Warnakula enjoys spending time with family, reading fiction, cheering on the UK Wildcats, and baking.",
+  },
 ]
 
 export const NP_PA_PROVIDERS: Provider[] = [
-  { name: "Lindsey Clickner, APRN", image: "/assets/image/providers/lindsey-clickner.webp" },
-  { name: "Samantha Criswell, APRN", image: "/assets/image/providers/samantha-criswell.webp" },
+  {
+    name: "Lindsey Clickner, APRN",
+    image: "/assets/image/providers/lindsey-clickner.webp",
+    bio: "Lindsey Clickner graduated from Gardner Webb in May 2016 with a master's degree in nursing and is Board-Certified as a Family Nurse Practitioner. Prior to joining FPA in 2016, Clickner worked as an RN in critical and intensive care units. Clickner can see patients who are 2 years old and older. Her clinical interests include women's health and annual Medicare Wellness exams.\n\nIn her free time, she enjoys hiking, skiing, and reading.",
+  },
+  {
+    name: "Samantha Criswell, APRN",
+    image: "/assets/image/providers/samantha-criswell.webp",
+    bio: "Samantha Criswell obtained her master's degree in nursing from Northern Kentucky University and became a Board-Certified Family Nurse Practitioner in 2024. Prior to joining FPA in 2025, Criswell worked in the neuro/stroke ICU and a clinical house supervisor at a local hospital for 10 years. Her interests include preventative medicine, chronic disease management, and acute visits. Criswell can see patients who are 5 years old and older.\n\nDuring her free time, she loves to hike, run, play tennis and pickleball.",
+  },
   { name: "Todd Greene, PA-C", image: "/assets/image/providers/todd-greene.webp" },
   { name: "Todd Martin, APRN", image: "/assets/image/providers/todd-martin.webp" },
   { name: "Mary Oaks, PA-C", image: "/assets/image/providers/mary-oaks.webp" },
