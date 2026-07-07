@@ -36,6 +36,11 @@ export const NP_PA_PROVIDERS: Provider[] = [
   { name: "Amanda Shackleford, APRN", image: "/assets/image/providers/amanda-shackleford.webp" },
 ]
 
+export const BEHAVIORAL_HEALTH_PROVIDERS: Provider[] = [
+  { name: "Michael Bennett, LPCC", image: "/assets/image/providers/michael-bennett.webp" },
+  { name: "Kristy Carter, APRN, PMHNP-BC", image: "/assets/image/providers/kristy-carter.webp" },
+]
+
 export function ProvidersGrid({ providers }: { providers: Provider[] }) {
   const [openItems, setOpenItems] = React.useState<Set<number>>(new Set())
 
