@@ -18,7 +18,11 @@ export const MD_PROVIDERS: Provider[] = [
     image: "/assets/image/providers/keith-applegate.webp",
     bio: "Dr. Applegate joined FPA in 1987 and is originally from Louisville, KY. He earned his medical degree at the University of Kentucky in 1984. He completed his residency at the University of Cincinnati and went on to complete his fellowship at the American Academy of Family Physicians in 1985. Dr. Applegate specializes in family medicine and can see patients of all ages.\n\nFor fun, Dr. Applegate enjoys bicycling, gardening, and traveling.",
   },
-  { name: "Rajeana Conway, MD", image: "/assets/image/providers/rajeana-conway.webp" },
+  {
+    name: "Rajeana Conway, MD",
+    image: "/assets/image/providers/rajeana-conway.webp",
+    bio: "Originally from Maysville, KY, Dr. Conway joined FPA in 2018. Dr. Conway earned her medical degree from The University of Cincinnati College of Medicine in 2015 and completed her residency in internal medicine at The Christ Hospital in 2018. Her clinical interests include preventative medicine, management of chronic diseases, and primary care dermatology. Dr. Conway can see patients who are 18 years old and older.\n\nIn her free time, Dr. Conway enjoys spending time with her family, going to church, watching TV, crafting, and going to the lake.",
+  },
   { name: "Aletia Farmer, MD", image: "/assets/image/providers/aletia-farmer.webp" },
   { name: "Amanda Foxx, MD", image: "/assets/image/providers/amanda-foxx.webp" },
   { name: "Joseph Gerhardstein, MD, FAAFP", image: "/assets/image/providers/joseph-gerhardstein.webp" },
