@@ -253,7 +253,7 @@ export default function Home() {
 
         <div className="px-6 mt-6 flex justify-end">
           <Button asChild size="lg" className="mr-[8%]">
-            <Link href="#">Learn More</Link>
+            <Link href="/about/our-providers">Learn More</Link>
           </Button>
         </div>
       </section>
