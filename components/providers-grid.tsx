@@ -38,10 +38,26 @@ export const MD_PROVIDERS: Provider[] = [
     image: "/assets/image/providers/joseph-gerhardstein.webp",
     bio: "Dr. Gerhardstein joined FPA in 2003 and is originally from Fort Thomas, KY. He graduated from medical school at the University of Kentucky in 1987. He completed his residency at the University of Kentucky and went on to complete a fellowship at the American Academy of Family Physicians in 1999. Dr. Gerhardstein specializes in all aspects of family medicine for patients of all ages.",
   },
-  { name: "Mary Henkel, MD", image: "/assets/image/providers/mary-henkel.webp" },
-  { name: "Susan Monohan, MD", image: "/assets/image/providers/susan-monohan.webp" },
-  { name: "John Ressor, MD", image: "/assets/image/providers/john-ressor.webp" },
-  { name: "Ashley Rollins, MD", image: "/assets/image/providers/ashley-rollins.webp" },
+  {
+    name: "Mary Henkel, MD",
+    image: "/assets/image/providers/mary-henkel.webp",
+    bio: "Originally from Ashland, KY, Dr. Henkel joined FPA in 1996. Dr. Henkel attended medical school at the University of Kentucky in 1992 and completed her internship in Internal Medicine and residency in Family Medicine at the University of Kentucky in 1995. Dr. Henkel specializes in all aspects of family medicine for patients 6 years old and older.\n\nDuring her free time, Dr. Henkel enjoys biking, Pilates, and skiing.",
+  },
+  {
+    name: "Susan Monohan, MD",
+    image: "/assets/image/providers/susan-monohan.webp",
+    bio: "A native of Winchester, KY, Dr. Monohan has been with FPA since 2011. Dr. Monohan attended medical school at the University of Kentucky in 2000 and completed her residency at Indiana University in 2004. Dr. Monohan specializes in Internal Medicine and Pediatrics and can see patients of all ages.\n\nDr. Monohan resides in Lexington with her husband and her 3 children. Most of her free time is spent cheering on her children in their many sporting activities, including track, cross country, and gymnastics. Dr. Monohan's other hobbies include boating and watching UK sports.",
+  },
+  {
+    name: "John Ressor, MD",
+    image: "/assets/image/providers/john-ressor.webp",
+    bio: "Dr. Reesor joined FPA in 2001 and is originally from Louisville, KY. He attended medical school at the University of Kentucky and completed his residency at the Memorial Medical Center in Savannah, GA. Dr. Reesor specializes in family medicine for patients who are 2 years old or older.\n\nFor fun, Dr. Reesor enjoys fishing and golfing.",
+  },
+  {
+    name: "Ashley Rollins, MD",
+    image: "/assets/image/providers/ashley-rollins.webp",
+    bio: "Dr. Rollins joined FPA in 2018 and is originally from Lexington, KY. Dr. Rollins earned her medical degree from The University of Kentucky in 2014 and completed her residency in Internal Medicine at the University of Kentucky Hospital in 2018. Dr. Rollins specializes in Internal Medicine and Pediatrics. She also has an interest in women's health and preventative medicine. Dr. Rollins enjoys taking care of all patients, from newborns to the elderly.\n\nIn her free time, Dr. Rollins enjoys spending time with her family, skiing, camping, and going to the lake.",
+  },
   { name: "James Rossi, MD", image: "/assets/image/providers/james-rossi.webp" },
   { name: "Hasanki Warnakula, MD", image: "/assets/image/providers/hasanki-warnakula.webp" },
 ]
