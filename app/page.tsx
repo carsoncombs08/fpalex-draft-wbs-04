@@ -8,6 +8,7 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
+import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 
 export default function Home() {
   return (
@@ -242,14 +243,8 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="w-full mt-10">
-          <Image
-            src="/assets/image/fpa-providers.webp"
-            alt="Our providers: Keith Applegate, MD, FAAFP; Rajeana Conway, MD; Aletia Farmer, MD; Amanda Foxx, MD"
-            width={2000}
-            height={483}
-            className="w-full h-auto"
-          />
+        <div className="max-w-5xl mx-auto mt-10 px-6 text-left">
+          <ProvidersGrid providers={MD_PROVIDERS.slice(0, 4)} />
         </div>
 
         <div className="px-6 mt-6 flex justify-end">
