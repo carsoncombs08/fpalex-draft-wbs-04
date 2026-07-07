@@ -39,8 +39,15 @@ export function ProvidersGrid() {
         const isOpen = openItems.has(index)
         return (
           <div key={provider.name} className="bg-muted p-3">
-            <div className="relative w-full aspect-[448/279] overflow-hidden">
-              <Image src={provider.image} alt={provider.name} fill className="object-cover" />
+            <div
+              className="group relative w-full aspect-[448/279] overflow-hidden rounded-xl shadow-[0_0_18px_rgba(1,107,167,0.45)] transition-shadow duration-300 hover:shadow-[0_0_28px_rgba(1,107,167,0.75)]"
+            >
+              <Image
+                src={provider.image}
+                alt={provider.name}
+                fill
+                className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
+              />
             </div>
             <h3 className="mt-4 text-lg font-extrabold" style={{ color: "var(--brand-blue)" }}>
               {provider.name}
