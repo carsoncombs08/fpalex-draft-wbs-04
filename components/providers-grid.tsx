@@ -81,11 +81,31 @@ export const NP_PA_PROVIDERS: Provider[] = [
     image: "/assets/image/providers/samantha-criswell.webp",
     bio: "Samantha Criswell obtained her master's degree in nursing from Northern Kentucky University and became a Board-Certified Family Nurse Practitioner in 2024. Prior to joining FPA in 2025, Criswell worked in the neuro/stroke ICU and a clinical house supervisor at a local hospital for 10 years. Her interests include preventative medicine, chronic disease management, and acute visits. Criswell can see patients who are 5 years old and older.\n\nDuring her free time, she loves to hike, run, play tennis and pickleball.",
   },
-  { name: "Todd Greene, PA-C", image: "/assets/image/providers/todd-greene.webp" },
-  { name: "Todd Martin, APRN", image: "/assets/image/providers/todd-martin.webp" },
-  { name: "Mary Oaks, PA-C", image: "/assets/image/providers/mary-oaks.webp" },
-  { name: "Meagan Obst, APRN", image: "/assets/image/providers/meagan-obst.webp" },
-  { name: "Shelby Riggs, APRN", image: "/assets/image/providers/shelby-riggs.webp" },
+  {
+    name: "Todd Greene, PA-C",
+    image: "/assets/image/providers/todd-greene.webp",
+    bio: "Todd graduated from the University of Kentucky Physician Assistant Program in 1989. He has maintained continuous national board certification as a physician assistant since 1990 and brings extensive experience in emergency medicine, primary care, and adult medicine. His clinical focus is acute care, with interests in adult internal medicine and men's health. Outside of his professional work, Todd serves as president of a local children's charity. In his free time, he enjoys cooking for family and friends, spending time with loved ones, playing music with his band, and participating in outdoor activities.",
+  },
+  {
+    name: "Todd Martin, APRN",
+    image: "/assets/image/providers/todd-martin.webp",
+    bio: "Todd Martin graduated from Northern Kentucky University with a master's degree in nursing and has been a Board-Certified Family Nurse Practitioner since 1999. Prior to joining FPA in 2013, he had extensive experience in emergency and family medicine. Martin specializes in all aspects of family medicine for patients of all ages.\n\nIn his free time, Martin is an avid fly fisherman and outdoor enthusiast.",
+  },
+  {
+    name: "Mary Oaks, PA-C",
+    image: "/assets/image/providers/mary-oaks.webp",
+    bio: "Mary Oaks graduated from the University of Kentucky in 2018 with a master's degree in physician assistant studies. Prior to joining FPA in 2019, Oaks had extensive experience working in the urgent care setting. She can see patients of all ages and is the main provider of acute care at the same-day clinic.\n\nFor fun, Oaks enjoys gardening and trying new cuisine.",
+  },
+  {
+    name: "Meagan Obst, APRN",
+    image: "/assets/image/providers/meagan-obst.webp",
+    bio: "Meagan Obst received her master's degree in nursing at Chamberlain University. She became a Board-Certified Family Nurse Practitioner in 2019. Prior to joining FPA in 2023, Obst worked in the urgent care setting and family medicine. Obst enjoys seeing patients of all ages, and her clinical interests include pediatrics, women's health, weight loss management, urgent care visits, and mental health management.\n\nShe enjoys hiking, sporting events, cooking, reading, and being outdoors with her family during her time off.",
+  },
+  {
+    name: "Shelby Riggs, APRN",
+    image: "/assets/image/providers/shelby-riggs.webp",
+    bio: "Shelby Riggs graduated as a Board-Certified Family Nurse Practitioner in 2017 from Indiana Wesleyan University. Prior to joining FPA in 2017, she worked as an RN for 10 years in pediatrics and endocrinology. Riggs enjoys women's health and pediatric issues but can see patients of all ages.\n\nIn her free time, Riggs enjoys reading and crafting.",
+  },
   { name: "Amanda Shackleford, APRN", image: "/assets/image/providers/amanda-shackleford.webp" },
 ]
 
