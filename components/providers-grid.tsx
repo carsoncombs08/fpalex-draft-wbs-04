@@ -6,12 +6,12 @@ import Link from "next/link"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-type Provider = {
+export type Provider = {
   name: string
   image: string
 }
 
-const PROVIDERS: Provider[] = [
+export const MD_PROVIDERS: Provider[] = [
   { name: "Keith Applegate, MD, FAAFP", image: "/assets/image/providers/keith-applegate.webp" },
   { name: "Rajeana Conway, MD", image: "/assets/image/providers/rajeana-conway.webp" },
   { name: "Aletia Farmer, MD", image: "/assets/image/providers/aletia-farmer.webp" },
@@ -25,7 +25,18 @@ const PROVIDERS: Provider[] = [
   { name: "Hasanki Warnakula, MD", image: "/assets/image/providers/hasanki-warnakula.webp" },
 ]
 
-export function ProvidersGrid() {
+export const NP_PA_PROVIDERS: Provider[] = [
+  { name: "Lindsey Clickner, APRN", image: "/assets/image/providers/lindsey-clickner.webp" },
+  { name: "Samantha Criswell, APRN", image: "/assets/image/providers/samantha-criswell.webp" },
+  { name: "Todd Greene, PA-C", image: "/assets/image/providers/todd-greene.webp" },
+  { name: "Todd Martin, APRN", image: "/assets/image/providers/todd-martin.webp" },
+  { name: "Mary Oaks, PA-C", image: "/assets/image/providers/mary-oaks.webp" },
+  { name: "Meagan Obst, APRN", image: "/assets/image/providers/meagan-obst.webp" },
+  { name: "Shelby Riggs, APRN", image: "/assets/image/providers/shelby-riggs.webp" },
+  { name: "Amanda Shackleford, APRN", image: "/assets/image/providers/amanda-shackleford.webp" },
+]
+
+export function ProvidersGrid({ providers }: { providers: Provider[] }) {
   const [openItems, setOpenItems] = React.useState<Set<number>>(new Set())
 
   const toggle = (index: number) => {
@@ -42,7 +53,7 @@ export function ProvidersGrid() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {PROVIDERS.map((provider, index) => {
+      {providers.map((provider, index) => {
         const isOpen = openItems.has(index)
         return (
           <div key={provider.name} className="bg-muted p-3">

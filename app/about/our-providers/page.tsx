@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { ProvidersGrid } from "@/components/providers-grid"
+import { MD_PROVIDERS, NP_PA_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -61,7 +61,20 @@ export default function OurProvidersPage() {
             </p>
           </div>
 
-          <ProvidersGrid />
+          <ProvidersGrid providers={MD_PROVIDERS} />
+        </div>
+      </section>
+
+      {/* Nurse Practitioners & Physician Assistants */}
+      <section className="py-6 md:py-8 text-center" style={{ backgroundColor: "var(--brand-blue)" }}>
+        <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white text-balance">
+          Nurse Practitioners &amp; Physician Assistants
+        </h2>
+      </section>
+
+      <section className="px-6 py-16 md:py-24">
+        <div className="max-w-5xl mx-auto">
+          <ProvidersGrid providers={NP_PA_PROVIDERS} />
         </div>
       </section>
 
