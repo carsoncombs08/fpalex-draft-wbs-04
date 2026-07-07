@@ -60,7 +60,7 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
                 <Link href="/#about-us" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
                   About Us
                 </Link>
-                <Link href="/#about-our-providers" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+                <Link href="/about/our-providers" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
                   Our Providers
                 </Link>
               </div>
@@ -173,7 +173,7 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               About Us
             </Link>
             <Link
-              href="/#about-our-providers"
+              href="/about/our-providers"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 pl-4"
               onClick={() => setMobileMenuOpen(false)}
             >
