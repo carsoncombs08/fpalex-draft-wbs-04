@@ -106,12 +106,24 @@ export const NP_PA_PROVIDERS: Provider[] = [
     image: "/assets/image/providers/shelby-riggs.webp",
     bio: "Shelby Riggs graduated as a Board-Certified Family Nurse Practitioner in 2017 from Indiana Wesleyan University. Prior to joining FPA in 2017, she worked as an RN for 10 years in pediatrics and endocrinology. Riggs enjoys women's health and pediatric issues but can see patients of all ages.\n\nIn her free time, Riggs enjoys reading and crafting.",
   },
-  { name: "Amanda Shackleford, APRN", image: "/assets/image/providers/amanda-shackleford.webp" },
+  {
+    name: "Amanda Shackleford, APRN",
+    image: "/assets/image/providers/amanda-shackleford.webp",
+    bio: "Amanda Shackelford obtained her master's degree in nursing from Chamberlain University and became a Board-Certified Family Nurse Practitioner in 2022. Prior to joining FPA as an APRN in 2023, Shackelford worked as a CMA for 6 years at FPA. Her interests include women's health, preventative medicine, and chronic disease management. Shackelford can see patients who are 2 years old and older.\n\nDuring her free time, she loves to travel (especially to Disney World), spend time with family and friends, bake, and plan events.",
+  },
 ]
 
 export const BEHAVIORAL_HEALTH_PROVIDERS: Provider[] = [
-  { name: "Michael Bennett, LPCC", image: "/assets/image/providers/michael-bennett.webp" },
-  { name: "Kristy Carter, APRN, PMHNP-BC", image: "/assets/image/providers/kristy-carter.webp" },
+  {
+    name: "Michael Bennett, LPCC",
+    image: "/assets/image/providers/michael-bennett.webp",
+    bio: "Michael joined FPA in 2025 as a Licensed Professional Clinical Counselor with over 10 years of experience in PTSD treatment and child abuse prevention. He holds a Master's degree in Clinical Mental Health Counseling and is currently pursuing a Ph.D. in Intercultural Studies. Michael works with clients across the lifespan, ages 5 and older, providing comprehensive therapeutic support for anxiety, depression, grief, and behavioral concerns. He specializes in the treatment of Complex PTSD, dissociative disorders (including dissociative identity disorder), religious and spiritual trauma, and ADHD.\n\nMichael is committed to providing culturally responsive care and supports individuals of all backgrounds with respect to sex, race, religion, and sexual orientation. He helps clients navigate life distress, transitions, decision-making, and the pursuit of self-actualization.",
+  },
+  {
+    name: "Kristy Carter, APRN, PMHNP-BC",
+    image: "/assets/image/providers/kristy-carter.webp",
+    bio: "Kristy Carter joined FPA in 2023 and is an advanced practice registered nurse, ANCC board certified as a family psychiatric mental health nurse practitioner. She earned her master's degree at the University of Kentucky College of Nursing in 2011. In addition to her Bachelor of Nursing, she has completed a Bachelor of Science in Psychology from the University of Kentucky, at which time she was also a member of the Psi Chi International Honor Society in Psychology. She practiced nursing for several years on a neurological/stroke/telemetry unit at Saint Joseph Hospital, where she received the DAISY Award for Extraordinary Nurses. She is currently a member of the American Psychiatric Nurses Association and the Neuroscience Education Institute. Kristy sees a variety of ages, from children five years old to geriatric, and provides medication management for a variety of mental health conditions, including addiction, anger management, anxiety, mood disorders (depression and bipolar), obsessive-compulsive disorder, psychosis, and trauma/PTSD.\n\nFor fun, Kristy enjoys hiking, spending time with her dog, and cooking.",
+  },
 ]
 
 export function ProvidersGrid({ providers }: { providers: Provider[] }) {
