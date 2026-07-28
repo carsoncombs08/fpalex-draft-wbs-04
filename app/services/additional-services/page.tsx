@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { AdditionalServicesAccordion } from "@/components/additional-services-accordion"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -47,7 +48,22 @@ export default function AdditionalServicesPage() {
         </ol>
       </nav>
 
-      <div className="flex-1" />
+      {/* Content */}
+      <section className="px-6 py-8 md:py-12 flex-1">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
+            Looking For Additional Services
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            At Family Practice Associates of Lexington, we&apos;re committed to providing a wide array of
+            additional services to meet your diverse healthcare needs. Our patient-centered approach ensures
+            that you receive comprehensive care under one roof. Here&apos;s a glimpse of our expanded offerings:
+          </p>
+        </div>
+        <div className="max-w-6xl mx-auto">
+          <AdditionalServicesAccordion />
+        </div>
+      </section>
 
       <SiteFooter />
     </main>
