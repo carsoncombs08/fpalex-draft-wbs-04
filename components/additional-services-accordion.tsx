@@ -1,6 +1,8 @@
 "use client"
 
 import React from "react"
+import { createPortal } from "react-dom"
+import Image from "next/image"
 import { ChevronUp, ChevronDown } from "lucide-react"
 
 type Block =
@@ -10,6 +12,7 @@ type Block =
 
 type ServiceItem = {
   title: string
+  image?: string
   blocks: Block[]
   glow?: "green"
 }
@@ -17,6 +20,7 @@ type ServiceItem = {
 const ADDITIONAL_SERVICES: ServiceItem[] = [
   {
     title: "NEW! Medical Cannabis Certificates",
+    image: "/assets/image/fpa-medical-cannabis.webp",
     glow: "green",
     blocks: [
       {
@@ -42,6 +46,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "Seasonal Flu Shot Clinics",
+    image: "/assets/image/fpa-additional-flu-shot.webp",
     blocks: [
       {
         type: "p",
@@ -51,6 +56,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "PAS Clinic",
+    image: "/assets/image/fpa-pas-clinic.webp",
     blocks: [
       {
         type: "p",
@@ -60,6 +66,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "Diabetic Eye Exam",
+    image: "/assets/image/fpa-diabetic-eye-exam.webp",
     blocks: [
       {
         type: "p",
@@ -69,6 +76,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "Diabetic Management",
+    image: "/assets/image/fpa-diabetic-management.webp",
     blocks: [
       {
         type: "p",
@@ -78,6 +86,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "DOT Physicals",
+    image: "/assets/image/fpa-dot-physicals.webp",
     blocks: [
       {
         type: "p",
@@ -87,6 +96,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "Bone Density Testing",
+    image: "/assets/image/fpa-bone-density-testing.webp",
     blocks: [
       {
         type: "p",
@@ -96,6 +106,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "Body Composition Scan",
+    image: "/assets/image/fpa-body-composition-scan.webp",
     blocks: [
       {
         type: "p",
@@ -143,6 +154,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "COVID Vaccine: Pfizer Booster Shots",
+    image: "/assets/image/fpa-covid-vaccine.webp",
     blocks: [
       {
         type: "p",
@@ -154,6 +166,7 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
   {
     title: "Telehealth",
+    image: "/assets/image/fpa-telehealth.webp",
     blocks: [
       {
         type: "p",
@@ -187,46 +200,69 @@ function BlockContent({ block }: { block: Block }) {
 }
 
 export function AdditionalServicesAccordion() {
-  const [openItems, setOpenItems] = React.useState<Set<number>>(new Set([0]))
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggle = (index: number) => {
-    setOpenItems((prev) => {
-      const next = new Set(prev)
-      if (next.has(index)) {
-        next.delete(index)
-      } else {
-        next.add(index)
-      }
-      return next
-    })
+    setActiveIndex((prev) => (prev === index ? null : index))
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
+      {mounted &&
+        activeIndex !== null &&
+        createPortal(
+          <div className="fixed inset-0 z-40 backdrop-blur-md pointer-events-none" aria-hidden="true" />,
+          document.body,
+        )}
       {ADDITIONAL_SERVICES.map((service, index) => {
-        const isOpen = openItems.has(index)
+        const isOpen = activeIndex === index
+        const isGreen = service.glow === "green"
+        const glowShadow = isOpen
+          ? isGreen
+            ? "shadow-[0_0_18px_#22c55e,0_0_30px_var(--brand-blue)]"
+            : "shadow-[0_0_30px_var(--brand-blue)]"
+          : isGreen
+            ? "shadow-[0_0_18px_#22c55e]"
+            : ""
         return (
-          <div key={service.title} className={service.glow === "green" ? "shadow-[0_0_18px_#22c55e] rounded-sm" : ""}>
-            <button
-              type="button"
-              onClick={() => toggle(index)}
-              aria-expanded={isOpen}
-              className="w-full flex items-start justify-between gap-4 border-2 border-black bg-muted px-6 py-5 text-left transition-colors hover:bg-accent"
-            >
+          <div
+            key={service.title}
+            onMouseEnter={() => setActiveIndex(index)}
+            onMouseLeave={() => setActiveIndex((prev) => (prev === index ? null : prev))}
+            onClick={() => toggle(index)}
+            className={`relative rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-300 ${glowShadow} ${
+              isOpen ? "z-50 scale-125" : ""
+            }`}
+          >
+            {service.image && (
+              <div className="relative w-full aspect-[16/9] overflow-hidden">
+                <Image src={service.image} alt={service.title} fill className="object-cover" />
+              </div>
+            )}
+            <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
               <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
                 {service.title}
               </span>
               <span className="flex items-center justify-center size-11 rounded-full bg-black text-white shrink-0">
                 {isOpen ? <ChevronUp className="size-5" /> : <ChevronDown className="size-5" />}
               </span>
-            </button>
-            {isOpen && (
-              <div className="pt-4 pb-2 px-1">
+            </div>
+            <div
+              className={`overflow-hidden transition-[max-width,max-height,opacity] duration-500 ease-in-out ${
+                isOpen ? "max-w-full max-h-[600px] opacity-100" : "max-w-0 max-h-0 opacity-0"
+              }`}
+            >
+              <div className="w-full pt-0 pb-5 px-6 bg-muted">
                 {service.blocks.map((block, i) => (
                   <BlockContent key={i} block={block} />
                 ))}
               </div>
-            )}
+            </div>
           </div>
         )
       })}
