@@ -11,6 +11,7 @@ const SERVICES = [
   { href: "/services/primary-care", label: "Primary Care" },
   { href: "/services/pediatric-care", label: "Pediatric Care" },
   { href: "/services/behavioral-health", label: "Behavioral Health" },
+  { href: "/services/additional-services", label: "Additional Services", badge: true },
 ]
 
 const PATIENT_RESOURCES = [{ href: "/patient-portal", label: "Patient Portal" }]
@@ -75,9 +76,16 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
                   <Link
                     key={s.label}
                     href={s.href}
-                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className={`group/badge relative block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 ${
+                      s.badge ? "hover:shadow-[0_0_18px_var(--brand-blue)]" : ""
+                    }`}
                   >
                     {s.label}
+                    {s.badge && (
+                      <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center size-4 rounded-full bg-red-600 text-white text-[10px] font-bold opacity-0 transition-opacity duration-200 group-hover/badge:opacity-100">
+                        !
+                      </span>
+                    )}
                   </Link>
                 ))}
               </div>
@@ -189,10 +197,17 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               <Link
                 key={s.label}
                 href={s.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 pl-4"
+                className={`group/badge relative inline-block text-sm text-muted-foreground hover:text-foreground transition-all duration-200 py-2 pl-4 ${
+                  s.badge ? "hover:shadow-[0_0_18px_var(--brand-blue)]" : ""
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {s.label}
+                {s.badge && (
+                  <span className="absolute -top-0.5 right-0 flex items-center justify-center size-4 rounded-full bg-red-600 text-white text-[10px] font-bold opacity-0 transition-opacity duration-200 group-hover/badge:opacity-100">
+                    !
+                  </span>
+                )}
               </Link>
             ))}
             <Link
