@@ -30,9 +30,27 @@ export default function Home() {
   const [awardsHovered, setAwardsHovered] = React.useState(false)
   const [hoveredService, setHoveredService] = React.useState<number | null>(null)
   const [mounted, setMounted] = React.useState(false)
+  const [servicesVisible, setServicesVisible] = React.useState(false)
+  const servicesRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     setMounted(true)
+  }, [])
+
+  React.useEffect(() => {
+    const el = servicesRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setServicesVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.15 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
   }, [])
 
   return (
@@ -220,7 +238,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-10 text-center text-balance">
             Explore Our Services
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div ref={servicesRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {mounted &&
               hoveredService !== null &&
               createPortal(
@@ -236,7 +254,8 @@ export default function Home() {
                   onMouseLeave={() => setHoveredService((prev) => (prev === index ? null : prev))}
                   className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
                     isHovered ? "z-50 scale-[1.2] shadow-[0_0_30px_var(--brand-blue)]" : ""
-                  }`}
+                  } ${servicesVisible ? "animate-in fade-in slide-in-from-bottom-8 fill-mode-both" : "opacity-0"}`}
+                  style={servicesVisible ? { animationDelay: `${index * 120}ms`, animationDuration: "700ms" } : undefined}
                 >
                   <div className="relative w-full aspect-[2/3]">
                     <Image src={s.image} alt={s.label} fill className="object-cover" />
