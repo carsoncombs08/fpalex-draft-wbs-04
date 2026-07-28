@@ -105,7 +105,7 @@ export function PediatricServicesAccordion() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
       {mounted &&
         activeIndex !== null &&
         createPortal(
@@ -138,8 +138,8 @@ export function PediatricServicesAccordion() {
               </span>
             </div>
             <div
-              className={`overflow-hidden transition-[max-width,opacity] duration-500 ease-in-out ${
-                isOpen ? "max-w-full opacity-100" : "max-w-0 opacity-0"
+              className={`overflow-hidden transition-[max-width,max-height,opacity] duration-500 ease-in-out ${
+                isOpen ? "max-w-full max-h-[600px] opacity-100" : "max-w-0 max-h-0 opacity-0"
               }`}
             >
               <div className="w-full pt-0 pb-5 px-6 bg-muted">
