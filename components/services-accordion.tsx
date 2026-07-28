@@ -92,6 +92,7 @@ const SERVICES: ServiceItem[] = [
   },
   {
     title: "Telehealth",
+    image: "/assets/image/fpa-telehealth.webp",
     description:
       "We encourage face-to-face visits for most issues, so that your provider can physically examine you and do any lab work necessary. Not all visits are appropriate for Telehealth appointments, however, we understand that patients may have safety concerns and might want a telehealth visit. Please visit our FAQ page for more information.",
   },
@@ -142,8 +143,12 @@ export function ServicesAccordion() {
                 {isOpen ? <ChevronUp className="size-5" /> : <ChevronDown className="size-5" />}
               </span>
             </div>
-            {isOpen && (
-              <div className="pt-0 pb-5 px-6 bg-muted">
+            <div
+              className={`overflow-hidden transition-[max-width,opacity] duration-500 ease-in-out ${
+                isOpen ? "max-w-full opacity-100" : "max-w-0 opacity-0"
+              }`}
+            >
+              <div className="w-full pt-0 pb-5 px-6 bg-muted">
                 <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                 {service.list && (
                   <div className="mt-4">
@@ -164,7 +169,7 @@ export function ServicesAccordion() {
                   </div>
                 )}
               </div>
-            )}
+            </div>
           </div>
         )
       })}
