@@ -197,12 +197,6 @@ export default function Home() {
 
       {/* Awards and Certificates */}
       <section className="w-full relative">
-        {mounted &&
-          awardsHovered &&
-          createPortal(
-            <div className="fixed inset-0 z-40 backdrop-blur-md pointer-events-none" aria-hidden="true" />,
-            document.body,
-          )}
         <div
           onMouseEnter={() => setAwardsHovered(true)}
           onMouseLeave={() => setAwardsHovered(false)}
