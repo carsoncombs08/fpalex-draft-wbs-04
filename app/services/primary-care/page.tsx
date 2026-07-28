@@ -62,7 +62,13 @@ export default function PrimaryCarePage() {
             and wellness. We offer:
           </p>
           <ServicesAccordion />
-          <Button asChild size="lg">
+        </div>
+        <div className="max-w-4xl mx-auto mt-14 text-center">
+          <Button
+            asChild
+            size="lg"
+            className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+          >
             <Link href="/book">Book Today</Link>
           </Button>
         </div>

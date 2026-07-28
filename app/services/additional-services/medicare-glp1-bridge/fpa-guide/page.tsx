@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -130,6 +131,16 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
             <li>Zepbound&reg; KwikPen&reg;. Single-dose Zepbound pens and vials are not covered.</li>
             <li>Foundayo&reg; tablets</li>
           </ul>
+        </div>
+
+        <div className="max-w-4xl mx-auto mt-14 text-center">
+          <Button
+            asChild
+            size="lg"
+            className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+          >
+            <Link href="/book">Book Today</Link>
+          </Button>
         </div>
       </section>
 

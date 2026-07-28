@@ -4,6 +4,7 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { AdditionalServicesAccordion } from "@/components/additional-services-accordion"
+import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -62,6 +63,15 @@ export default function AdditionalServicesPage() {
         </div>
         <div className="max-w-6xl mx-auto">
           <AdditionalServicesAccordion />
+        </div>
+        <div className="max-w-4xl mx-auto mt-4 text-center">
+          <Button
+            asChild
+            size="lg"
+            className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+          >
+            <Link href="/book">Book Today</Link>
+          </Button>
         </div>
       </section>
 

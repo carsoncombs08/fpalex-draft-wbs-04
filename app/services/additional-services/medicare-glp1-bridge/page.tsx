@@ -223,6 +223,16 @@ export default function MedicareGlp1BridgePage() {
             </Link>
           </Button>
         </div>
+
+        <div className="max-w-2xl mx-auto mt-10 text-center">
+          <Button
+            asChild
+            size="lg"
+            className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+          >
+            <Link href="/book">Book Today</Link>
+          </Button>
+        </div>
       </section>
 
       <SiteFooter />
