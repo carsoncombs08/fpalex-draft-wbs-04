@@ -3,7 +3,8 @@
 import React from "react"
 import { createPortal } from "react-dom"
 import Image from "next/image"
-import { ChevronUp, ChevronDown } from "lucide-react"
+import Link from "next/link"
+import { ChevronUp, ChevronDown, ArrowRight } from "lucide-react"
 
 type Block =
   | { type: "p"; text: string; bold?: string }
@@ -13,8 +14,9 @@ type Block =
 type ServiceItem = {
   title: string
   image?: string
-  blocks: Block[]
+  blocks?: Block[]
   glow?: "green"
+  href?: string
 }
 
 const ADDITIONAL_SERVICES: ServiceItem[] = [
@@ -174,6 +176,11 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
       },
     ],
   },
+  {
+    title: "Medicare GLP-1 Bridge Program",
+    image: "/assets/image/fpa-medicare-glp1-bridge.webp",
+    href: "/services/additional-services/medicare-glp1-bridge",
+  },
 ]
 
 function BlockContent({ block }: { block: Block }) {
@@ -229,21 +236,46 @@ export function AdditionalServicesAccordion() {
           : isGreen
             ? "shadow-[0_0_18px_#22c55e]"
             : ""
+        const cardClassName = `relative rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-300 ${glowShadow} ${
+          isOpen ? "z-50 scale-125" : ""
+        }`
+        const imageBlock = service.image && (
+          <div className="relative w-full aspect-[16/9] overflow-hidden">
+            <Image src={service.image} alt={service.title} fill className="object-cover" />
+          </div>
+        )
+
+        if (service.href) {
+          return (
+            <Link
+              key={service.title}
+              href={service.href}
+              onMouseEnter={() => setActiveIndex(index)}
+              onMouseLeave={() => setActiveIndex((prev) => (prev === index ? null : prev))}
+              className={`${cardClassName} block`}
+            >
+              {imageBlock}
+              <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
+                <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
+                  {service.title}
+                </span>
+                <span className="flex items-center justify-center size-11 rounded-full bg-black text-white shrink-0">
+                  <ArrowRight className="size-5" />
+                </span>
+              </div>
+            </Link>
+          )
+        }
+
         return (
           <div
             key={service.title}
             onMouseEnter={() => setActiveIndex(index)}
             onMouseLeave={() => setActiveIndex((prev) => (prev === index ? null : prev))}
             onClick={() => toggle(index)}
-            className={`relative rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-300 ${glowShadow} ${
-              isOpen ? "z-50 scale-125" : ""
-            }`}
+            className={cardClassName}
           >
-            {service.image && (
-              <div className="relative w-full aspect-[16/9] overflow-hidden">
-                <Image src={service.image} alt={service.title} fill className="object-cover" />
-              </div>
-            )}
+            {imageBlock}
             <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
               <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
                 {service.title}
@@ -258,7 +290,7 @@ export function AdditionalServicesAccordion() {
               }`}
             >
               <div className="w-full pt-0 pb-5 px-6 bg-muted">
-                {service.blocks.map((block, i) => (
+                {service.blocks?.map((block, i) => (
                   <BlockContent key={i} block={block} />
                 ))}
               </div>
