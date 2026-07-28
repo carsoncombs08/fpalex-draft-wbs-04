@@ -56,11 +56,17 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               About FPA <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
-              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-md">
-                <Link href="/#about-us" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+              <div className="min-w-[160px] rounded-md border border-border bg-background/80 backdrop-blur-md py-2 shadow-lg">
+                <Link
+                  href="/#about-us"
+                  className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-110 hover:shadow-[0_0_18px_var(--brand-blue)]"
+                >
                   About Us
                 </Link>
-                <Link href="/#about-our-providers" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+                <Link
+                  href="/#about-our-providers"
+                  className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-110 hover:shadow-[0_0_18px_var(--brand-blue)]"
+                >
                   Our Providers
                 </Link>
               </div>
@@ -71,14 +77,12 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               Our Services <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
-              <div className="min-w-[180px] rounded-md border border-border bg-background py-2 shadow-md">
+              <div className="min-w-[180px] rounded-md border border-border bg-background/80 backdrop-blur-md py-2 shadow-lg">
                 {SERVICES.map((s) => (
                   <Link
                     key={s.label}
                     href={s.href}
-                    className={`group/badge relative block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 ${
-                      s.badge ? "hover:shadow-[0_0_18px_var(--brand-blue)]" : ""
-                    }`}
+                    className="group/badge relative block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-110 hover:shadow-[0_0_18px_var(--brand-blue)]"
                   >
                     {s.label}
                     {s.badge && (
@@ -96,12 +100,12 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               Patient Resources <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
-              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-md">
+              <div className="min-w-[160px] rounded-md border border-border bg-background/80 backdrop-blur-md py-2 shadow-lg">
                 {PATIENT_RESOURCES.map((r) => (
                   <Link
                     key={r.label}
                     href={r.href}
-                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-110 hover:shadow-[0_0_18px_var(--brand-blue)]"
                   >
                     {r.label}
                   </Link>
@@ -117,14 +121,14 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               Contact Us <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
-              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-md">
+              <div className="min-w-[160px] rounded-md border border-border bg-background/80 backdrop-blur-md py-2 shadow-lg">
                 {CONTACT_LINKS.map((c) => (
                   <Link
                     key={c.label}
                     href={c.href}
                     target={c.external ? "_blank" : undefined}
                     rel={c.external ? "noopener noreferrer" : undefined}
-                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-110 hover:shadow-[0_0_18px_var(--brand-blue)]"
                   >
                     {c.label}
                   </Link>
