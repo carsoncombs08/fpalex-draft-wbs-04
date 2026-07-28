@@ -4,6 +4,8 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { MedicareGlp1BridgeFaqsAccordion } from "@/components/medicare-glp1-bridge-faqs-accordion"
+import { Glp1QuestionForm } from "@/components/glp1-question-form"
+import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -186,6 +188,40 @@ export default function MedicareGlp1BridgePage() {
             Frequently Asked Questions
           </h2>
           <MedicareGlp1BridgeFaqsAccordion />
+        </div>
+
+        <div className="max-w-2xl mx-auto mt-14">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center" style={{ color: "var(--brand-blue)" }}>
+            Questions?
+          </h2>
+          <p className="text-gray-900 leading-relaxed mb-8 text-center">
+            Please contact Family Practice Associates of Lexington at (859) 278-5007 or via Sophie, the ChatBot on
+            the website at{" "}
+            <a
+              href="https://www.fpalex.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+              style={{ color: "var(--brand-blue)" }}
+            >
+              www.fpalex.com
+            </a>{" "}
+            to schedule an appointment with a provider to discuss whether you qualify for the Medicare GLP-1
+            Bridge Program.
+          </p>
+          <Glp1QuestionForm />
+        </div>
+
+        <div className="max-w-2xl mx-auto mt-14 text-center">
+          <Button
+            asChild
+            size="lg"
+            className="transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+          >
+            <Link href="/services/additional-services/medicare-glp1-bridge/fpa-guide">
+              FPA Guide to Medicare GLP-1 Bridge Program
+            </Link>
+          </Button>
         </div>
       </section>
 
