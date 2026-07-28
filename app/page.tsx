@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Facebook, Instagram, Linkedin, Newspaper } from "lucide-react"
 import Image from "next/image"
@@ -11,6 +12,13 @@ import { LocationsHoursSection } from "@/components/locations-hours-section"
 import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 
 export default function Home() {
+  const [awardsHovered, setAwardsHovered] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <main className="min-h-[100dvh] flex flex-col">
       <SiteHeader activePage="home" />
@@ -172,14 +180,28 @@ export default function Home() {
       </div>
 
       {/* Awards and Certificates */}
-      <section className="w-full">
-        <Image
-          src="/assets/image/fpa-awards-certificates.webp"
-          alt="Awards and Certificates: Best of Lexington 2024 Winner, NCQA Patient-Centered Medical Home Recognized Practice, NCQA Recognized Patient-Centered Medical Home"
-          width={2000}
-          height={442}
-          className="w-full h-auto"
-        />
+      <section className="w-full relative">
+        {mounted &&
+          awardsHovered &&
+          createPortal(
+            <div className="fixed inset-0 z-40 backdrop-blur-md pointer-events-none" aria-hidden="true" />,
+            document.body,
+          )}
+        <div
+          onMouseEnter={() => setAwardsHovered(true)}
+          onMouseLeave={() => setAwardsHovered(false)}
+          className={`relative transition-all duration-300 ${
+            awardsHovered ? "z-50 scale-105 shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
+          }`}
+        >
+          <Image
+            src="/assets/image/fpa-awards-certificates.webp"
+            alt="Awards and Certificates: Best of Lexington 2024 Winner, NCQA Patient-Centered Medical Home Recognized Practice, NCQA Recognized Patient-Centered Medical Home"
+            width={2000}
+            height={442}
+            className="w-full h-auto"
+          />
+        </div>
       </section>
 
       {/* About Us */}
