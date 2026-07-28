@@ -19,6 +19,7 @@ const PATIENT_RESOURCES = [
   { href: "/patient-portal", label: "Patient Portal" },
   { href: "/accepted-insurance", label: "Accepted Insurance" },
   { href: "/patient-forms-and-records-request", label: "Patient Forms and Records Request" },
+  { href: "/faqs", label: "FAQs" },
 ]
 
 const CONTACT_LINKS = [

@@ -54,35 +54,6 @@ export default function PatientFormsAndRecordsRequestPage() {
 
       {/* Content */}
       <section className="px-6 py-10 md:py-14 flex-1">
-        <div className="max-w-4xl mx-auto text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
-            Patient Forms:
-          </h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
-            >
-              <Link href="#">Provider 1st Authorization to Discuss</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
-            >
-              <Link href="#">Forms Completion Process</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
-            >
-              <Link href="#">Authorization To Discuss</Link>
-            </Button>
-          </div>
-        </div>
-
         <div className="max-w-4xl mx-auto text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             Medical and Billing Records Requests
@@ -157,8 +128,59 @@ export default function PatientFormsAndRecordsRequestPage() {
               size="lg"
               className="transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
             >
-              <Link href="https://www.fpalex.com/records" target="_blank" rel="noopener noreferrer">
+              <Link
+                href="https://request.provider1st.com/?cLFXpvAQkdgJbS46Q7ZG2pcuon2YsHBETq7L+dozp5g="
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Online Request for Records
+              </Link>
+            </Button>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center mt-16">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
+            Patient Forms:
+          </h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="w-full sm:w-auto transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+            >
+              <Link
+                href="https://cdn.hibuwebsites.com/7e29e1036607439698f5a108b9fc30dd/files/uploaded/FAP-Provider1st-+athorization-Form.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Provider 1st Authorization to Discuss
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              className="w-full sm:w-auto transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+            >
+              <Link
+                href="https://cdn.hibuwebsites.com/7e29e1036607439698f5a108b9fc30dd/files/uploaded/Forms+Completion+Process.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Forms Completion Process
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              className="w-full sm:w-auto transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+            >
+              <Link
+                href="https://cdn.hibuwebsites.com/7e29e1036607439698f5a108b9fc30dd/files/uploaded/FAP-ROI-AUTH+-TO-DISCUSS-+FORMS-8147cd07.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Authorization To Discuss
               </Link>
             </Button>
           </div>
