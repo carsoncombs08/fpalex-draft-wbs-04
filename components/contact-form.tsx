@@ -4,7 +4,13 @@ import React from "react"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 
-export function ContactForm() {
+export function ContactForm({
+  heading = "Send Us a Message",
+  subheading = "Please fill out this short form and we'll contact you shortly.",
+}: {
+  heading?: string
+  subheading?: string
+}) {
   const [name, setName] = React.useState("")
   const [email, setEmail] = React.useState("")
   const [phone, setPhone] = React.useState("")
@@ -37,9 +43,9 @@ export function ContactForm() {
       }}
     >
       <h2 className="text-3xl font-extrabold mb-2" style={{ color: "var(--brand-blue)" }}>
-        Send Us a Message
+        {heading}
       </h2>
-      <p className="text-foreground mb-6">Please fill out this short form and we&apos;ll contact you shortly.</p>
+      <p className="text-foreground mb-6">{subheading}</p>
 
       <label className="block font-bold text-foreground mb-1" htmlFor="contact-name">
         Name*
@@ -90,7 +96,12 @@ export function ContactForm() {
 
       <p className="font-bold text-foreground mb-4">This site is protected by reCAPTCHA.</p>
 
-      <Button type="submit" size="lg" disabled={!canSubmit}>
+      <Button
+        type="submit"
+        size="lg"
+        disabled={!canSubmit}
+        className="transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+      >
         Send Message
       </Button>
     </form>
