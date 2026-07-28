@@ -9,7 +9,7 @@ import { openChatWidget } from "@/lib/chat-widget"
 
 const SERVICES = [
   { href: "/services/primary-care", label: "Primary Care" },
-  { href: "#", label: "Pediatric Care" },
+  { href: "/services/pediatric-care", label: "Pediatric Care" },
   { href: "#", label: "Women's Health" },
   { href: "#", label: "Behavioral Health" },
 ]
