@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { MedicareGlp1BridgeFaqsAccordion } from "@/components/medicare-glp1-bridge-faqs-accordion"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -178,6 +179,13 @@ export default function MedicareGlp1BridgePage() {
             This fact sheet is for general information only. Talk to your doctor to find out if this program is
             right for you.
           </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto mt-14">
+          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
+            Frequently Asked Questions
+          </h2>
+          <MedicareGlp1BridgeFaqsAccordion />
         </div>
       </section>
 
