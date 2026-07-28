@@ -4,6 +4,7 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ContactForm } from "@/components/contact-form"
+import { BehavioralHealthServicesAccordion } from "@/components/behavioral-health-services-accordion"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -74,6 +75,21 @@ export default function BehavioralHealthPage() {
             the materials covered in the group via email.
           </p>
 
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
+            Behavioral Health: Compassionate Support for Mental and Emotional Well-Being
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            At Family Practice Associates of Lexington, we offer a wide range of behavioral health services to
+            support the mental well-being of our patients in Central Kentucky. Our experienced team provides
+            personalized care for various emotional and psychological challenges. We understand that seeking
+            help is a significant step, and we&apos;re here to guide you through your journey to better mental
+            health.
+          </p>
+        </div>
+        <div className="max-w-6xl mx-auto">
+          <BehavioralHealthServicesAccordion />
+        </div>
+        <div className="max-w-4xl mx-auto">
           <ContactForm
             heading="Register or Request More Information on Grief Group Therapy:"
             subheading="Please fill out this short form and we'll contact you shortly."
