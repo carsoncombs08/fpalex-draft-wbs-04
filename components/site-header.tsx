@@ -15,7 +15,10 @@ const SERVICES = [
   { href: "/services/additional-services", label: "Additional Services", badge: true },
 ]
 
-const PATIENT_RESOURCES = [{ href: "/patient-portal", label: "Patient Portal" }]
+const PATIENT_RESOURCES = [
+  { href: "/patient-portal", label: "Patient Portal" },
+  { href: "/accepted-insurance", label: "Accepted Insurance" },
+]
 
 const CONTACT_LINKS = [
   { href: "/contact-us", label: "Contact Us" },
