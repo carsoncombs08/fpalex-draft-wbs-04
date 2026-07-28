@@ -38,6 +38,43 @@ const PEDIATRIC_SERVICES: ServiceItem[] = [
     description:
       "Early detection of developmental issues is key to providing timely interventions. Our developmental screening and monitoring services assess your child's growth and development milestones, identifying any potential concerns early on. We work with you to create an appropriate plan of action, ensuring your child receives the support they need to reach their full potential.",
   },
+  {
+    title: "Newborn Care",
+    description:
+      "The first few weeks and months of your baby's life are critical for their development. Our newborn care services include comprehensive check-ups, monitoring of growth and development, and guidance for new parents. We provide support for breastfeeding, immunizations, and early screening tests to ensure your baby gets a healthy start in life.",
+  },
+  {
+    title: "Nutritional Counseling",
+    description:
+      "Good nutrition is the foundation of a healthy childhood. Our nutritional counseling services offer personalized advice and support to help you make informed choices about your child's diet. We address common concerns such as picky eating, food allergies, and balanced nutrition, helping you foster healthy eating habits that will benefit your child for a lifetime.",
+  },
+  {
+    title: "Pediatric Weight Management",
+    description:
+      "Our pediatric weight management services provide a comprehensive approach to help children achieve and maintain a healthy weight. We offer personalized plans that include dietary guidance, physical activity recommendations, and behavioral strategies to support your child's health and well-being.",
+  },
+  {
+    title: "Seasonal Flu Shot Clinic",
+    description:
+      "Protect your child from the flu with our seasonal flu shot clinic. Annual flu vaccinations are the best way to reduce the risk of flu and its complications. Our clinic provides convenient and efficient flu shots for children of all ages, helping to keep your family healthy during flu season.",
+  },
+  {
+    title: "Sports Physicals",
+    description:
+      "Participation in sports is an excellent way for children to stay active and healthy. Our sports physicals ensure your child is ready for physical activity and meets all the necessary health requirements for their sport. We assess overall health, identify potential issues, and provide guidance to prevent injuries, ensuring your child can enjoy their favorite activities safely.",
+    listLabel: "Our Preventative Screenings Include:",
+    list: ["Cholesterol Screenings", "Blood Pressure Screenings", "Diabetes Screenings"],
+  },
+  {
+    title: "Well-Child Visits and Immunizations",
+    description:
+      "Regular well-child visits include comprehensive check-ups, preventive screenings, and immunizations to protect against various diseases. Our team provides a supportive environment where you can discuss any concerns and receive expert advice on your child's health and development.",
+  },
+  {
+    title: "Telehealth",
+    description:
+      "We encourage face-to-face visits for most issues, so that your provider can physically examine you and do any lab work necessary. Not all visits are appropriate for Telehealth appointments, however, we understand that patients may have safety concerns and might want a telehealth visit. Please visit our FAQ page for more information.",
+  },
 ]
 
 export function PediatricServicesAccordion() {
