@@ -52,7 +52,13 @@ export default function BehavioralHealthPage() {
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-balance" style={{ color: "var(--brand-blue)" }}>
+          <ContactForm
+            heading="Register or Request More Information on Grief Group Therapy:"
+            subheading="Please fill out this short form and we'll contact you shortly."
+          />
+        </div>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-10 mb-4 text-balance" style={{ color: "var(--brand-blue)" }}>
             Grief Group Therapy
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
@@ -88,12 +94,6 @@ export default function BehavioralHealthPage() {
         </div>
         <div className="max-w-6xl mx-auto">
           <BehavioralHealthServicesAccordion />
-        </div>
-        <div className="max-w-4xl mx-auto">
-          <ContactForm
-            heading="Register or Request More Information on Grief Group Therapy:"
-            subheading="Please fill out this short form and we'll contact you shortly."
-          />
         </div>
       </section>
 
