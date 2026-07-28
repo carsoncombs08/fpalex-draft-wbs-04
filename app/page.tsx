@@ -11,8 +11,24 @@ import { SiteFooter } from "@/components/site-footer"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
 import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 
+const HOME_SERVICES = [
+  { href: "/services/primary-care", label: "Primary Care", image: "/assets/image/fpa-homepage-primary-care.webp" },
+  { href: "/services/pediatric-care", label: "Pediatric Care", image: "/assets/image/fpa-homepage-pediatric-care.webp" },
+  {
+    href: "/services/behavioral-health",
+    label: "Behavioral Health",
+    image: "/assets/image/fpa-homepage-behavioral-health.webp",
+  },
+  {
+    href: "/services/additional-services",
+    label: "Additional Services",
+    image: "/assets/image/fpa-homepage-additional-services.webp",
+  },
+]
+
 export default function Home() {
   const [awardsHovered, setAwardsHovered] = React.useState(false)
+  const [hoveredService, setHoveredService] = React.useState<number | null>(null)
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
@@ -201,6 +217,50 @@ export default function Home() {
             height={442}
             className="w-full h-auto"
           />
+        </div>
+      </section>
+
+      {/* Explore Our Services */}
+      <section className="px-6 py-16 md:py-24 border-t border-border">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-10 text-center text-balance">
+            Explore Our Services
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {mounted &&
+              hoveredService !== null &&
+              createPortal(
+                <div className="fixed inset-0 z-40 backdrop-blur-md pointer-events-none" aria-hidden="true" />,
+                document.body,
+              )}
+            {HOME_SERVICES.map((s, index) => {
+              const isHovered = hoveredService === index
+              return (
+                <div
+                  key={s.label}
+                  onMouseEnter={() => setHoveredService(index)}
+                  onMouseLeave={() => setHoveredService((prev) => (prev === index ? null : prev))}
+                  className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
+                    isHovered ? "z-50 scale-[1.2] shadow-[0_0_30px_var(--brand-blue)]" : ""
+                  }`}
+                >
+                  <div className="relative w-full aspect-[2/3]">
+                    <Image src={s.image} alt={s.label} fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-4">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="w-full whitespace-normal text-center leading-snug transition-all duration-200 hover:shadow-[0_0_18px_var(--brand-blue)]"
+                    >
+                      <Link href={s.href}>{s.label}</Link>
+                    </Button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </section>
 
