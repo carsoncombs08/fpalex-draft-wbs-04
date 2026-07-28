@@ -17,16 +17,20 @@ export default function AcceptedInsurancePage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative">
+      <section className="relative h-[280px] md:h-[400px] overflow-hidden">
         <Image
-          src="/assets/image/fpa-accepted-insurance-hero.webp"
-          alt="Accepted Insurance"
-          width={1856}
-          height={385}
-          className="w-full h-auto"
+          src="/assets/image/fpa-accepted-insurance-hero-bg.webp"
+          alt=""
+          fill
+          className="object-cover"
           priority
         />
-        <h1 className="sr-only">Accepted Insurance</h1>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-center justify-center px-6">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-white text-center text-balance">
+            Accepted Insurance
+          </h1>
+        </div>
       </section>
 
       {/* Breadcrumb */}
@@ -49,25 +53,28 @@ export default function AcceptedInsurancePage() {
       </nav>
 
       {/* Content */}
-      <section className="px-6 py-8 md:py-12 flex-1">
+      <section className="w-full bg-muted px-6 py-10 md:py-14">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="font-bold text-foreground leading-relaxed mb-6">
+          <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
             Family Practice Associates of Lexington requires payment on the date of service. Please be prepared to
             pay all co-pays, deductibles, and any outstanding balances at the time of your visit.
           </p>
-          <p className="font-bold text-foreground leading-relaxed mb-6">
+          <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
             Patients with High-Deductible Health Plans are required to make a $100 deposit on the date of service.
           </p>
-          <p className="font-bold text-foreground leading-relaxed mb-6">
+          <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
             At this time, Family Practice Associates (FPA) does not accept Medicaid or WellCare plans.
             <br />
             For Marketplace plans, we currently accept CareSource only.
           </p>
-          <p className="font-bold text-foreground leading-relaxed mb-10">
+          <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed">
             For all other plans, please contact our Billing Department. There are too many small plans to list.
             Thank you for your understanding!
           </p>
         </div>
+      </section>
+
+      <section className="px-6 py-8 md:py-12 flex-1">
         <div className="max-w-6xl mx-auto">
           <AcceptedInsuranceAccordion />
         </div>

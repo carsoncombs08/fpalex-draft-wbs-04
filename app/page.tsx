@@ -157,7 +157,7 @@ export default function Home() {
               <Link href="/patient-portal">Patient Portal</Link>
             </Button>
             <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
-              <Link href="#">Patient Forms and Records Request</Link>
+              <Link href="/patient-forms-and-records-request">Patient Forms and Records Request</Link>
             </Button>
             <div className="relative w-4/5 mx-auto">
               <span className="absolute -top-2 -right-2 z-10 rounded-full bg-red-600 text-white text-xs font-bold px-2 py-0.5 shadow-sm">
