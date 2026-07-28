@@ -233,9 +233,9 @@ export default function Home() {
       </section>
 
       {/* Explore Our Services */}
-      <section className="px-6 py-16 md:py-24 border-t border-border">
+      <section className="px-6 py-16 md:py-24 border-t border-border" style={{ backgroundColor: "var(--brand-blue)" }}>
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-10 text-center text-balance">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-10 text-center text-balance">
             Explore Our Services
           </h2>
           <div ref={servicesRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
