@@ -101,7 +101,7 @@ export function ServicesAccordion() {
   }
 
   return (
-    <div className="space-y-3 mb-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
       {SERVICES.map((service, index) => {
         const isOpen = openItems.has(index)
         return (
@@ -115,7 +115,7 @@ export function ServicesAccordion() {
               type="button"
               onClick={() => toggle(index)}
               aria-expanded={isOpen}
-              className="w-full flex items-center justify-between gap-4 border-2 border-black bg-muted px-6 py-5 text-left transition-colors hover:bg-accent"
+              className="w-full flex items-start justify-between gap-4 border-2 border-black bg-muted px-6 py-5 text-left transition-colors hover:bg-accent"
             >
               <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
                 {service.title}

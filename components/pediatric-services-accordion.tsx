@@ -28,6 +28,16 @@ const PEDIATRIC_SERVICES: ServiceItem[] = [
     description:
       "Attention-deficit/hyperactivity disorder (ADHD) and other behavioral issues can significantly impact a child's life. Our team provides thorough evaluations and evidence-based treatments for ADHD and other behavioral concerns. We work closely with families to develop personalized treatment plans that may include behavioral therapy, medication, and other support strategies to help your child thrive at home and in school.",
   },
+  {
+    title: "Childhood Illness Treatment",
+    description:
+      "When your child is sick, you want prompt and effective care. Family Practice Associates of Lexington treats common childhood illnesses such as ear infections, strep throat, and other acute conditions. Our team offers compassionate care to alleviate symptoms and ensure a speedy recovery, minimizing the disruption to your child's daily life.",
+  },
+  {
+    title: "Developmental Screening & Monitoring",
+    description:
+      "Early detection of developmental issues is key to providing timely interventions. Our developmental screening and monitoring services assess your child's growth and development milestones, identifying any potential concerns early on. We work with you to create an appropriate plan of action, ensuring your child receives the support they need to reach their full potential.",
+  },
 ]
 
 export function PediatricServicesAccordion() {
