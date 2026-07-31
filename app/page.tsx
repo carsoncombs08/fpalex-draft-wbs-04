@@ -358,25 +358,27 @@ export default function Home() {
           <Image src="/assets/image/fpa-provider-side-2.webp" alt="" fill className="object-cover" />
         </div>
 
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
-            About Our Providers
-          </h2>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
-            Our board-certified providers are committed to providing compassionate, personalized care for
-            you and your family.
-          </p>
-        </div>
+        <div className="lg:px-[17%] xl:px-[19%]">
+          <div className="max-w-3xl mx-auto px-6">
+            <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
+              About Our Providers
+            </h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
+              Our board-certified providers are committed to providing compassionate, personalized care for
+              you and your family.
+            </p>
+          </div>
 
-        <div className="max-w-5xl mx-auto mt-10 px-6 text-left">
-          <ProvidersGrid providers={MD_PROVIDERS.slice(0, 4)} />
-        </div>
+          <div className="max-w-5xl mx-auto mt-10 px-6 text-left">
+            <ProvidersGrid providers={MD_PROVIDERS.slice(0, 4)} />
+          </div>
 
-        <div className="px-6 mt-6 flex justify-end">
-          <Button asChild size="lg" className="mr-[8%]">
-            <Link href="/about/our-providers">Learn More</Link>
-          </Button>
+          <div className="px-6 mt-6 flex justify-end">
+            <Button asChild size="lg">
+              <Link href="/about/our-providers">Learn More</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
