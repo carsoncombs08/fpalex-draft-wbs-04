@@ -32,6 +32,8 @@ export default function Home() {
   const [mounted, setMounted] = React.useState(false)
   const [servicesVisible, setServicesVisible] = React.useState(false)
   const servicesRef = React.useRef<HTMLDivElement>(null)
+  const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
+  const providersRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     setMounted(true)
@@ -42,12 +44,22 @@ export default function Home() {
     if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setServicesVisible(true)
-          observer.disconnect()
-        }
+        setServicesVisible(entry.isIntersecting)
       },
       { threshold: 0.15 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  React.useEffect(() => {
+    const el = providersRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setProvidersImagesVisible(entry.isIntersecting)
+      },
+      { threshold: 0.4 },
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -326,7 +338,26 @@ export default function Home() {
       </section>
 
       {/* About Our Providers */}
-      <section id="about-our-providers" className="scroll-mt-24 py-16 md:py-24 border-t border-border text-center">
+      <section
+        id="about-our-providers"
+        ref={providersRef}
+        className="scroll-mt-24 py-16 md:py-24 border-t border-border text-center relative overflow-hidden"
+      >
+        <div
+          className={`hidden lg:block absolute left-0 top-0 bottom-0 w-[16%] xl:w-[18%] transition-all duration-700 ease-out ${
+            providersImagesVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+          }`}
+        >
+          <Image src="/assets/image/fpa-provider-side-1.webp" alt="" fill className="object-cover" />
+        </div>
+        <div
+          className={`hidden lg:block absolute right-0 top-0 bottom-0 w-[16%] xl:w-[18%] transition-all duration-700 ease-out ${
+            providersImagesVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+          }`}
+        >
+          <Image src="/assets/image/fpa-provider-side-2.webp" alt="" fill className="object-cover" />
+        </div>
+
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
             About Our Providers
