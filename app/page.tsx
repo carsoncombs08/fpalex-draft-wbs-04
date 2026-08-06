@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Facebook, Instagram, Linkedin, Newspaper } from "lucide-react"
 import Image from "next/image"
@@ -29,17 +28,12 @@ const HOME_SERVICES = [
 export default function Home() {
   const [awardsHovered, setAwardsHovered] = React.useState(false)
   const [hoveredService, setHoveredService] = React.useState<number | null>(null)
-  const [mounted, setMounted] = React.useState(false)
   const [servicesVisible, setServicesVisible] = React.useState(false)
   const [servicesAnimated, setServicesAnimated] = React.useState(false)
   const [servicesSectionHovered, setServicesSectionHovered] = React.useState(false)
   const servicesRef = React.useRef<HTMLDivElement>(null)
   const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
   const providersRef = React.useRef<HTMLDivElement>(null)
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
 
   React.useEffect(() => {
     const el = servicesRef.current
@@ -267,17 +261,13 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-10 text-center text-balance">
             Explore Our Services
           </h2>
-          <div ref={servicesRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {mounted &&
-              createPortal(
-                <div
-                  className={`fixed inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
-                    hoveredService !== null ? "opacity-100" : "opacity-0"
-                  }`}
-                  aria-hidden="true"
-                />,
-                document.body,
-              )}
+          <div ref={servicesRef} className="relative grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div
+              className={`absolute inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
+                hoveredService !== null ? "opacity-100" : "opacity-0"
+              }`}
+              aria-hidden="true"
+            />
             {HOME_SERVICES.map((s, index) => {
               const isHovered = hoveredService === index
               return (
