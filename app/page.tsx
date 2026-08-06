@@ -258,6 +258,8 @@ export default function Home() {
           servicesSectionHovered && hoveredService === null
             ? "scale-110 shadow-[0_0_60px_15px_rgba(255,255,255,0.85)]"
             : ""
+        } ${
+          servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
         style={{ backgroundColor: "var(--brand-blue)" }}
       >
@@ -267,9 +269,13 @@ export default function Home() {
           </h2>
           <div ref={servicesRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {mounted &&
-              hoveredService !== null &&
               createPortal(
-                <div className="fixed inset-0 z-40 backdrop-blur-md pointer-events-none" aria-hidden="true" />,
+                <div
+                  className={`fixed inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
+                    hoveredService !== null ? "opacity-100" : "opacity-0"
+                  }`}
+                  aria-hidden="true"
+                />,
                 document.body,
               )}
             {HOME_SERVICES.map((s, index) => {
