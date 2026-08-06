@@ -243,7 +243,10 @@ export default function Home() {
       </section>
 
       {/* Explore Our Services */}
-      <section className="px-6 py-16 md:py-24 border-t border-border" style={{ backgroundColor: "var(--brand-blue)" }}>
+      <section
+        className="relative px-6 py-16 md:py-24 border-t border-border shadow-[0_0_60px_15px_var(--brand-blue)]"
+        style={{ backgroundColor: "var(--brand-blue)" }}
+      >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-10 text-center text-balance">
             Explore Our Services
@@ -289,7 +292,7 @@ export default function Home() {
 
       {/* About Us */}
       <section id="about-us" className="group scroll-mt-24 px-6 py-16 md:py-24 border-t border-border">
-        <div className="relative -mx-6 h-0 group-hover:h-[calc(100vw*0.6608)] mb-0 group-hover:mb-8 overflow-hidden transition-all duration-500 ease-in-out">
+        <div className="relative -mx-6 h-0 group-hover:h-[calc(100vw*0.4122)] mb-0 group-hover:mb-8 overflow-hidden transition-all duration-500 ease-in-out">
           <Image
             src="/assets/image/fpa-providers-group.webp"
             alt="Family Practice Associates of Lexington provider team"
