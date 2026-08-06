@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-import { createPortal } from "react-dom"
 import Image from "next/image"
 import { ChevronUp, ChevronDown } from "lucide-react"
 
@@ -100,24 +99,19 @@ const SERVICES: ServiceItem[] = [
 
 export function ServicesAccordion() {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
-  const [mounted, setMounted] = React.useState(false)
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
 
   const toggle = (index: number) => {
     setActiveIndex((prev) => (prev === index ? null : index))
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
-      {mounted &&
-        activeIndex !== null &&
-        createPortal(
-          <div className="fixed inset-0 z-40 backdrop-blur-md pointer-events-none" aria-hidden="true" />,
-          document.body,
-        )}
+    <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
+      <div
+        className={`absolute inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
+          activeIndex !== null ? "opacity-100" : "opacity-0"
+        }`}
+        aria-hidden="true"
+      />
       {SERVICES.map((service, index) => {
         const isOpen = activeIndex === index
         return (

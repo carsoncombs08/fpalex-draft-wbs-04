@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-import { createPortal } from "react-dom"
 import { ChevronUp, ChevronDown } from "lucide-react"
 
 type ServiceItem = {
@@ -66,24 +65,19 @@ const FAQS: ServiceItem[] = [
 
 export function FaqsAccordion() {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
-  const [mounted, setMounted] = React.useState(false)
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
 
   const toggle = (index: number) => {
     setActiveIndex((prev) => (prev === index ? null : index))
   }
 
   return (
-    <div className="flex flex-col gap-4 mb-10">
-      {mounted &&
-        activeIndex !== null &&
-        createPortal(
-          <div className="fixed inset-0 z-40 backdrop-blur-md pointer-events-none" aria-hidden="true" />,
-          document.body,
-        )}
+    <div className="relative flex flex-col gap-4 mb-10">
+      <div
+        className={`absolute inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
+          activeIndex !== null ? "opacity-100" : "opacity-0"
+        }`}
+        aria-hidden="true"
+      />
       {FAQS.map((faq, index) => {
         const isOpen = activeIndex === index
         return (
