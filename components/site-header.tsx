@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { MessageCircle, Menu, X, ChevronDown } from "lucide-react"
 import Image from "next/image"
@@ -9,12 +10,17 @@ import { openChatWidget } from "@/lib/chat-widget"
 
 const SERVICES = [
   { href: "/services/primary-care", label: "Primary Care" },
-  { href: "#", label: "Pediatric Care" },
-  { href: "#", label: "Women's Health" },
-  { href: "#", label: "Behavioral Health" },
+  { href: "/services/pediatric-care", label: "Pediatric Care" },
+  { href: "/services/behavioral-health", label: "Behavioral Health" },
+  { href: "/services/additional-services", label: "Additional Services", badge: true },
 ]
 
-const PATIENT_RESOURCES = [{ href: "/patient-portal", label: "Patient Portal" }]
+const PATIENT_RESOURCES = [
+  { href: "/patient-portal", label: "Patient Portal" },
+  { href: "/accepted-insurance", label: "Accepted Insurance" },
+  { href: "/patient-forms-and-records-request", label: "Patient Forms and Records Request" },
+  { href: "/faqs", label: "FAQs" },
+]
 
 const CONTACT_LINKS = [
   { href: "/contact-us", label: "Contact Us" },
@@ -27,10 +33,22 @@ const CONTACT_LINKS = [
 
 export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "other" }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+  const [dropdownOpen, setDropdownOpen] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
-      <div className="flex items-center justify-between px-4 sm:px-6 py-4">
+      {mounted &&
+        dropdownOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-40 backdrop-blur-sm pointer-events-none" aria-hidden="true" />,
+          document.body,
+        )}
+      <div className="relative z-50 flex items-center justify-between px-4 sm:px-6 py-4">
         {/* Logo Section */}
         <Link href="/" className="flex items-center flex-shrink-0">
           <Image
@@ -51,50 +69,61 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
           >
             Home
           </Link>
-          <div className="group relative">
+          <div className="group relative" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
             <Link href="/#about-us" className="flex items-center gap-1 hover:text-foreground transition-colors">
               About FPA <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
-              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-md">
-                <Link href="/#about-us" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-lg">
+                <Link
+                  href="/#about-us"
+                  className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-[1.15] hover:shadow-[0_0_18px_var(--brand-blue)]"
+                >
                   About Us
                 </Link>
-                <Link href="/#about-our-providers" className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+                <Link
+                  href="/#about-our-providers"
+                  className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-[1.15] hover:shadow-[0_0_18px_var(--brand-blue)]"
+                >
                   Our Providers
                 </Link>
               </div>
             </div>
           </div>
-          <div className="group relative">
+          <div className="group relative" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
             <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
               Our Services <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
-              <div className="min-w-[180px] rounded-md border border-border bg-background py-2 shadow-md">
+              <div className="min-w-[180px] rounded-md border border-border bg-background py-2 shadow-lg">
                 {SERVICES.map((s) => (
                   <Link
                     key={s.label}
                     href={s.href}
-                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="group/badge relative block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-[1.15] hover:shadow-[0_0_18px_var(--brand-blue)]"
                   >
                     {s.label}
+                    {s.badge && (
+                      <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center size-4 rounded-full bg-red-600 text-white text-[10px] font-bold opacity-0 transition-opacity duration-200 group-hover/badge:opacity-100">
+                        !
+                      </span>
+                    )}
                   </Link>
                 ))}
               </div>
             </div>
           </div>
-          <div className="group relative">
+          <div className="group relative" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
             <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
               Patient Resources <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
-              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-md">
+              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-lg">
                 {PATIENT_RESOURCES.map((r) => (
                   <Link
                     key={r.label}
                     href={r.href}
-                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-[1.15] hover:shadow-[0_0_18px_var(--brand-blue)]"
                   >
                     {r.label}
                   </Link>
@@ -105,19 +134,19 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
           <Link href="/#newsletter-socials" className="hover:text-foreground transition-colors">
             Explore Our Content
           </Link>
-          <div className="group relative">
+          <div className="group relative" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
             <Link href="#" className="flex items-center gap-1 hover:text-foreground transition-colors">
               Contact Us <ChevronDown className="h-3.5 w-3.5" />
             </Link>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
-              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-md">
+              <div className="min-w-[160px] rounded-md border border-border bg-background py-2 shadow-lg">
                 {CONTACT_LINKS.map((c) => (
                   <Link
                     key={c.label}
                     href={c.href}
                     target={c.external ? "_blank" : undefined}
                     rel={c.external ? "noopener noreferrer" : undefined}
-                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200 hover:scale-[1.15] hover:shadow-[0_0_18px_var(--brand-blue)]"
                   >
                     {c.label}
                   </Link>
@@ -190,10 +219,17 @@ export function SiteHeader({ activePage = "home" }: { activePage?: "home" | "oth
               <Link
                 key={s.label}
                 href={s.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 pl-4"
+                className={`group/badge relative inline-block text-sm text-muted-foreground hover:text-foreground transition-all duration-200 py-2 pl-4 ${
+                  s.badge ? "hover:shadow-[0_0_18px_var(--brand-blue)]" : ""
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {s.label}
+                {s.badge && (
+                  <span className="absolute -top-0.5 right-0 flex items-center justify-center size-4 rounded-full bg-red-600 text-white text-[10px] font-bold opacity-0 transition-opacity duration-200 group-hover/badge:opacity-100">
+                    !
+                  </span>
+                )}
               </Link>
             ))}
             <Link

@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { createPortal } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Facebook, Instagram, Linkedin, Newspaper } from "lucide-react"
 import Image from "next/image"
@@ -10,7 +11,60 @@ import { SiteFooter } from "@/components/site-footer"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
 import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 
+const HOME_SERVICES = [
+  { href: "/services/primary-care", label: "Primary Care", image: "/assets/image/fpa-homepage-primary-care.webp" },
+  { href: "/services/pediatric-care", label: "Pediatric Care", image: "/assets/image/fpa-homepage-pediatric-care.webp" },
+  {
+    href: "/services/behavioral-health",
+    label: "Behavioral Health",
+    image: "/assets/image/fpa-homepage-behavioral-health.webp",
+  },
+  {
+    href: "/services/additional-services",
+    label: "Additional Services",
+    image: "/assets/image/fpa-homepage-additional-services.webp",
+  },
+]
+
 export default function Home() {
+  const [awardsHovered, setAwardsHovered] = React.useState(false)
+  const [hoveredService, setHoveredService] = React.useState<number | null>(null)
+  const [mounted, setMounted] = React.useState(false)
+  const [servicesVisible, setServicesVisible] = React.useState(false)
+  const servicesRef = React.useRef<HTMLDivElement>(null)
+  const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
+  const providersRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  React.useEffect(() => {
+    const el = servicesRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setServicesVisible(entry.isIntersecting)
+      },
+      { threshold: 0.15 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  React.useEffect(() => {
+    const el = providersRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setProvidersImagesVisible(entry.isIntersecting)
+      },
+      { threshold: 0.4 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <main className="min-h-[100dvh] flex flex-col overflow-x-hidden overflow-y-visible">
       <SiteHeader activePage="home" />
@@ -156,7 +210,7 @@ export default function Home() {
               <Link href="/patient-portal">Patient Portal</Link>
             </Button>
             <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
-              <Link href="#">Patient Forms and Records Request</Link>
+              <Link href="/patient-forms-and-records-request">Patient Forms and Records Request</Link>
             </Button>
             <div className="relative w-4/5 mx-auto">
               <span className="absolute -top-2 -right-2 z-10 rounded-full bg-red-600 text-white text-xs font-bold px-2 py-0.5 shadow-sm">
@@ -170,14 +224,67 @@ export default function Home() {
       </section>
 
       {/* Awards and Certificates */}
-      <section className="w-full">
-        <Image
-          src="/assets/image/fpa-awards-certificates.webp"
-          alt="Awards and Certificates: Best of Lexington 2024 Winner, NCQA Patient-Centered Medical Home Recognized Practice, NCQA Recognized Patient-Centered Medical Home"
-          width={2000}
-          height={442}
-          className="w-full h-auto"
-        />
+      <section className="w-full relative">
+        <div
+          onMouseEnter={() => setAwardsHovered(true)}
+          onMouseLeave={() => setAwardsHovered(false)}
+          className={`relative transition-all duration-300 ${
+            awardsHovered ? "z-50 scale-105 shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
+          }`}
+        >
+          <Image
+            src="/assets/image/fpa-awards-certificates.webp"
+            alt="Awards and Certificates: Best of Lexington 2024 Winner, NCQA Patient-Centered Medical Home Recognized Practice, NCQA Recognized Patient-Centered Medical Home"
+            width={2000}
+            height={442}
+            className="w-full h-auto"
+          />
+        </div>
+      </section>
+
+      {/* Explore Our Services */}
+      <section className="px-6 py-16 md:py-24 border-t border-border" style={{ backgroundColor: "var(--brand-blue)" }}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-10 text-center text-balance">
+            Explore Our Services
+          </h2>
+          <div ref={servicesRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {mounted &&
+              hoveredService !== null &&
+              createPortal(
+                <div className="fixed inset-0 z-40 backdrop-blur-md pointer-events-none" aria-hidden="true" />,
+                document.body,
+              )}
+            {HOME_SERVICES.map((s, index) => {
+              const isHovered = hoveredService === index
+              return (
+                <div
+                  key={s.label}
+                  onMouseEnter={() => setHoveredService(index)}
+                  onMouseLeave={() => setHoveredService((prev) => (prev === index ? null : prev))}
+                  className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
+                    isHovered ? "z-50 scale-[1.2] shadow-[0_0_30px_var(--brand-blue)]" : ""
+                  } ${servicesVisible ? "animate-in fade-in slide-in-from-bottom-8 fill-mode-both" : "opacity-0"}`}
+                  style={servicesVisible ? { animationDelay: `${index * 120}ms`, animationDuration: "700ms" } : undefined}
+                >
+                  <div className="relative w-full aspect-[2/3]">
+                    <Image src={s.image} alt={s.label} fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-4">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="w-full whitespace-normal text-center leading-snug transition-all duration-200 hover:shadow-[0_0_18px_var(--brand-blue)]"
+                    >
+                      <Link href={s.href}>{s.label}</Link>
+                    </Button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </section>
 
       {/* About Us */}
@@ -232,26 +339,47 @@ export default function Home() {
       </section>
 
       {/* About Our Providers */}
-      <section id="about-our-providers" className="scroll-mt-24 py-16 md:py-24 border-t border-border text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
-            About Our Providers
-          </h2>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
-            Our board-certified providers are committed to providing compassionate, personalized care for
-            you and your family.
-          </p>
+      <section
+        id="about-our-providers"
+        ref={providersRef}
+        className="scroll-mt-24 py-16 md:py-24 border-t border-border text-center relative overflow-hidden"
+      >
+        <div
+          className={`hidden lg:block absolute left-0 top-0 bottom-0 w-[16%] xl:w-[18%] transition-all duration-700 ease-out ${
+            providersImagesVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+          }`}
+        >
+          <Image src="/assets/image/fpa-provider-side-1.webp" alt="" fill className="object-cover" />
+        </div>
+        <div
+          className={`hidden lg:block absolute right-0 top-0 bottom-0 w-[16%] xl:w-[18%] transition-all duration-700 ease-out ${
+            providersImagesVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+          }`}
+        >
+          <Image src="/assets/image/fpa-provider-side-2.webp" alt="" fill className="object-cover" />
         </div>
 
-        <div className="max-w-5xl mx-auto mt-10 px-6 text-left">
-          <ProvidersGrid providers={MD_PROVIDERS.slice(0, 4)} />
-        </div>
+        <div className="lg:px-[17%] xl:px-[19%]">
+          <div className="max-w-3xl mx-auto px-6">
+            <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
+              About Our Providers
+            </h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
+              Our board-certified providers are committed to providing compassionate, personalized care for
+              you and your family.
+            </p>
+          </div>
 
-        <div className="px-6 mt-6 flex justify-end">
-          <Button asChild size="lg" className="mr-[8%]">
-            <Link href="/about/our-providers">Learn More</Link>
-          </Button>
+          <div className="max-w-5xl mx-auto mt-10 px-6 text-left">
+            <ProvidersGrid providers={MD_PROVIDERS.slice(0, 4)} />
+          </div>
+
+          <div className="px-6 mt-6 flex justify-end">
+            <Button asChild size="lg">
+              <Link href="/about/our-providers">Learn More</Link>
+            </Button>
+          </div>
         </div>
       </section>
 

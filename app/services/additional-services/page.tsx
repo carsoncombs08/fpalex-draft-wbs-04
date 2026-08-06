@@ -1,19 +1,18 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { ServicesAccordion } from "@/components/services-accordion"
+import { AdditionalServicesAccordion } from "@/components/additional-services-accordion"
+import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Primary Care | Family Practice Associates of Lexington",
-  description:
-    "Comprehensive primary care services in Central Kentucky, including annual physicals, chronic disease management, immunizations, and same-day sick visits.",
+  title: "Additional Services | Family Practice Associates of Lexington",
+  description: "Additional services for every need in Central Kentucky from Family Practice Associates of Lexington.",
 }
 
-export default function PrimaryCarePage() {
+export default function AdditionalServicesPage() {
   return (
     <main className="min-h-[100dvh] flex flex-col">
       <SiteHeader activePage="other" />
@@ -21,14 +20,14 @@ export default function PrimaryCarePage() {
       {/* Hero */}
       <section className="relative">
         <Image
-          src="/assets/image/fpa-primary-care-hero.webp"
-          alt="Primary Care"
+          src="/assets/image/fpa-additional-services-hero.webp"
+          alt="Additional Services"
           width={2000}
-          height={784}
+          height={725}
           className="w-full h-auto"
           priority
         />
-        <h1 className="sr-only">Primary Care</h1>
+        <h1 className="sr-only">Additional Services for Every Need</h1>
       </section>
 
       {/* Breadcrumb */}
@@ -46,7 +45,7 @@ export default function PrimaryCarePage() {
           <li>
             <ChevronRight className="size-4 text-muted-foreground" />
           </li>
-          <li style={{ color: "var(--brand-blue)" }}>Primary Care</li>
+          <li style={{ color: "var(--brand-blue)" }}>Additional Services</li>
         </ol>
       </nav>
 
@@ -54,16 +53,18 @@ export default function PrimaryCarePage() {
       <section className="px-6 py-8 md:py-12 flex-1">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
-            Comprehensive Primary Care Services in Central Kentucky
+            Looking For Additional Services
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            Family Practice Associates of Lexington offers a wide range of primary care services to meet the
-            diverse health needs of Central Kentucky residents. Your first line of defense for optimal health
-            and wellness. We offer:
+            At Family Practice Associates of Lexington, we&apos;re committed to providing a wide array of
+            additional services to meet your diverse healthcare needs. Our patient-centered approach ensures
+            that you receive comprehensive care under one roof. Here&apos;s a glimpse of our expanded offerings:
           </p>
-          <ServicesAccordion />
         </div>
-        <div className="max-w-4xl mx-auto mt-14 text-center">
+        <div className="max-w-6xl mx-auto">
+          <AdditionalServicesAccordion />
+        </div>
+        <div className="max-w-4xl mx-auto mt-4 text-center">
           <Button
             asChild
             size="lg"
