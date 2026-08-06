@@ -288,10 +288,7 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section
-        id="about-us"
-        className="relative scroll-mt-24 px-6 py-16 md:py-24 border-t border-border bg-background transition-transform duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]"
-      >
+      <section id="about-us" className="scroll-mt-24 px-6 py-16 md:py-24 border-t border-border">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
