@@ -226,7 +226,7 @@ export function AdditionalServicesAccordion() {
   }
 
   return (
-    <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
+    <div ref={gridRef} className="relative flex flex-wrap justify-center gap-6 mb-10 items-start">
       <div
         className={`absolute inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
           activeIndex !== null ? "opacity-100" : "opacity-0"
@@ -243,7 +243,7 @@ export function AdditionalServicesAccordion() {
           : isGreen
             ? "shadow-[0_0_18px_#22c55e]"
             : ""
-        const cardClassName = `relative rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-500 ease-out ${glowShadow} ${
+        const cardClassName = `relative w-full md:w-[calc(33.333%-1rem)] rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-500 ease-out ${glowShadow} ${
           isOpen ? "z-50 scale-125" : ""
         } ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`
         const cardStyle = { transitionDelay: isOpen ? "0ms" : `${index * 80}ms` }

@@ -39,6 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 z-[100] border-4"
+          style={{ borderColor: "var(--brand-blue)" }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
