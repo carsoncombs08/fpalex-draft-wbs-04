@@ -19,13 +19,12 @@ export default function BehavioralHealthPage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative">
+      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.3795)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-behavioral-health-hero.webp"
           alt="Behavioral Health"
-          width={2000}
-          height={759}
-          className="w-full h-auto"
+          fill
+          className="object-cover"
           priority
         />
         <h1 className="sr-only">Behavioral Health</h1>

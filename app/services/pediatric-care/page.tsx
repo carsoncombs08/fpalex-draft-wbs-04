@@ -18,13 +18,12 @@ export default function PediatricCarePage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative">
+      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.3675)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-pediatric-care-hero.webp"
           alt="Pediatric Care"
-          width={2000}
-          height={735}
-          className="w-full h-auto"
+          fill
+          className="object-cover"
           priority
         />
         <h1 className="sr-only">Pediatric Care</h1>

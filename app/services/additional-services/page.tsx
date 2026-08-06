@@ -18,13 +18,12 @@ export default function AdditionalServicesPage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative">
+      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.3625)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-additional-services-hero.webp"
           alt="Additional Services"
-          width={2000}
-          height={725}
-          className="w-full h-auto"
+          fill
+          className="object-cover"
           priority
         />
         <h1 className="sr-only">Additional Services for Every Need</h1>
