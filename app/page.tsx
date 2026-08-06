@@ -256,7 +256,7 @@ export default function Home() {
         onMouseLeave={() => setServicesSectionHovered(false)}
         className={`relative px-6 py-16 md:py-24 border-t border-border transition-all duration-300 ease-in-out ${
           servicesSectionHovered && hoveredService === null
-            ? "scale-125 shadow-[0_0_60px_15px_rgba(255,255,255,0.85)]"
+            ? "scale-110 shadow-[0_0_60px_15px_rgba(255,255,255,0.85)]"
             : ""
         }`}
         style={{ backgroundColor: "var(--brand-blue)" }}
