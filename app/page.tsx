@@ -12,36 +12,35 @@ import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 
 export default function Home() {
   return (
-    <main className="min-h-[100dvh] flex flex-col">
+    <main className="min-h-[100dvh] flex flex-col overflow-x-hidden overflow-y-visible">
       <SiteHeader activePage="home" />
 
-      {/* Building Photo + Hero (grouped so hovering the photo also fades the glow below) */}
-      <div className="group/hero">
-        <div className="group/photo relative w-full h-[35vh] hover:h-[calc(100vw*0.458)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
-          <Image
-            src="/assets/image/fpa-building.webp"
-            alt=""
-            aria-hidden="true"
-            fill
-            className="object-cover"
-            priority
-          />
-          <Image
-            src="/assets/image/fpa-building.webp"
-            alt="Family Practice Associates of Lexington building exterior"
-            fill
-            className="object-cover transition-opacity duration-500 ease-in-out group-hover/photo:opacity-0"
-            priority
-          />
-        </div>
+      {/* Building Photo (hovering/enlarging this does NOT affect the glow below) */}
+      <div className="group/photo relative w-full h-[35vh] hover:h-[calc(100vw*0.458)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
+        <Image
+          src="/assets/image/fpa-building.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          className="object-cover"
+          priority
+        />
+        <Image
+          src="/assets/image/fpa-building.webp"
+          alt="Family Practice Associates of Lexington building exterior"
+          fill
+          className="object-cover transition-opacity duration-500 ease-in-out group-hover/photo:opacity-0"
+          priority
+        />
+      </div>
 
-        {/* Hero Section */}
-        <section className="relative flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
+      {/* Hero Section (glow only fades when hovering directly over the button menu areas below) */}
+      <section className="group/hero relative flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
           <div className="relative max-w-4xl mx-auto text-center">
             {/* Blue glow — a pair of parenthesis-shaped crescents, "(  )", fading in from their thick outer edge across the page */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-24 sm:-inset-x-36 md:-inset-x-48 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-[0.8] transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+              className="pointer-events-none absolute -inset-x-24 sm:-inset-x-36 md:-inset-x-48 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-[0.8] transition-opacity duration-500 ease-in-out group-has-[.menu-zone:hover]/hero:opacity-0"
             >
               <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
                 <defs>
@@ -72,7 +71,7 @@ export default function Home() {
             {/* Second, outer pair of parenthesis-shaped crescents, placed between the inner glow and the page edge */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-36 sm:-inset-x-52 md:-inset-x-72 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-40 transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+              className="pointer-events-none absolute -inset-x-36 sm:-inset-x-52 md:-inset-x-72 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-40 transition-opacity duration-500 ease-in-out group-has-[.menu-zone:hover]/hero:opacity-0"
             >
               <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
                 <defs>
@@ -103,7 +102,7 @@ export default function Home() {
             {/* Third, outermost pair of parenthesis-shaped crescents, placed closest to the page edge */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-48 sm:-inset-x-68 md:-inset-x-96 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-20 transition-opacity duration-500 ease-in-out group-hover/hero:opacity-0"
+              className="pointer-events-none absolute -inset-x-48 sm:-inset-x-68 md:-inset-x-96 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-20 transition-opacity duration-500 ease-in-out group-has-[.menu-zone:hover]/hero:opacity-0"
             >
               <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
                 <defs>
@@ -139,7 +138,7 @@ export default function Home() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <div className="menu-zone flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Button asChild size="lg" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
                 <Link href="/book">Book Today</Link>
               </Button>
@@ -147,7 +146,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div id="quick-links" className="w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 scroll-mt-24">
+          <div id="quick-links" className="menu-zone w-full max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 scroll-mt-24">
             <Button asChild size="lg" className="w-4/5 mx-auto min-h-12 h-auto py-3 whitespace-normal text-center leading-snug transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
               <Link href="https://z3-ppw.phreesia.net/z3/patient/Payment.aspx/IdentifyPatient" target="_blank" rel="noopener noreferrer">
                 Make A Payment
@@ -168,8 +167,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-        </section>
-      </div>
+      </section>
 
       {/* Awards and Certificates */}
       <section className="w-full">
@@ -183,7 +181,10 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section id="about-us" className="scroll-mt-24 px-6 py-16 md:py-24 border-t border-border">
+      <section
+        id="about-us"
+        className="relative scroll-mt-24 px-6 py-16 md:py-24 border-t border-border bg-background transition-transform duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]"
+      >
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
