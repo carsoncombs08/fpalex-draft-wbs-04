@@ -288,7 +288,15 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section id="about-us" className="scroll-mt-24 px-6 py-16 md:py-24 border-t border-border">
+      <section id="about-us" className="group scroll-mt-24 px-6 py-16 md:py-24 border-t border-border">
+        <div className="relative -mx-6 h-0 group-hover:h-[calc(100vw*0.6608)] mb-0 group-hover:mb-8 overflow-hidden transition-all duration-500 ease-in-out">
+          <Image
+            src="/assets/image/fpa-providers-group.webp"
+            alt="Family Practice Associates of Lexington provider team"
+            fill
+            className="object-cover"
+          />
+        </div>
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
