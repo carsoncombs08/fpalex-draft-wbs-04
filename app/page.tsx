@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
 import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
+import { Reveal } from "@/components/reveal"
 
 const HOME_SERVICES = [
   { href: "/services/primary-care", label: "Primary Care", image: "/assets/image/fpa-homepage-primary-care.webp" },
@@ -320,7 +321,7 @@ export default function Home() {
             className="object-cover object-top"
           />
         </div>
-        <div className="max-w-3xl mx-auto">
+        <Reveal className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
           </h2>
@@ -363,7 +364,7 @@ export default function Home() {
               Learn More about PCMH
             </Link>
           </Button>
-        </div>
+        </Reveal>
       </section>
 
       {/* About Our Providers */}
@@ -388,7 +389,7 @@ export default function Home() {
         </div>
 
         <div className="lg:px-[17%] xl:px-[19%]">
-          <div className="max-w-3xl mx-auto px-6">
+          <Reveal className="max-w-3xl mx-auto px-6">
             <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
               About Our Providers
             </h2>
@@ -397,11 +398,11 @@ export default function Home() {
               Our board-certified providers are committed to providing compassionate, personalized care for
               you and your family.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="max-w-5xl mx-auto mt-10 px-6 text-left">
+          <Reveal className="max-w-5xl mx-auto mt-10 px-6 text-left" delay={150}>
             <ProvidersGrid providers={MD_PROVIDERS.slice(0, 4)} />
-          </div>
+          </Reveal>
 
           <div className="px-6 mt-6 flex justify-end">
             <Button asChild size="lg">
@@ -422,15 +423,19 @@ export default function Home() {
             className="object-cover"
           />
           <div className="absolute inset-0" style={{ backgroundColor: "var(--brand-blue)", opacity: 0.45 }} />
-          <Button asChild size="lg" variant="secondary" className="relative bg-white text-[var(--brand-blue)] hover:bg-white/90 h-auto py-5 px-10 text-lg">
-            <Link href="#">Sign Up for Our Newsletter</Link>
-          </Button>
+          <Reveal className="relative">
+            <Button asChild size="lg" variant="secondary" className="bg-white text-[var(--brand-blue)] hover:bg-white/90 h-auto py-5 px-10 text-lg">
+              <Link href="#">Sign Up for Our Newsletter</Link>
+            </Button>
+          </Reveal>
         </div>
 
         <div className="relative py-16 md:py-20 px-6 text-center transition-all duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]">
-          <h3 className="text-xl font-extrabold uppercase tracking-wide text-foreground mb-6">
-            Our Socials
-          </h3>
+          <Reveal>
+            <h3 className="text-xl font-extrabold uppercase tracking-wide text-foreground mb-6">
+              Our Socials
+            </h3>
+          </Reveal>
           <div className="flex items-center justify-center gap-4">
             <Link
               href="https://www.facebook.com/FPALexington/"

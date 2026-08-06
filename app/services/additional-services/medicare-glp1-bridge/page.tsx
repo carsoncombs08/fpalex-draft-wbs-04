@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { MedicareGlp1BridgeFaqsAccordion } from "@/components/medicare-glp1-bridge-faqs-accordion"
 import { Glp1QuestionForm } from "@/components/glp1-question-form"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/reveal"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -58,7 +59,7 @@ export default function MedicareGlp1BridgePage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <div className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             What You Need to Know for July 1, 2026
           </h2>
@@ -181,16 +182,16 @@ export default function MedicareGlp1BridgePage() {
             This fact sheet is for general information only. Talk to your doctor to find out if this program is
             right for you.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="max-w-4xl mx-auto mt-14">
+        <Reveal className="max-w-4xl mx-auto mt-14">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
             Frequently Asked Questions
           </h2>
           <MedicareGlp1BridgeFaqsAccordion />
-        </div>
+        </Reveal>
 
-        <div className="max-w-2xl mx-auto mt-14">
+        <Reveal className="max-w-2xl mx-auto mt-14">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center" style={{ color: "var(--brand-blue)" }}>
             Questions?
           </h2>
@@ -210,7 +211,7 @@ export default function MedicareGlp1BridgePage() {
             Bridge Program.
           </p>
           <Glp1QuestionForm />
-        </div>
+        </Reveal>
 
         <div className="max-w-2xl mx-auto mt-14 text-center">
           <Button

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { AcceptedInsuranceAccordion } from "@/components/accepted-insurance-accordion"
+import { Reveal } from "@/components/reveal"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function AcceptedInsurancePage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative h-[280px] md:h-[400px] overflow-hidden">
+      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.5587)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-accepted-insurance-hero-bg.webp"
           alt=""
@@ -54,7 +55,7 @@ export default function AcceptedInsurancePage() {
 
       {/* Content */}
       <section className="w-full bg-muted px-6 py-10 md:py-14">
-        <div className="max-w-4xl mx-auto text-center">
+        <Reveal className="max-w-4xl mx-auto text-center">
           <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
             Family Practice Associates of Lexington requires payment on the date of service. Please be prepared to
             pay all co-pays, deductibles, and any outstanding balances at the time of your visit.
@@ -71,13 +72,13 @@ export default function AcceptedInsurancePage() {
             For all other plans, please contact our Billing Department. There are too many small plans to list.
             Thank you for your understanding!
           </p>
-        </div>
+        </Reveal>
       </section>
 
       <section className="px-6 py-8 md:py-12 flex-1">
-        <div className="max-w-6xl mx-auto">
+        <Reveal className="max-w-6xl mx-auto">
           <AcceptedInsuranceAccordion />
-        </div>
+        </Reveal>
       </section>
 
       <SiteFooter />

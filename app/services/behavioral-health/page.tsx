@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { ContactForm } from "@/components/contact-form"
 import { BehavioralHealthServicesAccordion } from "@/components/behavioral-health-services-accordion"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/reveal"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -51,13 +52,13 @@ export default function BehavioralHealthPage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <div className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto">
           <ContactForm
             heading="Register or Request More Information on Grief Group Therapy:"
             subheading="Please fill out this short form and we'll contact you shortly."
           />
-        </div>
-        <div className="max-w-4xl mx-auto">
+        </Reveal>
+        <Reveal className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mt-10 mb-4 text-balance" style={{ color: "var(--brand-blue)" }}>
             Grief Group Therapy
           </h2>
@@ -91,10 +92,10 @@ export default function BehavioralHealthPage() {
             help is a significant step, and we&apos;re here to guide you through your journey to better mental
             health.
           </p>
-        </div>
-        <div className="max-w-6xl mx-auto">
+        </Reveal>
+        <Reveal className="max-w-6xl mx-auto">
           <BehavioralHealthServicesAccordion />
-        </div>
+        </Reveal>
         <div className="max-w-4xl mx-auto mt-4 text-center">
           <Button
             asChild

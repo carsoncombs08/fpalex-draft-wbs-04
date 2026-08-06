@@ -1,10 +1,11 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/reveal"
 
 export function LocationsHoursSection() {
   return (
     <section id="locations" className="w-full scroll-mt-24 py-16 md:py-20 px-6" style={{ backgroundColor: "var(--brand-blue)" }}>
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      <Reveal className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
           <h3 className="text-[1.563rem] font-extrabold uppercase tracking-wide text-white mb-3">
             Hamburg Pavilion, Lexington
@@ -73,7 +74,7 @@ export function LocationsHoursSection() {
             Call to schedule.
           </p>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/reveal"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -68,7 +69,7 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <div className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight" style={{ color: "var(--brand-blue)" }}>
             Medicare GLP-1 Bridge Program
           </h2>
@@ -131,7 +132,7 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
             <li>Zepbound&reg; KwikPen&reg;. Single-dose Zepbound pens and vials are not covered.</li>
             <li>Foundayo&reg; tablets</li>
           </ul>
-        </div>
+        </Reveal>
 
         <div className="max-w-4xl mx-auto mt-14 text-center">
           <Button

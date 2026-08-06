@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { AdditionalServicesAccordion } from "@/components/additional-services-accordion"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/reveal"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -50,7 +51,7 @@ export default function AdditionalServicesPage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <div className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
             Looking For Additional Services
           </h2>
@@ -59,10 +60,10 @@ export default function AdditionalServicesPage() {
             additional services to meet your diverse healthcare needs. Our patient-centered approach ensures
             that you receive comprehensive care under one roof. Here&apos;s a glimpse of our expanded offerings:
           </p>
-        </div>
-        <div className="max-w-6xl mx-auto">
+        </Reveal>
+        <Reveal className="max-w-6xl mx-auto">
           <AdditionalServicesAccordion />
-        </div>
+        </Reveal>
         <div className="max-w-4xl mx-auto mt-4 text-center">
           <Button
             asChild

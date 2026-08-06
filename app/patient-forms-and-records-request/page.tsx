@@ -4,6 +4,7 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/reveal"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function PatientFormsAndRecordsRequestPage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative h-[280px] md:h-[400px] overflow-hidden">
+      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.6637)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-patient-forms-hero-bg.webp"
           alt=""
@@ -54,7 +55,7 @@ export default function PatientFormsAndRecordsRequestPage() {
 
       {/* Content */}
       <section className="px-6 py-10 md:py-14 flex-1">
-        <div className="max-w-4xl mx-auto text-center mb-10">
+        <Reveal className="max-w-4xl mx-auto text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             Medical and Billing Records Requests
           </h2>
@@ -71,9 +72,9 @@ export default function PatientFormsAndRecordsRequestPage() {
             </a>{" "}
             or by phone:
           </p>
-        </div>
+        </Reveal>
 
-        <div className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto">
           <h2
             className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-center"
             style={{ color: "var(--brand-blue)" }}
@@ -137,9 +138,9 @@ export default function PatientFormsAndRecordsRequestPage() {
               </Link>
             </Button>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="max-w-4xl mx-auto text-center mt-16">
+        <Reveal className="max-w-4xl mx-auto text-center mt-16">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
             Patient Forms:
           </h2>
@@ -184,7 +185,7 @@ export default function PatientFormsAndRecordsRequestPage() {
               </Link>
             </Button>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <SiteFooter />

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { Apple, ChevronDown, KeyRound, Play } from "lucide-react"
+import { Reveal } from "@/components/reveal"
 
 export const metadata: Metadata = {
   title: "Patient Portal Sign In | Family Practice Associates of Lexington",
@@ -61,7 +62,7 @@ function CernerLogo() {
 export default function PatientPortalPage() {
   return (
     <main className="min-h-[100dvh] flex flex-col items-center bg-white px-6 py-16">
-      <div className="w-full max-w-2xl">
+      <Reveal className="w-full max-w-2xl">
         <div className="flex items-center justify-center gap-4 mb-8">
           <Image
             src="/assets/image/fpa-logo.png"
@@ -184,7 +185,7 @@ export default function PatientPortalPage() {
             </Link>
           </div>
         </div>
-      </div>
+      </Reveal>
     </main>
   )
 }

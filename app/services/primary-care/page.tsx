@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ServicesAccordion } from "@/components/services-accordion"
+import { Reveal } from "@/components/reveal"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -51,7 +52,7 @@ export default function PrimaryCarePage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <div className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
             Comprehensive Primary Care Services in Central Kentucky
           </h2>
@@ -61,7 +62,7 @@ export default function PrimaryCarePage() {
             and wellness. We offer:
           </p>
           <ServicesAccordion />
-        </div>
+        </Reveal>
         <div className="max-w-4xl mx-auto mt-14 text-center">
           <Button
             asChild

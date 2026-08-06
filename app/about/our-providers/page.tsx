@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { BEHAVIORAL_HEALTH_PROVIDERS, MD_PROVIDERS, NP_PA_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
+import { Reveal } from "@/components/reveal"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -19,14 +20,14 @@ export default function OurProvidersPage() {
 
       {/* Hero */}
       <section className="px-6 py-10 md:py-14" style={{ backgroundColor: "var(--brand-blue)" }}>
-        <div className="max-w-5xl mx-auto">
+        <Reveal className="max-w-5xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white text-balance">
             Our Providers
           </h1>
           <p className="mt-2 text-xl md:text-2xl font-bold text-white">
             Family Practice Associates of Lexington
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Breadcrumb */}
@@ -51,7 +52,7 @@ export default function OurProvidersPage() {
       {/* Content */}
       <section className="px-6 pb-16 md:pb-24 flex-1">
         <div className="max-w-5xl mx-auto">
-          <div className="max-w-3xl mx-auto text-center mb-10">
+          <Reveal className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
               About Our Providers
             </h2>
@@ -60,36 +61,42 @@ export default function OurProvidersPage() {
               Our board-certified providers are committed to providing compassionate, personalized care for
               you and your family.
             </p>
-          </div>
+          </Reveal>
 
-          <ProvidersGrid providers={MD_PROVIDERS} />
+          <Reveal delay={150}>
+            <ProvidersGrid providers={MD_PROVIDERS} />
+          </Reveal>
         </div>
       </section>
 
       {/* Nurse Practitioners & Physician Assistants */}
       <section className="py-6 md:py-8 text-center" style={{ backgroundColor: "var(--brand-blue)" }}>
-        <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white text-balance">
-          Nurse Practitioners &amp; Physician Assistants
-        </h2>
+        <Reveal>
+          <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white text-balance">
+            Nurse Practitioners &amp; Physician Assistants
+          </h2>
+        </Reveal>
       </section>
 
       <section className="px-6 py-16 md:py-24">
-        <div className="max-w-5xl mx-auto">
+        <Reveal className="max-w-5xl mx-auto">
           <ProvidersGrid providers={NP_PA_PROVIDERS} />
-        </div>
+        </Reveal>
       </section>
 
       {/* Behavioral Health */}
       <section className="py-6 md:py-8 text-center" style={{ backgroundColor: "var(--brand-blue)" }}>
-        <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white text-balance">
-          Behavioral Health
-        </h2>
+        <Reveal>
+          <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white text-balance">
+            Behavioral Health
+          </h2>
+        </Reveal>
       </section>
 
       <section className="px-6 py-16 md:py-24">
-        <div className="max-w-5xl mx-auto">
+        <Reveal className="max-w-5xl mx-auto">
           <ProvidersGrid providers={BEHAVIORAL_HEALTH_PROVIDERS} />
-        </div>
+        </Reveal>
       </section>
 
       <LocationsHoursSection />

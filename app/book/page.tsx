@@ -4,6 +4,7 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/reveal"
 import {
   UserPlus,
   UserCheck,
@@ -314,7 +315,7 @@ function CalendarModal({
 
 function Sidebar() {
   return (
-    <div className="space-y-6">
+    <Reveal className="space-y-6">
       <div className="rounded-xl border border-border p-6">
         <h3 className="font-extrabold text-foreground mb-4">Why patients trust FPA</h3>
         <ul className="space-y-3 text-sm text-muted-foreground">
@@ -356,7 +357,7 @@ function Sidebar() {
         </a>
         <p className="text-sm text-muted-foreground mt-1">Mon&ndash;Fri, 8am&ndash;5pm</p>
       </div>
-    </div>
+    </Reveal>
   )
 }
 
