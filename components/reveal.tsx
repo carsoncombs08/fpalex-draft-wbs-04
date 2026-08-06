@@ -19,10 +19,7 @@ export function Reveal({
     if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true)
-          observer.disconnect()
-        }
+        setVisible(entry.isIntersecting)
       },
       { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
     )

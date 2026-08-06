@@ -99,13 +99,26 @@ const SERVICES: ServiceItem[] = [
 
 export function ServicesAccordion() {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
+  const [gridVisible, setGridVisible] = React.useState(false)
+  const gridRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const el = gridRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setGridVisible(entry.isIntersecting),
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const toggle = (index: number) => {
     setActiveIndex((prev) => (prev === index ? null : index))
   }
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
+    <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
       <div
         className={`absolute inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
           activeIndex !== null ? "opacity-100" : "opacity-0"
@@ -120,9 +133,10 @@ export function ServicesAccordion() {
             onMouseEnter={() => setActiveIndex(index)}
             onMouseLeave={() => setActiveIndex((prev) => (prev === index ? null : prev))}
             onClick={() => toggle(index)}
-            className={`relative rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-300 ${
+            className={`relative rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-500 ease-out ${
               isOpen ? "z-50 scale-125 shadow-[0_0_30px_var(--brand-blue)]" : ""
-            }`}
+            } ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            style={{ transitionDelay: isOpen ? "0ms" : `${index * 80}ms` }}
           >
             {service.image && (
               <div className="relative w-full aspect-[16/9] overflow-hidden">

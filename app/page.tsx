@@ -31,7 +31,6 @@ export default function Home() {
   const [awardsHovered, setAwardsHovered] = React.useState(false)
   const [hoveredService, setHoveredService] = React.useState<number | null>(null)
   const [servicesVisible, setServicesVisible] = React.useState(false)
-  const [servicesAnimated, setServicesAnimated] = React.useState(false)
   const [servicesSectionHovered, setServicesSectionHovered] = React.useState(false)
   const servicesRef = React.useRef<HTMLDivElement>(null)
   const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
@@ -49,12 +48,6 @@ export default function Home() {
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
-
-  React.useEffect(() => {
-    if (!servicesVisible || servicesAnimated) return
-    const timer = setTimeout(() => setServicesAnimated(true), 1200)
-    return () => clearTimeout(timer)
-  }, [servicesVisible, servicesAnimated])
 
   React.useEffect(() => {
     const el = providersRef.current
@@ -277,20 +270,12 @@ export default function Home() {
                   key={s.label}
                   onMouseEnter={() => setHoveredService(index)}
                   onMouseLeave={() => setHoveredService((prev) => (prev === index ? null : prev))}
-                  className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
+                  className={`relative rounded-2xl overflow-hidden transition-all duration-500 ease-out ${
                     isHovered ? "z-50 scale-[1.2] shadow-[0_0_30px_var(--brand-blue)]" : ""
                   } ${
-                    servicesAnimated
-                      ? "opacity-100"
-                      : servicesVisible
-                        ? "animate-in fade-in slide-in-from-bottom-8 fill-mode-both"
-                        : "opacity-0"
+                    servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
-                  style={
-                    !servicesAnimated && servicesVisible
-                      ? { animationDelay: `${index * 120}ms`, animationDuration: "700ms" }
-                      : undefined
-                  }
+                  style={{ transitionDelay: `${index * 120}ms` }}
                 >
                   <div className="relative w-full aspect-[2/3]">
                     <Image src={s.image} alt={s.label} fill className="object-cover" />

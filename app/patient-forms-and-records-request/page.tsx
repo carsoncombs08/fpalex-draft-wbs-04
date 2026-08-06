@@ -19,7 +19,7 @@ export default function PatientFormsAndRecordsRequestPage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.375)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
+      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.375)] bg-background overflow-hidden rounded-b-[3rem] md:rounded-b-[5rem] transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-patient-forms-hero-bg.webp"
           alt=""

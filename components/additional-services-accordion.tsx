@@ -207,13 +207,26 @@ function BlockContent({ block }: { block: Block }) {
 
 export function AdditionalServicesAccordion() {
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
+  const [gridVisible, setGridVisible] = React.useState(false)
+  const gridRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const el = gridRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setGridVisible(entry.isIntersecting),
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const toggle = (index: number) => {
     setActiveIndex((prev) => (prev === index ? null : index))
   }
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
+    <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 items-start">
       <div
         className={`absolute inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
           activeIndex !== null ? "opacity-100" : "opacity-0"
@@ -230,9 +243,10 @@ export function AdditionalServicesAccordion() {
           : isGreen
             ? "shadow-[0_0_18px_#22c55e]"
             : ""
-        const cardClassName = `relative rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-300 ${glowShadow} ${
+        const cardClassName = `relative rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-500 ease-out ${glowShadow} ${
           isOpen ? "z-50 scale-125" : ""
-        }`
+        } ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`
+        const cardStyle = { transitionDelay: isOpen ? "0ms" : `${index * 80}ms` }
         const imageBlock = service.image && (
           <div className="relative w-full aspect-[16/9] overflow-hidden">
             <Image src={service.image} alt={service.title} fill className="object-cover" />
@@ -247,6 +261,7 @@ export function AdditionalServicesAccordion() {
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex((prev) => (prev === index ? null : prev))}
               className={`${cardClassName} block`}
+              style={cardStyle}
             >
               {imageBlock}
               <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
@@ -268,6 +283,7 @@ export function AdditionalServicesAccordion() {
             onMouseLeave={() => setActiveIndex((prev) => (prev === index ? null : prev))}
             onClick={() => toggle(index)}
             className={cardClassName}
+            style={cardStyle}
           >
             {imageBlock}
             <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
