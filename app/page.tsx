@@ -31,6 +31,8 @@ export default function Home() {
   const [hoveredService, setHoveredService] = React.useState<number | null>(null)
   const [mounted, setMounted] = React.useState(false)
   const [servicesVisible, setServicesVisible] = React.useState(false)
+  const [servicesAnimated, setServicesAnimated] = React.useState(false)
+  const [servicesSectionHovered, setServicesSectionHovered] = React.useState(false)
   const servicesRef = React.useRef<HTMLDivElement>(null)
   const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
   const providersRef = React.useRef<HTMLDivElement>(null)
@@ -51,6 +53,12 @@ export default function Home() {
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
+
+  React.useEffect(() => {
+    if (!servicesVisible || servicesAnimated) return
+    const timer = setTimeout(() => setServicesAnimated(true), 1200)
+    return () => clearTimeout(timer)
+  }, [servicesVisible, servicesAnimated])
 
   React.useEffect(() => {
     const el = providersRef.current
@@ -244,7 +252,13 @@ export default function Home() {
 
       {/* Explore Our Services */}
       <section
-        className="relative px-6 py-16 md:py-24 border-t border-border transition-all duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_60px_15px_rgba(255,255,255,0.85)]"
+        onMouseEnter={() => setServicesSectionHovered(true)}
+        onMouseLeave={() => setServicesSectionHovered(false)}
+        className={`relative px-6 py-16 md:py-24 border-t border-border transition-all duration-300 ease-in-out ${
+          servicesSectionHovered && hoveredService === null
+            ? "scale-125 shadow-[0_0_60px_15px_rgba(255,255,255,0.85)]"
+            : ""
+        }`}
         style={{ backgroundColor: "var(--brand-blue)" }}
       >
         <div className="max-w-6xl mx-auto">
@@ -267,8 +281,18 @@ export default function Home() {
                   onMouseLeave={() => setHoveredService((prev) => (prev === index ? null : prev))}
                   className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
                     isHovered ? "z-50 scale-[1.2] shadow-[0_0_30px_var(--brand-blue)]" : ""
-                  } ${servicesVisible ? "animate-in fade-in slide-in-from-bottom-8 fill-mode-both" : "opacity-0"}`}
-                  style={servicesVisible ? { animationDelay: `${index * 120}ms`, animationDuration: "700ms" } : undefined}
+                  } ${
+                    servicesAnimated
+                      ? "opacity-100"
+                      : servicesVisible
+                        ? "animate-in fade-in slide-in-from-bottom-8 fill-mode-both"
+                        : "opacity-0"
+                  }`}
+                  style={
+                    !servicesAnimated && servicesVisible
+                      ? { animationDelay: `${index * 120}ms`, animationDuration: "700ms" }
+                      : undefined
+                  }
                 >
                   <div className="relative w-full aspect-[2/3]">
                     <Image src={s.image} alt={s.label} fill className="object-cover" />
