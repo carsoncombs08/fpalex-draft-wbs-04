@@ -244,7 +244,7 @@ export default function Home() {
 
       {/* Explore Our Services */}
       <section
-        className="relative px-6 py-16 md:py-24 border-t border-border shadow-[0_0_60px_15px_var(--brand-blue)]"
+        className="relative px-6 py-16 md:py-24 border-t border-border transition-all duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_60px_15px_rgba(255,255,255,0.85)]"
         style={{ backgroundColor: "var(--brand-blue)" }}
       >
         <div className="max-w-6xl mx-auto">
@@ -297,7 +297,7 @@ export default function Home() {
             src="/assets/image/fpa-providers-group.webp"
             alt="Family Practice Associates of Lexington provider team"
             fill
-            className="object-cover"
+            className="object-cover object-top"
           />
         </div>
         <div className="max-w-3xl mx-auto">
@@ -393,7 +393,7 @@ export default function Home() {
 
       {/* Newsletter Signup & Socials */}
       <section id="newsletter-socials" className="w-full border-t-4 border-[var(--brand-blue)] scroll-mt-20">
-        <div className="relative w-full py-16 md:py-20 px-6 flex items-center justify-center overflow-hidden">
+        <div className="relative w-full py-16 md:py-20 px-6 flex items-center justify-center overflow-hidden transition-all duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]">
           <Image
             src="/assets/image/fpa-newsletter-bg.webp"
             alt=""
@@ -407,7 +407,7 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="py-16 md:py-20 px-6 text-center">
+        <div className="relative py-16 md:py-20 px-6 text-center transition-all duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]">
           <h3 className="text-xl font-extrabold uppercase tracking-wide text-foreground mb-6">
             Our Socials
           </h3>
@@ -417,7 +417,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="flex items-center justify-center size-12 rounded-full bg-[#1877F2] text-white hover:opacity-90 transition-opacity"
+              className="flex items-center justify-center size-12 rounded-full bg-[#1877F2] text-white transition-all duration-200 hover:scale-[1.2] hover:shadow-[0_0_20px_#1877F2]"
             >
               <Facebook className="size-6" fill="currentColor" />
             </Link>
@@ -426,7 +426,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="flex items-center justify-center size-12 rounded-full text-white hover:opacity-90 transition-opacity"
+              className="flex items-center justify-center size-12 rounded-full text-white transition-all duration-200 hover:scale-[1.2] hover:shadow-[0_0_16px_#f9ce34,0_0_24px_#ee2a7b,0_0_32px_#6228d7]"
               style={{ background: "linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7)" }}
             >
               <Instagram className="size-6" />
@@ -436,7 +436,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-              className="flex items-center justify-center size-12 rounded-full bg-[#FF0000] text-white hover:opacity-90 transition-opacity"
+              className="flex items-center justify-center size-12 rounded-full bg-[#FF0000] text-white transition-all duration-200 hover:scale-[1.2] hover:shadow-[0_0_20px_#FF0000]"
             >
               <svg viewBox="0 0 24 24" className="size-6">
                 <path
@@ -451,14 +451,14 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="flex items-center justify-center size-12 rounded-full bg-[#0A66C2] text-white hover:opacity-90 transition-opacity"
+              className="flex items-center justify-center size-12 rounded-full bg-[#0A66C2] text-white transition-all duration-200 hover:scale-[1.2] hover:shadow-[0_0_20px_#0A66C2]"
             >
               <Linkedin className="size-6" fill="currentColor" />
             </Link>
             <Link
               href="#"
               aria-label="Articles"
-              className="flex items-center justify-center size-12 rounded-full bg-[var(--brand-blue)] text-white hover:opacity-90 transition-opacity"
+              className="flex items-center justify-center size-12 rounded-full bg-[var(--brand-blue)] text-white transition-all duration-200 hover:scale-[1.2] hover:shadow-[0_0_20px_var(--brand-blue)]"
             >
               <Newspaper className="size-6" />
             </Link>
