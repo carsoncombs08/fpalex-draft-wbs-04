@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -22,9 +23,9 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
         <Image src="/assets/image/fpa-patient-forms-hero-bg.webp" alt="" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center px-6">
-          <h1 className="text-2xl md:text-4xl font-extrabold text-white text-center text-balance">
+          <RevealText as="h1" className="text-2xl md:text-4xl font-extrabold text-white text-center text-balance">
             FPA Guide to Medicare GLP-1 Bridge Program
-          </h1>
+          </RevealText>
         </div>
       </section>
 
@@ -70,51 +71,51 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
         <Reveal className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight" style={{ color: "var(--brand-blue)" }}>
             Medicare GLP-1 Bridge Program
-          </h2>
-          <p className="text-lg font-bold text-gray-900 mb-1">Patient Information &amp; Frequently Asked Questions</p>
-          <p className="text-sm text-muted-foreground mb-8">Effective July 1, 2026</p>
+          </RevealText>
+          <RevealText as="p" className="text-lg font-bold text-gray-900 mb-1">Patient Information &amp; Frequently Asked Questions</RevealText>
+          <RevealText as="p" className="text-sm text-muted-foreground mb-8">Effective July 1, 2026</RevealText>
 
-          <h3 className="text-xl md:text-2xl font-extrabold tracking-tight mb-3" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h3" className="text-xl md:text-2xl font-extrabold tracking-tight mb-3" style={{ color: "var(--brand-blue)" }}>
             What is the Medicare GLP-1 Bridge Program?
-          </h3>
-          <p className="text-gray-900 leading-relaxed mb-8">
+          </RevealText>
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-8">
             The Medicare GLP-1 Bridge Program may provide coverage for certain weight-loss medications for
             eligible Medicare patients.
-          </p>
+          </RevealText>
 
-          <h3 className="text-xl md:text-2xl font-extrabold tracking-tight mb-3" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h3" className="text-xl md:text-2xl font-extrabold tracking-tight mb-3" style={{ color: "var(--brand-blue)" }}>
             Who Qualifies?
-          </h3>
-          <p className="text-gray-900 leading-relaxed mb-4">
+          </RevealText>
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-4">
             <span className="font-bold">You must:</span>
             <br />
             Have Medicare Part D prescription coverage and have not received GLP-1 medication previously through
             your Medicare Part D.
-          </p>
+          </RevealText>
 
-          <p className="font-bold text-gray-900 mb-2">You must NOT have:</p>
+          <RevealText as="p" className="font-bold text-gray-900 mb-2">You must NOT have:</RevealText>
           <ul className="list-disc pl-6 space-y-1 text-gray-900 mb-4">
             <li>Type 2 Diabetes</li>
             <li>Moderate-to-Severe Sleep Apnea</li>
             <li>Metabolic Dysfunction-Associated Steatohepatitis (MASH)</li>
           </ul>
 
-          <p className="text-gray-900 leading-relaxed mb-2">
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-2">
             <span className="font-bold">You must meet ONE of the following criteria:</span>
             <br />
             BMI 35 or higher; or
-          </p>
+          </RevealText>
 
-          <p className="font-bold text-gray-900 mb-2">BMI 30 or higher plus one of these conditions:</p>
+          <RevealText as="p" className="font-bold text-gray-900 mb-2">BMI 30 or higher plus one of these conditions:</RevealText>
           <ul className="list-disc pl-6 space-y-1 text-gray-900 mb-4">
             <li>Heart Failure with Preserved Ejection Fraction (HFpEF)</li>
             <li>Uncontrolled High Blood Pressure</li>
             <li>Chronic Kidney Disease (Stage 3a or higher)</li>
           </ul>
 
-          <p className="font-bold text-gray-900 mb-2">BMI 27 or higher and one of these conditions:</p>
+          <RevealText as="p" className="font-bold text-gray-900 mb-2">BMI 27 or higher and one of these conditions:</RevealText>
           <ul className="list-disc pl-6 space-y-1 text-gray-900 mb-4">
             <li>Prediabetes</li>
             <li>Prior Heart Attack</li>
@@ -122,11 +123,11 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
             <li>Symptomatic Peripheral Artery Disease (PAD)</li>
           </ul>
 
-          <p className="text-gray-900 leading-relaxed mb-8">
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-8">
             Your provider can help you determine if you meet all program requirements.
-          </p>
+          </RevealText>
 
-          <p className="font-bold text-gray-900 mb-2">Covered Medications</p>
+          <RevealText as="p" className="font-bold text-gray-900 mb-2">Covered Medications</RevealText>
           <ul className="list-disc pl-6 space-y-1 text-gray-900">
             <li>Wegovy&reg; injections and tablets</li>
             <li>Zepbound&reg; KwikPen&reg;. Single-dose Zepbound pens and vials are not covered.</li>

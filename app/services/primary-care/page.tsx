@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ServicesAccordion } from "@/components/services-accordion"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -53,14 +54,14 @@ export default function PrimaryCarePage() {
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
         <Reveal className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
             Comprehensive Primary Care Services in Central Kentucky
-          </h2>
-          <p className="text-muted-foreground leading-relaxed mb-6">
+          </RevealText>
+          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
             Family Practice Associates of Lexington offers a wide range of primary care services to meet the
             diverse health needs of Central Kentucky residents. Your first line of defense for optimal health
             and wellness. We offer:
-          </p>
+          </RevealText>
           <ServicesAccordion />
         </Reveal>
         <div className="max-w-4xl mx-auto mt-14 text-center">

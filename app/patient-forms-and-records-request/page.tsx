@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function PatientFormsAndRecordsRequestPage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.6637)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
+      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.375)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-patient-forms-hero-bg.webp"
           alt=""
@@ -28,9 +29,9 @@ export default function PatientFormsAndRecordsRequestPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center px-6">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-white text-center text-balance">
+          <RevealText as="h1" className="text-3xl md:text-5xl font-extrabold text-white text-center text-balance">
             Patient Forms and Records Request
-          </h1>
+          </RevealText>
         </div>
       </section>
 
@@ -56,36 +57,37 @@ export default function PatientFormsAndRecordsRequestPage() {
       {/* Content */}
       <section className="px-6 py-10 md:py-14 flex-1">
         <Reveal className="max-w-4xl mx-auto text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             Medical and Billing Records Requests
-          </h2>
-          <p className="text-gray-900 leading-relaxed mb-2">
+          </RevealText>
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-2">
             Family Practice Associates (FPA) respects the health information rights of our patients and has
             partnered with Provider1st to securely provide copies of medical records to patients, guardians/legal
             representatives, or third-party requestors with appropriate HIPAA authorization.
-          </p>
-          <p className="text-gray-900 leading-relaxed">
+          </RevealText>
+          <RevealText as="p" className="text-gray-900 leading-relaxed">
             If you have any questions or would like to check the status of your request, you can quickly and
             conveniently contact Provider1st by email at{" "}
             <a href="mailto:requests@provider1st.com" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
               requests@provider1st.com
             </a>{" "}
             or by phone:
-          </p>
+          </RevealText>
         </Reveal>
 
         <Reveal className="max-w-4xl mx-auto">
-          <h2
+          <RevealText
+            as="h2"
             className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-center"
             style={{ color: "var(--brand-blue)" }}
           >
             Records Requests
-          </h2>
-          <p className="text-gray-900 leading-relaxed mb-6">
+          </RevealText>
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-6">
             FPA also partners with Provider1st to provide you or your authorized representative with itemized
             copies of your billing statements upon request, for purposes such as insurance reimbursement or HSA
             claims.
-          </p>
+          </RevealText>
           <ul className="space-y-2 mb-8">
             <li className="flex gap-2 text-gray-900">
               <span className="shrink-0">•</span>
@@ -141,9 +143,9 @@ export default function PatientFormsAndRecordsRequestPage() {
         </Reveal>
 
         <Reveal className="max-w-4xl mx-auto text-center mt-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
             Patient Forms:
-          </h2>
+          </RevealText>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               asChild

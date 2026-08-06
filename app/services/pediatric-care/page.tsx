@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { PediatricServicesAccordion } from "@/components/pediatric-services-accordion"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -52,15 +53,15 @@ export default function PediatricCarePage() {
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
         <Reveal className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
             Pediatric Care in Central Kentucky
-          </h2>
-          <p className="text-muted-foreground leading-relaxed mb-6">
+          </RevealText>
+          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
             Family Practice Associates of Lexington offers a wide range of pediatric services to support the
             health and well-being of children in Central Kentucky. Our experienced team is dedicated to
             providing compassionate care for patients from newborns to adolescents. We understand the unique
             needs of growing children and offer specialized services to address their health concerns.
-          </p>
+          </RevealText>
         </Reveal>
         <Reveal className="max-w-6xl mx-auto">
           <PediatricServicesAccordion />

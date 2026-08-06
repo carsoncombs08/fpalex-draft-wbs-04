@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { AcceptedInsuranceAccordion } from "@/components/accepted-insurance-accordion"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function AcceptedInsurancePage() {
       <SiteHeader activePage="other" />
 
       {/* Hero */}
-      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.5587)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
+      <section className="relative group/photo w-full h-[35vh] hover:h-[calc(100vw*0.375)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
         <Image
           src="/assets/image/fpa-accepted-insurance-hero-bg.webp"
           alt=""
@@ -28,9 +29,9 @@ export default function AcceptedInsurancePage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center px-6">
-          <h1 className="text-3xl md:text-5xl font-extrabold text-white text-center text-balance">
+          <RevealText as="h1" className="text-3xl md:text-5xl font-extrabold text-white text-center text-balance">
             Accepted Insurance
-          </h1>
+          </RevealText>
         </div>
       </section>
 
@@ -56,22 +57,22 @@ export default function AcceptedInsurancePage() {
       {/* Content */}
       <section className="w-full bg-muted px-6 py-10 md:py-14">
         <Reveal className="max-w-4xl mx-auto text-center">
-          <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
+          <RevealText as="p" className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
             Family Practice Associates of Lexington requires payment on the date of service. Please be prepared to
             pay all co-pays, deductibles, and any outstanding balances at the time of your visit.
-          </p>
-          <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
+          </RevealText>
+          <RevealText as="p" className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
             Patients with High-Deductible Health Plans are required to make a $100 deposit on the date of service.
-          </p>
-          <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
+          </RevealText>
+          <RevealText as="p" className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
             At this time, Family Practice Associates (FPA) does not accept Medicaid or WellCare plans.
             <br />
             For Marketplace plans, we currently accept CareSource only.
-          </p>
-          <p className="font-bold text-foreground text-lg md:text-2xl leading-relaxed">
+          </RevealText>
+          <RevealText as="p" className="font-bold text-foreground text-lg md:text-2xl leading-relaxed">
             For all other plans, please contact our Billing Department. There are too many small plans to list.
             Thank you for your understanding!
-          </p>
+          </RevealText>
         </Reveal>
       </section>
 

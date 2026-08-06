@@ -7,6 +7,7 @@ import { MedicareGlp1BridgeFaqsAccordion } from "@/components/medicare-glp1-brid
 import { Glp1QuestionForm } from "@/components/glp1-question-form"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -24,9 +25,9 @@ export default function MedicareGlp1BridgePage() {
         <Image src="/assets/image/fpa-medicare-glp1-bridge.webp" alt="" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center px-6">
-          <h1 className="text-2xl md:text-4xl font-extrabold text-white text-center text-balance">
+          <RevealText as="h1" className="text-2xl md:text-4xl font-extrabold text-white text-center text-balance">
             Medicare GLP-1 Bridge: GLP-1 Drugs for $50 a Month
-          </h1>
+          </RevealText>
         </div>
       </section>
 
@@ -60,13 +61,13 @@ export default function MedicareGlp1BridgePage() {
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
         <Reveal className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             What You Need to Know for July 1, 2026
-          </h2>
-          <p className="text-gray-900 leading-relaxed mb-4">
+          </RevealText>
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-4">
             Starting July 1, 2026, Medicare has a new program called Medicare GLP-1 Bridge to help you pay for
             certain GLP-1 weight loss medicines. Medicare GLP-1 Bridge covers these GLP-1 drugs:
-          </p>
+          </RevealText>
           <ul className="list-disc pl-6 space-y-1 text-gray-900 mb-4">
             <li>Foundayo&reg; (tablet)</li>
             <li>Wegovy&reg; (injection or tablet)</li>
@@ -81,12 +82,12 @@ export default function MedicareGlp1BridgePage() {
             These drugs aren&apos;t eligible for the Medicare Prescription Payment Plan.
           </p>
 
-          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10" style={{ color: "var(--brand-blue)" }}>
             Am I eligible?
-          </h2>
-          <p className="text-gray-900 leading-relaxed mb-4">
+          </RevealText>
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-4">
             To get the GLP-1 drugs listed above under this program, you must meet all four of these requirements:
-          </p>
+          </RevealText>
           <ul className="list-disc pl-6 space-y-3 text-gray-900 mb-4">
             <li>
               You have Medicare Part D drug coverage, under either a standalone Medicare Drug Plan or a Medicare
@@ -135,14 +136,14 @@ export default function MedicareGlp1BridgePage() {
               </ul>
             </li>
           </ul>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          <RevealText as="p" className="text-sm text-muted-foreground leading-relaxed mb-4">
             *BMI (Body Mass Index) is a number your doctor calculates based on your height and weight. Ask your
             doctor what your BMI is if you don&apos;t know.
-          </p>
+          </RevealText>
 
-          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10" style={{ color: "var(--brand-blue)" }}>
             How to get GLP-1 drugs through Medicare GLP-1 Bridge
-          </h2>
+          </RevealText>
           <ul className="list-disc pl-6 space-y-2 text-gray-900 mb-6">
             <li>Talk to your doctor about whether a GLP-1 drug is right for you and if you qualify for this program.</li>
             <li>If one of the drugs covered is right for you, your doctor will send a prescription to the pharmacy.</li>
@@ -164,7 +165,7 @@ export default function MedicareGlp1BridgePage() {
             </li>
           </ul>
 
-          <p className="text-gray-900 leading-relaxed mb-4">
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-4">
             Visit{" "}
             <a
               href="https://www.medicare.gov/"
@@ -177,25 +178,25 @@ export default function MedicareGlp1BridgePage() {
             </a>{" "}
             or call 1-800-MEDICARE (1-800-633-4227) for more information about Medicare GLP-1 Bridge. TTY users can
             call 1-877-486-2048.
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          </RevealText>
+          <RevealText as="p" className="text-sm text-muted-foreground leading-relaxed">
             This fact sheet is for general information only. Talk to your doctor to find out if this program is
             right for you.
-          </p>
+          </RevealText>
         </Reveal>
 
         <Reveal className="max-w-4xl mx-auto mt-14">
-          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
             Frequently Asked Questions
-          </h2>
+          </RevealText>
           <MedicareGlp1BridgeFaqsAccordion />
         </Reveal>
 
         <Reveal className="max-w-2xl mx-auto mt-14">
-          <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center" style={{ color: "var(--brand-blue)" }}>
             Questions?
-          </h2>
-          <p className="text-gray-900 leading-relaxed mb-8 text-center">
+          </RevealText>
+          <RevealText as="p" className="text-gray-900 leading-relaxed mb-8 text-center">
             Please contact Family Practice Associates of Lexington at (859) 278-5007 or via Sophie, the ChatBot on
             the website at{" "}
             <a
@@ -209,7 +210,7 @@ export default function MedicareGlp1BridgePage() {
             </a>{" "}
             to schedule an appointment with a provider to discuss whether you qualify for the Medicare GLP-1
             Bridge Program.
-          </p>
+          </RevealText>
           <Glp1QuestionForm />
         </Reveal>
 

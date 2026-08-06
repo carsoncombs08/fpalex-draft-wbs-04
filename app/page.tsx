@@ -10,6 +10,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
 import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 
 const HOME_SERVICES = [
   { href: "/services/primary-care", label: "Primary Care", image: "/assets/image/fpa-homepage-primary-care.webp" },
@@ -187,12 +188,12 @@ export default function Home() {
               </svg>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
+            <RevealText as="h1" className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
               Family Practice Associates
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-balance">
+            </RevealText>
+            <RevealText as="p" className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed text-balance">
               Serving Central Kentucky for over 40 Years
-            </p>
+            </RevealText>
 
             {/* CTA Buttons */}
             <div className="menu-zone flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -259,9 +260,9 @@ export default function Home() {
         style={{ backgroundColor: "var(--brand-blue)" }}
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-10 text-center text-balance">
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-10 text-center text-balance">
             Explore Our Services
-          </h2>
+          </RevealText>
           <div ref={servicesRef} className="relative grid grid-cols-2 md:grid-cols-4 gap-6">
             <div
               className={`absolute inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
@@ -322,27 +323,27 @@ export default function Home() {
           />
         </div>
         <Reveal className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
-          </h2>
-          <h3 className="font-extrabold text-foreground mb-2">Our Mission:</h3>
-          <p className="text-muted-foreground leading-relaxed mb-8">
+          </RevealText>
+          <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Mission:</RevealText>
+          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-8">
             Serving Central Kentucky for over 40 years, Family Practice Associates of Lexington&mdash;our
             mission is simple: to provide preventive, diagnostic, and therapeutic health services with
             attention to individual needs. We are dedicated to delivering family-centered care from birth
             through the later years in an affordable, high-quality manner.{" "}
             <span className="font-bold text-foreground">Your Family. Your Health. Our Passion.</span>
-          </p>
-          <h3 className="font-extrabold text-foreground mb-2">Our Practice:</h3>
-          <p className="text-muted-foreground leading-relaxed mb-6">
+          </RevealText>
+          <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Practice:</RevealText>
+          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
             Family Practice Associates of Lexington (FPA) was founded by Dr. Jeffrey Foxx in 1983 and has
             since become one of the largest family practice groups in Central Kentucky. With over 20 primary
             care providers, including physicians, nurse practitioners, physician assistants, and a Licensed
             Professional Clinical Counselor, FPA is dedicated to providing family-centered care from birth to
             later years. Recognized as a Patient-Centered Medical Home (PCMH) by the National Commission on
             Quality Assurance, FPA&apos;s professionally trained staff ensures award-winning care.
-          </p>
-          <p className="text-muted-foreground leading-relaxed mb-6">
+          </RevealText>
+          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
             The PCMH model emphasizes accessibility, continuity, and comprehensive care, with patients
             actively involved in decision-making. FPA&apos;s patient care teams, under the direction of the
             primary care provider (PCP), collectively take responsibility for ongoing patient care. Through
@@ -350,11 +351,11 @@ export default function Home() {
             records (EHR), FPA enhances patient care, communication, and education. By offering extended
             hours and same-day scheduling, FPA aims to provide ultimate convenience to simplify managing your
             health.
-          </p>
-          <p className="text-muted-foreground leading-relaxed mb-4">
+          </RevealText>
+          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
             Click here to discover why understanding what it means to be a Patient Center Medical Home is
             important for you:
-          </p>
+          </RevealText>
           <Button asChild variant="outline">
             <Link
               href="https://cdn.hibuwebsites.com/7e29e1036607439698f5a108b9fc30dd/files/uploaded/FAP-What-+is-PCMH-Patient-Brochure-revised+9.16.2024.pdf"
@@ -390,14 +391,14 @@ export default function Home() {
 
         <div className="lg:px-[17%] xl:px-[19%]">
           <Reveal className="max-w-3xl mx-auto px-6">
-            <h2 className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
+            <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
               About Our Providers
-            </h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            </RevealText>
+            <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed">
               Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
               Our board-certified providers are committed to providing compassionate, personalized care for
               you and your family.
-            </p>
+            </RevealText>
           </Reveal>
 
           <Reveal className="max-w-5xl mx-auto mt-10 px-6 text-left" delay={150}>
@@ -432,9 +433,9 @@ export default function Home() {
 
         <div className="relative py-16 md:py-20 px-6 text-center transition-all duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]">
           <Reveal>
-            <h3 className="text-xl font-extrabold uppercase tracking-wide text-foreground mb-6">
+            <RevealText as="h3" className="text-xl font-extrabold uppercase tracking-wide text-foreground mb-6">
               Our Socials
-            </h3>
+            </RevealText>
           </Reveal>
           <div className="flex items-center justify-center gap-4">
             <Link

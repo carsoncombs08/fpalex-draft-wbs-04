@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { FaqsAccordion } from "@/components/faqs-accordion"
 import { Reveal } from "@/components/reveal"
+import { RevealText } from "@/components/reveal-text"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -19,8 +20,8 @@ export default function FaqsPage() {
       {/* Hero */}
       <section className="px-6 py-8 md:py-10" style={{ backgroundColor: "var(--brand-blue)" }}>
         <Reveal className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white">FAQs</h1>
-          <p className="text-xl md:text-2xl font-bold text-white">Family Practice Associates of Lexington</p>
+          <RevealText as="h1" className="text-4xl md:text-5xl font-extrabold text-white">FAQs</RevealText>
+          <RevealText as="p" className="text-xl md:text-2xl font-bold text-white">Family Practice Associates of Lexington</RevealText>
         </Reveal>
       </section>
 
