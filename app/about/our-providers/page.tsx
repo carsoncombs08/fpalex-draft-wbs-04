@@ -53,16 +53,18 @@ export default function OurProvidersPage() {
       {/* Content */}
       <section className="px-6 pb-16 md:pb-24 flex-1">
         <div className="max-w-5xl mx-auto">
-          <Reveal className="max-w-3xl mx-auto text-center mb-10">
-            <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
-              About Our Providers
-            </RevealText>
-            <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed">
-              Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
-              Our board-certified providers are committed to providing compassionate, personalized care for
-              you and your family.
-            </RevealText>
-          </Reveal>
+          <div className="px-6 py-10 md:py-14 mb-10" style={{ backgroundColor: "var(--brand-blue)" }}>
+            <Reveal className="max-w-3xl mx-auto text-center bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+              <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
+                About Our Providers
+              </RevealText>
+              <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed">
+                Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
+                Our board-certified providers are committed to providing compassionate, personalized care for
+                you and your family.
+              </RevealText>
+            </Reveal>
+          </div>
 
           <Reveal delay={150}>
             <ProvidersGrid providers={MD_PROVIDERS} />

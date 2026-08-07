@@ -60,7 +60,8 @@ export default function MedicareGlp1BridgePage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <Reveal className="max-w-4xl mx-auto">
+        <div className="px-6 py-10 md:py-14 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
+        <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
           <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             What You Need to Know for July 1, 2026
           </RevealText>
@@ -184,6 +185,7 @@ export default function MedicareGlp1BridgePage() {
             right for you.
           </RevealText>
         </Reveal>
+        </div>
 
         <Reveal className="max-w-4xl mx-auto mt-14">
           <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
@@ -192,27 +194,32 @@ export default function MedicareGlp1BridgePage() {
           <MedicareGlp1BridgeFaqsAccordion />
         </Reveal>
 
-        <Reveal className="max-w-2xl mx-auto mt-14">
-          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center" style={{ color: "var(--brand-blue)" }}>
-            Questions?
-          </RevealText>
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-8 text-center">
-            Please contact Family Practice Associates of Lexington at (859) 278-5007 or via Sophie, the ChatBot on
-            the website at{" "}
-            <a
-              href="https://www.fpalex.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-              style={{ color: "var(--brand-blue)" }}
-            >
-              www.fpalex.com
-            </a>{" "}
-            to schedule an appointment with a provider to discuss whether you qualify for the Medicare GLP-1
-            Bridge Program.
-          </RevealText>
+        <div className="px-6 py-10 md:py-14 mt-14 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
+          <Reveal className="max-w-2xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+            <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center" style={{ color: "var(--brand-blue)" }}>
+              Questions?
+            </RevealText>
+            <RevealText as="p" className="text-gray-900 leading-relaxed text-center">
+              Please contact Family Practice Associates of Lexington at (859) 278-5007 or via Sophie, the ChatBot on
+              the website at{" "}
+              <a
+                href="https://www.fpalex.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+                style={{ color: "var(--brand-blue)" }}
+              >
+                www.fpalex.com
+              </a>{" "}
+              to schedule an appointment with a provider to discuss whether you qualify for the Medicare GLP-1
+              Bridge Program.
+            </RevealText>
+          </Reveal>
+        </div>
+
+        <div className="max-w-2xl mx-auto mt-10">
           <Glp1QuestionForm />
-        </Reveal>
+        </div>
 
         <div className="max-w-2xl mx-auto mt-14 text-center">
           <Button

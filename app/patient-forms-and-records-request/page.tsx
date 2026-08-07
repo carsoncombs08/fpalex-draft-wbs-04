@@ -55,8 +55,8 @@ export default function PatientFormsAndRecordsRequestPage() {
       </nav>
 
       {/* Content */}
-      <section className="px-6 py-10 md:py-14 flex-1">
-        <Reveal className="max-w-4xl mx-auto text-center mb-10">
+      <section className="px-6 py-10 md:py-14 flex-1" style={{ backgroundColor: "var(--brand-blue)" }}>
+        <Reveal className="max-w-4xl mx-auto text-center mb-10 bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             Medical and Billing Records Requests
           </RevealText>
@@ -75,7 +75,7 @@ export default function PatientFormsAndRecordsRequestPage() {
           </RevealText>
         </Reveal>
 
-        <Reveal className="max-w-4xl mx-auto">
+        <Reveal className="max-w-4xl mx-auto mt-10 bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
           <RevealText
             as="h2"
             className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-center"
@@ -142,7 +142,7 @@ export default function PatientFormsAndRecordsRequestPage() {
           </div>
         </Reveal>
 
-        <Reveal className="max-w-4xl mx-auto text-center mt-16">
+        <Reveal className="max-w-4xl mx-auto text-center mt-10 bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
             Patient Forms:
           </RevealText>

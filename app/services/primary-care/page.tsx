@@ -53,17 +53,21 @@ export default function PrimaryCarePage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <Reveal className="max-w-4xl mx-auto">
-          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
-            Comprehensive Primary Care Services in Central Kentucky
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
-            Family Practice Associates of Lexington offers a wide range of primary care services to meet the
-            diverse health needs of Central Kentucky residents. Your first line of defense for optimal health
-            and wellness. We offer:
-          </RevealText>
+        <div className="px-6 py-10 md:py-14 mb-10 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
+          <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+            <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
+              Comprehensive Primary Care Services in Central Kentucky
+            </RevealText>
+            <RevealText as="p" className="text-muted-foreground leading-relaxed">
+              Family Practice Associates of Lexington offers a wide range of primary care services to meet the
+              diverse health needs of Central Kentucky residents. Your first line of defense for optimal health
+              and wellness. We offer:
+            </RevealText>
+          </Reveal>
+        </div>
+        <div className="max-w-4xl mx-auto">
           <ServicesAccordion />
-        </Reveal>
+        </div>
         <div className="max-w-4xl mx-auto mt-14 text-center">
           <Button
             asChild

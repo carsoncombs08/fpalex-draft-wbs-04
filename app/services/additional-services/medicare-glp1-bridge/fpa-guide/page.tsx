@@ -70,7 +70,8 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <Reveal className="max-w-4xl mx-auto">
+        <div className="px-6 py-10 md:py-14 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
+        <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
           <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight" style={{ color: "var(--brand-blue)" }}>
             Medicare GLP-1 Bridge Program
           </RevealText>
@@ -134,6 +135,7 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
             <li>Foundayo&reg; tablets</li>
           </ul>
         </Reveal>
+        </div>
 
         <div className="max-w-4xl mx-auto mt-14 text-center">
           <Button

@@ -52,19 +52,21 @@ export default function AdditionalServicesPage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <Reveal className="max-w-4xl mx-auto">
-          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
-            Looking For Additional Services
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
-            At Family Practice Associates of Lexington, we&apos;re committed to providing a wide array of
-            additional services to meet your diverse healthcare needs. Our patient-centered approach ensures
-            that you receive comprehensive care under one roof. Here&apos;s a glimpse of our expanded offerings:
-          </RevealText>
-        </Reveal>
-        <Reveal className="max-w-6xl mx-auto">
+        <div className="px-6 py-10 md:py-14 mb-10 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
+          <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+            <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
+              Looking For Additional Services
+            </RevealText>
+            <RevealText as="p" className="text-muted-foreground leading-relaxed">
+              At Family Practice Associates of Lexington, we&apos;re committed to providing a wide array of
+              additional services to meet your diverse healthcare needs. Our patient-centered approach ensures
+              that you receive comprehensive care under one roof. Here&apos;s a glimpse of our expanded offerings:
+            </RevealText>
+          </Reveal>
+        </div>
+        <div className="max-w-6xl mx-auto">
           <AdditionalServicesAccordion />
-        </Reveal>
+        </div>
         <div className="max-w-4xl mx-auto mt-4 text-center">
           <Button
             asChild

@@ -59,44 +59,46 @@ export default function BehavioralHealthPage() {
             subheading="Please fill out this short form and we'll contact you shortly."
           />
         </Reveal>
-        <Reveal className="max-w-4xl mx-auto">
-          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mt-10 mb-4 text-balance" style={{ color: "var(--brand-blue)" }}>
-            Grief Group Therapy
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
-            FPA is offering a group therapy experience for anyone navigating grief after the loss of a loved
-            one. As part of our commitment to whole-person care, our clinical therapist is now leading a
-            skill-building group for adults who are coping with loss. This 6-session, once-per-month group
-            will meet at our Brannon Crossing location.
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
-            Our grief group provides a compassionate space to explore the complex emotions of grief, while
-            offering practical coping strategies and the healing power of community support. Whether your
-            grief is recent or something you&apos;ve carried for years, all are welcome. Pre-registration is
-            required, as group size is limited to ensure personalized care.
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">Learn more below.</RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-10">
-            <span className="font-bold text-foreground">Details:</span>
-            <br />
-            6 classes for a one-time payment of $360. If you are unable to attend a session, you will receive
-            the materials covered in the group via email.
-          </RevealText>
+        <div className="px-6 py-10 md:py-14 my-10 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
+          <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+            <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-balance" style={{ color: "var(--brand-blue)" }}>
+              Grief Group Therapy
+            </RevealText>
+            <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
+              FPA is offering a group therapy experience for anyone navigating grief after the loss of a loved
+              one. As part of our commitment to whole-person care, our clinical therapist is now leading a
+              skill-building group for adults who are coping with loss. This 6-session, once-per-month group
+              will meet at our Brannon Crossing location.
+            </RevealText>
+            <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
+              Our grief group provides a compassionate space to explore the complex emotions of grief, while
+              offering practical coping strategies and the healing power of community support. Whether your
+              grief is recent or something you&apos;ve carried for years, all are welcome. Pre-registration is
+              required, as group size is limited to ensure personalized care.
+            </RevealText>
+            <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">Learn more below.</RevealText>
+            <RevealText as="p" className="text-muted-foreground leading-relaxed mb-10">
+              <span className="font-bold text-foreground">Details:</span>
+              <br />
+              6 classes for a one-time payment of $360. If you are unable to attend a session, you will receive
+              the materials covered in the group via email.
+            </RevealText>
 
-          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
-            Behavioral Health: Compassionate Support for Mental and Emotional Well-Being
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
-            At Family Practice Associates of Lexington, we offer a wide range of behavioral health services to
-            support the mental well-being of our patients in Central Kentucky. Our experienced team provides
-            personalized care for various emotional and psychological challenges. We understand that seeking
-            help is a significant step, and we&apos;re here to guide you through your journey to better mental
-            health.
-          </RevealText>
-        </Reveal>
-        <Reveal className="max-w-6xl mx-auto">
+            <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
+              Behavioral Health: Compassionate Support for Mental and Emotional Well-Being
+            </RevealText>
+            <RevealText as="p" className="text-muted-foreground leading-relaxed">
+              At Family Practice Associates of Lexington, we offer a wide range of behavioral health services to
+              support the mental well-being of our patients in Central Kentucky. Our experienced team provides
+              personalized care for various emotional and psychological challenges. We understand that seeking
+              help is a significant step, and we&apos;re here to guide you through your journey to better mental
+              health.
+            </RevealText>
+          </Reveal>
+        </div>
+        <div className="max-w-6xl mx-auto">
           <BehavioralHealthServicesAccordion />
-        </Reveal>
+        </div>
         <div className="max-w-4xl mx-auto mt-4 text-center">
           <Button
             asChild

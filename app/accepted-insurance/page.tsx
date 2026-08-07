@@ -55,8 +55,8 @@ export default function AcceptedInsurancePage() {
       </nav>
 
       {/* Content */}
-      <section className="w-full bg-muted px-6 py-10 md:py-14">
-        <Reveal className="max-w-4xl mx-auto text-center">
+      <section className="w-full px-6 py-10 md:py-14" style={{ backgroundColor: "var(--brand-blue)" }}>
+        <Reveal className="max-w-4xl mx-auto text-center bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
           <RevealText as="p" className="font-bold text-foreground text-lg md:text-2xl leading-relaxed mb-6">
             Family Practice Associates of Lexington requires payment on the date of service. Please be prepared to
             pay all co-pays, deductibles, and any outstanding balances at the time of your visit.
