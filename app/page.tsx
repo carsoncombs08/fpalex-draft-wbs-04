@@ -230,7 +230,7 @@ export default function Home() {
         style={{ backgroundColor: "var(--brand-blue)" }}
       >
         <div
-          className={`relative max-w-3xl mx-auto aspect-[1804/1192] rounded-2xl md:rounded-3xl shadow-xl overflow-hidden mb-8 transition-all duration-700 ease-out ${
+          className={`relative max-w-3xl mx-auto aspect-[1804/1192] rounded-2xl md:rounded-3xl shadow-xl overflow-hidden mb-8 transition-all duration-500 ease-out hover:scale-105 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)] ${
             aboutUsVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-12"
           }`}
         >
@@ -327,8 +327,12 @@ export default function Home() {
 
           <Reveal className="relative max-w-2xl mx-auto mt-10 px-6 text-center" delay={150}>
             <GlowCrescents idPrefix="book-" />
-            <RevealText as="h3" className="relative text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
+            <RevealText as="h3" className="relative text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-4 text-balance">
               Book with Your Provider Today
+            </RevealText>
+            <RevealText as="p" className="relative text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6 text-balance">
+              Already have a primary care provider at FPA? Skip the phone call and schedule your next visit
+              online in just a few minutes&mdash;same-day appointments are often available.
             </RevealText>
             <Button asChild size="lg" className="relative px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
               <Link href="/book">Book Now</Link>
