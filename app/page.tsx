@@ -35,6 +35,27 @@ export default function Home() {
   const servicesRef = React.useRef<HTMLDivElement>(null)
   const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
   const providersRef = React.useRef<HTMLDivElement>(null)
+  const [hoveredBookSection, setHoveredBookSection] = React.useState<"intro" | "cta" | null>(null)
+  const [aboutUsVisible, setAboutUsVisible] = React.useState(false)
+  const [aboutUsPhotoDone, setAboutUsPhotoDone] = React.useState(false)
+  const aboutUsRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const el = aboutUsRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setAboutUsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.2 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  React.useEffect(() => {
+    if (!aboutUsVisible) setAboutUsPhotoDone(false)
+  }, [aboutUsVisible])
 
   React.useEffect(() => {
     const el = servicesRef.current
@@ -208,8 +229,20 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section id="about-us" className="group scroll-mt-24 px-6 py-16 md:py-24" style={{ backgroundColor: "var(--brand-blue)" }}>
-        <div className="relative -mx-6 h-0 group-hover:h-[calc(100vw*0.6608)] mb-0 group-hover:mb-8 overflow-hidden transition-all duration-500 ease-in-out">
+      <section
+        id="about-us"
+        ref={aboutUsRef}
+        className="scroll-mt-24 px-6 py-16 md:py-24"
+        style={{ backgroundColor: "var(--brand-blue)" }}
+      >
+        <div
+          className={`relative -mx-6 aspect-[1804/1192] overflow-hidden mb-8 transition-all duration-700 ease-out ${
+            aboutUsVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-16"
+          }`}
+          onTransitionEnd={(e) => {
+            if (e.target === e.currentTarget && aboutUsVisible) setAboutUsPhotoDone(true)
+          }}
+        >
           <Image
             src="/assets/image/fpa-providers-group.webp"
             alt="The Family Practice Associates of Lexington provider team"
@@ -217,9 +250,10 @@ export default function Home() {
             className="object-cover object-center"
           />
         </div>
-        <Reveal
-          className="max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14"
-          delay={250}
+        <div
+          className={`max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14 transition-all duration-700 ease-out ${
+            aboutUsPhotoDone ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
         >
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
@@ -263,7 +297,7 @@ export default function Home() {
               Learn More about PCMH
             </Link>
           </Button>
-        </Reveal>
+        </div>
       </section>
 
       {/* About Our Providers */}
@@ -289,36 +323,57 @@ export default function Home() {
 
         <div className="lg:px-[17%] xl:px-[19%]">
           <div className="px-6 py-10 md:py-14" style={{ backgroundColor: "var(--brand-blue)" }}>
-            <Reveal className="max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
-              <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
-                About Our Providers
-              </RevealText>
-              <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed">
-                Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
-                Our board-certified providers are committed to providing compassionate, personalized care for
-                you and your family.
-              </RevealText>
+            <Reveal className="relative max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+              <div
+                aria-hidden="true"
+                className={`absolute inset-0 z-40 rounded-2xl md:rounded-3xl backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
+                  hoveredBookSection !== null ? "opacity-100" : "opacity-0"
+                }`}
+              />
+
+              <div
+                onMouseEnter={() => setHoveredBookSection("intro")}
+                onMouseLeave={() => setHoveredBookSection((prev) => (prev === "intro" ? null : prev))}
+                className={`relative rounded-xl transition-all duration-300 ease-out ${
+                  hoveredBookSection === "intro" ? "z-50 scale-[1.17] shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
+                }`}
+              >
+                <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
+                  About Our Providers
+                </RevealText>
+                <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed">
+                  Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
+                  Our board-certified providers are committed to providing compassionate, personalized care for
+                  you and your family.
+                </RevealText>
+              </div>
+
+              <div
+                onMouseEnter={() => setHoveredBookSection("cta")}
+                onMouseLeave={() => setHoveredBookSection((prev) => (prev === "cta" ? null : prev))}
+                className={`relative mt-10 pt-10 border-t border-border rounded-xl transition-all duration-300 ease-out ${
+                  hoveredBookSection === "cta" ? "z-50 scale-[1.17] shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
+                }`}
+              >
+                <GlowCrescents idPrefix="book-" />
+                <RevealText as="h3" className="relative text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-4 text-balance">
+                  Book with the Provider of Your Choice
+                </RevealText>
+                <RevealText as="p" className="relative text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6 text-balance">
+                  Not sure who to see yet? Take a look at our full team of physicians, nurse practitioners, and
+                  behavioral health providers to find the right fit for you and your family.
+                </RevealText>
+                <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Button asChild size="lg" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
+                    <Link href="/book">Book Now</Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
+                    <Link href="/about/our-providers">See Providers</Link>
+                  </Button>
+                </div>
+              </div>
             </Reveal>
           </div>
-
-          <Reveal className="relative max-w-2xl mx-auto mt-10 px-6 text-center" delay={150}>
-            <GlowCrescents idPrefix="book-" />
-            <RevealText as="h3" className="relative text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-4 text-balance">
-              Book with the Provider of Your Choice
-            </RevealText>
-            <RevealText as="p" className="relative text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6 text-balance">
-              Not sure who to see yet? Take a look at our full team of physicians, nurse practitioners, and
-              behavioral health providers to find the right fit for you and your family.
-            </RevealText>
-            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
-                <Link href="/book">Book Now</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
-                <Link href="/about/our-providers">See Providers</Link>
-              </Button>
-            </div>
-          </Reveal>
         </div>
       </section>
 
