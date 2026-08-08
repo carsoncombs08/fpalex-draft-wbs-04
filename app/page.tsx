@@ -8,9 +8,9 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
-import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 import { Reveal } from "@/components/reveal"
 import { RevealText } from "@/components/reveal-text"
+import { GlowCrescents } from "@/components/glow-crescents"
 
 const HOME_SERVICES = [
   { href: "/services/primary-care", label: "Primary Care", image: "/assets/image/fpa-homepage-primary-care.webp" },
@@ -35,6 +35,21 @@ export default function Home() {
   const servicesRef = React.useRef<HTMLDivElement>(null)
   const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
   const providersRef = React.useRef<HTMLDivElement>(null)
+  const [aboutUsVisible, setAboutUsVisible] = React.useState(false)
+  const aboutUsRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const el = aboutUsRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setAboutUsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.2 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   React.useEffect(() => {
     const el = servicesRef.current
@@ -88,98 +103,8 @@ export default function Home() {
       {/* Hero Section (glow only fades when hovering directly over the button menu areas below) */}
       <section className="group/hero relative flex-1 flex flex-col items-center justify-center px-6 py-16 md:py-24">
           <div className="relative max-w-4xl mx-auto text-center">
-            {/* Blue glow — a pair of parenthesis-shaped crescents, "(  )", fading in from their thick outer edge across the page */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-24 sm:-inset-x-36 md:-inset-x-48 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-[0.8] transition-opacity duration-500 ease-in-out group-has-[.menu-zone:hover]/hero:opacity-0"
-            >
-              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
-                <defs>
-                  <linearGradient id="glowFadeLeft" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  fill="url(#glowFadeLeft)"
-                  d="M170,0 C20,80 20,520 170,600 C100,520 100,80 170,0 Z"
-                />
-              </svg>
-              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
-                <defs>
-                  <linearGradient id="glowFadeRight" x1="1" y1="0" x2="0" y2="0">
-                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  fill="url(#glowFadeRight)"
-                  d="M30,0 C180,80 180,520 30,600 C100,520 100,80 30,0 Z"
-                />
-              </svg>
-            </div>
-
-            {/* Second, outer pair of parenthesis-shaped crescents, placed between the inner glow and the page edge */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-36 sm:-inset-x-52 md:-inset-x-72 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-40 transition-opacity duration-500 ease-in-out group-has-[.menu-zone:hover]/hero:opacity-0"
-            >
-              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
-                <defs>
-                  <linearGradient id="glowFadeLeftOuter" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  fill="url(#glowFadeLeftOuter)"
-                  d="M170,0 C20,80 20,520 170,600 C100,520 100,80 170,0 Z"
-                />
-              </svg>
-              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
-                <defs>
-                  <linearGradient id="glowFadeRightOuter" x1="1" y1="0" x2="0" y2="0">
-                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  fill="url(#glowFadeRightOuter)"
-                  d="M30,0 C180,80 180,520 30,600 C100,520 100,80 30,0 Z"
-                />
-              </svg>
-            </div>
-
-            {/* Third, outermost pair of parenthesis-shaped crescents, placed closest to the page edge */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-x-48 sm:-inset-x-68 md:-inset-x-96 -top-20 md:-top-28 bottom-24 -z-10 flex items-center justify-between opacity-20 transition-opacity duration-500 ease-in-out group-has-[.menu-zone:hover]/hero:opacity-0"
-            >
-              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
-                <defs>
-                  <linearGradient id="glowFadeLeftOutermost" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  fill="url(#glowFadeLeftOutermost)"
-                  d="M170,0 C20,80 20,520 170,600 C100,520 100,80 170,0 Z"
-                />
-              </svg>
-              <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-48 sm:w-64 md:w-80 blur-lg">
-                <defs>
-                  <linearGradient id="glowFadeRightOutermost" x1="1" y1="0" x2="0" y2="0">
-                    <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  fill="url(#glowFadeRightOutermost)"
-                  d="M30,0 C180,80 180,520 30,600 C100,520 100,80 30,0 Z"
-                />
-              </svg>
-            </div>
+            {/* Blue glow — parenthesis-shaped crescents, "(  )", fading in from their thick outer edge across the page */}
+            <GlowCrescents idPrefix="hero-" fadeClassName="group-has-[.menu-zone:hover]/hero:opacity-0" />
 
             <RevealText as="h1" className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
               Family Practice Associates
@@ -298,16 +223,28 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section id="about-us" className="group scroll-mt-24 px-6 py-16 md:py-24" style={{ backgroundColor: "var(--brand-blue)" }}>
-        <div className="relative -mx-6 h-0 group-hover:h-[calc(100vw*0.4122)] mb-0 group-hover:mb-8 overflow-hidden transition-all duration-500 ease-in-out">
+      <section
+        id="about-us"
+        ref={aboutUsRef}
+        className="scroll-mt-24 px-6 py-16 md:py-24"
+        style={{ backgroundColor: "var(--brand-blue)" }}
+      >
+        <div
+          className={`relative max-w-3xl mx-auto aspect-[1804/1192] rounded-2xl md:rounded-3xl shadow-xl overflow-hidden mb-8 transition-all duration-700 ease-out ${
+            aboutUsVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-12"
+          }`}
+        >
           <Image
             src="/assets/image/fpa-providers-group.webp"
-            alt="Family Practice Associates of Lexington provider team"
+            alt="The Family Practice Associates of Lexington provider team"
             fill
-            className="object-cover object-top"
+            className="object-cover object-center"
           />
         </div>
-        <Reveal className="max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+        <Reveal
+          className="max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14"
+          delay={250}
+        >
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
           </RevealText>
@@ -388,8 +325,14 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <Reveal className="max-w-5xl mx-auto mt-10 px-6 text-left" delay={150}>
-            <ProvidersGrid providers={MD_PROVIDERS.slice(0, 4)} />
+          <Reveal className="relative max-w-2xl mx-auto mt-10 px-6 text-center" delay={150}>
+            <GlowCrescents idPrefix="book-" />
+            <RevealText as="h3" className="relative text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-6 text-balance">
+              Book with Your Provider Today
+            </RevealText>
+            <Button asChild size="lg" className="relative px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
+              <Link href="/book">Book Now</Link>
+            </Button>
           </Reveal>
 
           <div className="px-6 mt-6 flex justify-end">
@@ -401,7 +344,7 @@ export default function Home() {
       </section>
 
       {/* Newsletter Signup & Socials */}
-      <section id="newsletter-socials" className="w-full border-t-4 border-[var(--brand-blue)] scroll-mt-20">
+      <section id="newsletter-socials" className="w-full border-t-4 border-[var(--brand-blue)] scroll-mt-24">
         <div className="relative w-full py-16 md:py-20 px-6 flex items-center justify-center overflow-hidden transition-all duration-300 ease-in-out hover:scale-125 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]">
           <Image
             src="/assets/image/fpa-newsletter-bg.webp"
