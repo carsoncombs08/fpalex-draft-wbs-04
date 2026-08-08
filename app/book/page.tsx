@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/reveal"
+import { MD_PROVIDERS, NP_PA_PROVIDERS, BEHAVIORAL_HEALTH_PROVIDERS } from "@/components/providers-grid"
 import {
   UserPlus,
   UserCheck,
@@ -58,6 +59,8 @@ const LOCATIONS: { key: LocationKey; label: string }[] = [
   { key: "hamburg", label: "Hamburg Pavilion, Lexington" },
   { key: "brannon", label: "Brannon Crossing, Nicholasville" },
 ]
+
+const ALL_PROVIDERS = [...MD_PROVIDERS, ...NP_PA_PROVIDERS, ...BEHAVIORAL_HEALTH_PROVIDERS].map((p) => p.name)
 
 const TIMES_BY_DAY: Record<"today" | "tomorrow", string[]> = {
   today: ["1:00 PM", "2:30 PM", "4:00 PM"],
@@ -366,6 +369,7 @@ export default function BookPage() {
   const [patientType, setPatientType] = React.useState<PatientType | null>(null)
   const [reason, setReason] = React.useState<ReasonKey | null>(null)
   const [location, setLocation] = React.useState<LocationKey>("hamburg")
+  const [provider, setProvider] = React.useState<string>("")
   const [day, setDay] = React.useState<DayKey>("today")
   const [customDate, setCustomDate] = React.useState<Date | null>(null)
   const [time, setTime] = React.useState<string | null>(null)
@@ -396,6 +400,7 @@ export default function BookPage() {
     setPatientType(null)
     setReason(null)
     setLocation("hamburg")
+    setProvider("")
     setDay("today")
     setCustomDate(null)
     setTime(null)
@@ -520,6 +525,32 @@ export default function BookPage() {
                         </option>
                       ))}
                     </select>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-3">
+                      Provider (Optional)
+                    </h3>
+                    <select
+                      value={provider}
+                      onChange={(e) => setProvider(e.target.value)}
+                      className="w-full rounded-lg border border-border px-4 py-3 font-bold text-foreground bg-background"
+                    >
+                      <option value="">No preference</option>
+                      {ALL_PROVIDERS.map((name) => (
+                        <option key={name} value={name}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
+                    <Link
+                      href="/about/our-providers"
+                      className="mt-3 inline-flex items-center gap-1 text-sm font-bold hover:underline"
+                      style={{ color: "var(--brand-blue)" }}
+                    >
+                      See more providers
+                      <ChevronRight className="size-4" />
+                    </Link>
                   </div>
 
                   <div>
@@ -649,6 +680,10 @@ export default function BookPage() {
                     <p>
                       <span className="font-bold text-foreground">Location:</span>{" "}
                       <span className="text-muted-foreground">{locationLabel}</span>
+                    </p>
+                    <p>
+                      <span className="font-bold text-foreground">Provider:</span>{" "}
+                      <span className="text-muted-foreground">{provider || "No preference"}</span>
                     </p>
                     <p>
                       <span className="font-bold text-foreground">When:</span>{" "}

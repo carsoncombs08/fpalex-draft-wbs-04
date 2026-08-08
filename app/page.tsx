@@ -35,21 +35,6 @@ export default function Home() {
   const servicesRef = React.useRef<HTMLDivElement>(null)
   const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
   const providersRef = React.useRef<HTMLDivElement>(null)
-  const [aboutUsVisible, setAboutUsVisible] = React.useState(false)
-  const aboutUsRef = React.useRef<HTMLDivElement>(null)
-
-  React.useEffect(() => {
-    const el = aboutUsRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setAboutUsVisible(entry.isIntersecting)
-      },
-      { threshold: 0.2 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
 
   React.useEffect(() => {
     const el = servicesRef.current
@@ -223,17 +208,8 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section
-        id="about-us"
-        ref={aboutUsRef}
-        className="scroll-mt-24 px-6 py-16 md:py-24"
-        style={{ backgroundColor: "var(--brand-blue)" }}
-      >
-        <div
-          className={`relative max-w-3xl mx-auto aspect-[1804/1192] rounded-2xl md:rounded-3xl shadow-xl overflow-hidden mb-8 transition-all duration-500 ease-out hover:scale-105 hover:z-20 hover:shadow-[0_0_40px_12px_rgba(255,255,255,0.85)] ${
-            aboutUsVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-12"
-          }`}
-        >
+      <section id="about-us" className="group scroll-mt-24 px-6 py-16 md:py-24" style={{ backgroundColor: "var(--brand-blue)" }}>
+        <div className="relative -mx-6 h-0 group-hover:h-[calc(100vw*0.6608)] mb-0 group-hover:mb-8 overflow-hidden transition-all duration-500 ease-in-out">
           <Image
             src="/assets/image/fpa-providers-group.webp"
             alt="The Family Practice Associates of Lexington provider team"
@@ -328,22 +304,21 @@ export default function Home() {
           <Reveal className="relative max-w-2xl mx-auto mt-10 px-6 text-center" delay={150}>
             <GlowCrescents idPrefix="book-" />
             <RevealText as="h3" className="relative text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-4 text-balance">
-              Book with Your Provider Today
+              Book with the Provider of Your Choice
             </RevealText>
             <RevealText as="p" className="relative text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6 text-balance">
-              Already have a primary care provider at FPA? Skip the phone call and schedule your next visit
-              online in just a few minutes&mdash;same-day appointments are often available.
+              Not sure who to see yet? Take a look at our full team of physicians, nurse practitioners, and
+              behavioral health providers to find the right fit for you and your family.
             </RevealText>
-            <Button asChild size="lg" className="relative px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
-              <Link href="/book">Book Now</Link>
-            </Button>
+            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild size="lg" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
+                <Link href="/book">Book Now</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
+                <Link href="/about/our-providers">See Providers</Link>
+              </Button>
+            </div>
           </Reveal>
-
-          <div className="px-6 mt-6 flex justify-end">
-            <Button asChild size="lg">
-              <Link href="/about/our-providers">Learn More</Link>
-            </Button>
-          </div>
         </div>
       </section>
 
