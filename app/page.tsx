@@ -307,7 +307,7 @@ export default function Home() {
             className="object-cover object-top"
           />
         </div>
-        <Reveal className="max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+        <Reveal className="max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14">
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
           </RevealText>
@@ -375,8 +375,8 @@ export default function Home() {
         </div>
 
         <div className="lg:px-[17%] xl:px-[19%]">
-          <div className="px-6 py-10 md:py-14" style={{ backgroundColor: "var(--brand-blue)" }}>
-            <Reveal className="max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+          <div style={{ backgroundColor: "var(--brand-blue)" }}>
+            <Reveal className="max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14">
               <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
                 About Our Providers
               </RevealText>
