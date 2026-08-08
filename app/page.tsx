@@ -35,7 +35,7 @@ export default function Home() {
   const servicesRef = React.useRef<HTMLDivElement>(null)
   const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
   const providersRef = React.useRef<HTMLDivElement>(null)
-  const [hoveredBookSection, setHoveredBookSection] = React.useState<"intro" | "cta" | null>(null)
+  const [hoveredAboutUsBox, setHoveredAboutUsBox] = React.useState<"mission" | "practice" | null>(null)
   const [aboutUsVisible, setAboutUsVisible] = React.useState(false)
   const [aboutUsPhotoDone, setAboutUsPhotoDone] = React.useState(false)
   const aboutUsRef = React.useRef<HTMLDivElement>(null)
@@ -236,9 +236,8 @@ export default function Home() {
         style={{ backgroundColor: "var(--brand-blue)" }}
       >
         <div
-          className={`relative -mx-6 aspect-[1804/1192] overflow-hidden mb-8 transition-all duration-700 ease-out ${
-            aboutUsVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-16"
-          }`}
+          className="relative -mx-6 aspect-[1804/1192] overflow-hidden mb-8 transition-[clip-path] duration-500 ease-out"
+          style={{ clipPath: aboutUsVisible ? "inset(0 0 0% 0)" : "inset(0 0 100% 0)" }}
           onTransitionEnd={(e) => {
             if (e.target === e.currentTarget && aboutUsVisible) setAboutUsPhotoDone(true)
           }}
@@ -258,32 +257,68 @@ export default function Home() {
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
           </RevealText>
-          <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Mission:</RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-8">
-            Serving Central Kentucky for over 40 years, Family Practice Associates of Lexington&mdash;our
-            mission is simple: to provide preventive, diagnostic, and therapeutic health services with
-            attention to individual needs. We are dedicated to delivering family-centered care from birth
-            through the later years in an affordable, high-quality manner.{" "}
-            <span className="font-bold text-foreground">Your Family. Your Health. Our Passion.</span>
-          </RevealText>
-          <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Practice:</RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
-            Family Practice Associates of Lexington (FPA) was founded by Dr. Jeffrey Foxx in 1983 and has
-            since become one of the largest family practice groups in Central Kentucky. With over 20 primary
-            care providers, including physicians, nurse practitioners, physician assistants, and a Licensed
-            Professional Clinical Counselor, FPA is dedicated to providing family-centered care from birth to
-            later years. Recognized as a Patient-Centered Medical Home (PCMH) by the National Commission on
-            Quality Assurance, FPA&apos;s professionally trained staff ensures award-winning care.
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
-            The PCMH model emphasizes accessibility, continuity, and comprehensive care, with patients
-            actively involved in decision-making. FPA&apos;s patient care teams, under the direction of the
-            primary care provider (PCP), collectively take responsibility for ongoing patient care. Through
-            integration with health information technology, including a patient portal and electronic health
-            records (EHR), FPA enhances patient care, communication, and education. By offering extended
-            hours and same-day scheduling, FPA aims to provide ultimate convenience to simplify managing your
-            health.
-          </RevealText>
+
+          <div className="relative mb-8">
+            <div
+              aria-hidden="true"
+              className={`absolute -inset-4 z-40 rounded-3xl backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
+                hoveredAboutUsBox !== null ? "opacity-100" : "opacity-0"
+              }`}
+            />
+
+            <div
+              onMouseEnter={() => setHoveredAboutUsBox("mission")}
+              onMouseLeave={() => setHoveredAboutUsBox((prev) => (prev === "mission" ? null : prev))}
+              className={`relative -rotate-2 p-6 mb-8 transition-all duration-300 ease-out ${
+                hoveredAboutUsBox === "mission" ? "z-50 scale-[1.17] shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
+              }`}
+              style={{
+                borderRadius: "255px 15px 225px 15px / 15px 225px 15px 255px",
+                backgroundColor: "color-mix(in oklab, var(--brand-blue) 6%, transparent)",
+              }}
+            >
+              <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Mission:</RevealText>
+              <RevealText as="p" className="text-muted-foreground leading-relaxed">
+                Serving Central Kentucky for over 40 years, Family Practice Associates of Lexington&mdash;our
+                mission is simple: to provide preventive, diagnostic, and therapeutic health services with
+                attention to individual needs. We are dedicated to delivering family-centered care from birth
+                through the later years in an affordable, high-quality manner.{" "}
+                <span className="font-bold text-foreground">Your Family. Your Health. Our Passion.</span>
+              </RevealText>
+            </div>
+
+            <div
+              onMouseEnter={() => setHoveredAboutUsBox("practice")}
+              onMouseLeave={() => setHoveredAboutUsBox((prev) => (prev === "practice" ? null : prev))}
+              className={`relative rotate-2 p-6 transition-all duration-300 ease-out ${
+                hoveredAboutUsBox === "practice" ? "z-50 scale-[1.17] shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
+              }`}
+              style={{
+                borderRadius: "15px 255px 15px 225px / 225px 15px 255px 15px",
+                backgroundColor: "color-mix(in oklab, var(--brand-blue) 6%, transparent)",
+              }}
+            >
+              <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Practice:</RevealText>
+              <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
+                Family Practice Associates of Lexington (FPA) was founded by Dr. Jeffrey Foxx in 1983 and has
+                since become one of the largest family practice groups in Central Kentucky. With over 20 primary
+                care providers, including physicians, nurse practitioners, physician assistants, and a Licensed
+                Professional Clinical Counselor, FPA is dedicated to providing family-centered care from birth to
+                later years. Recognized as a Patient-Centered Medical Home (PCMH) by the National Commission on
+                Quality Assurance, FPA&apos;s professionally trained staff ensures award-winning care.
+              </RevealText>
+              <RevealText as="p" className="text-muted-foreground leading-relaxed">
+                The PCMH model emphasizes accessibility, continuity, and comprehensive care, with patients
+                actively involved in decision-making. FPA&apos;s patient care teams, under the direction of the
+                primary care provider (PCP), collectively take responsibility for ongoing patient care. Through
+                integration with health information technology, including a patient portal and electronic health
+                records (EHR), FPA enhances patient care, communication, and education. By offering extended
+                hours and same-day scheduling, FPA aims to provide ultimate convenience to simplify managing your
+                health.
+              </RevealText>
+            </div>
+          </div>
+
           <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
             Click here to discover why understanding what it means to be a Patient Center Medical Home is
             important for you:
@@ -323,38 +358,22 @@ export default function Home() {
 
         <div className="lg:px-[17%] xl:px-[19%]">
           <div className="px-6 py-10 md:py-14" style={{ backgroundColor: "var(--brand-blue)" }}>
-            <Reveal className="relative max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
-              <div
-                aria-hidden="true"
-                className={`absolute inset-0 z-40 rounded-2xl md:rounded-3xl backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
-                  hoveredBookSection !== null ? "opacity-100" : "opacity-0"
-                }`}
-              />
-
-              <div
-                onMouseEnter={() => setHoveredBookSection("intro")}
-                onMouseLeave={() => setHoveredBookSection((prev) => (prev === "intro" ? null : prev))}
-                className={`relative rounded-xl transition-all duration-300 ease-out ${
-                  hoveredBookSection === "intro" ? "z-50 scale-[1.17] shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
-                }`}
-              >
+            <Reveal className="max-w-3xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
+              <div>
                 <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
                   About Our Providers
                 </RevealText>
-                <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed">
+                <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed mb-6">
                   Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
                   Our board-certified providers are committed to providing compassionate, personalized care for
                   you and your family.
                 </RevealText>
+                <Button asChild size="lg" variant="outline" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
+                  <Link href="/about/our-providers">See Providers</Link>
+                </Button>
               </div>
 
-              <div
-                onMouseEnter={() => setHoveredBookSection("cta")}
-                onMouseLeave={() => setHoveredBookSection((prev) => (prev === "cta" ? null : prev))}
-                className={`relative mt-10 pt-10 border-t border-border rounded-xl transition-all duration-300 ease-out ${
-                  hoveredBookSection === "cta" ? "z-50 scale-[1.17] shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
-                }`}
-              >
+              <div className="relative mt-10 pt-10 border-t border-border">
                 <GlowCrescents idPrefix="book-" />
                 <RevealText as="h3" className="relative text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-4 text-balance">
                   Book with the Provider of Your Choice
@@ -363,14 +382,9 @@ export default function Home() {
                   Not sure who to see yet? Take a look at our full team of physicians, nurse practitioners, and
                   behavioral health providers to find the right fit for you and your family.
                 </RevealText>
-                <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Button asChild size="lg" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
-                    <Link href="/book">Book Now</Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
-                    <Link href="/about/our-providers">See Providers</Link>
-                  </Button>
-                </div>
+                <Button asChild size="lg" className="relative px-6 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]">
+                  <Link href="/book">Book Now</Link>
+                </Button>
               </div>
             </Reveal>
           </div>
