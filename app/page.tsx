@@ -35,6 +35,8 @@ export default function Home() {
   const servicesRef = React.useRef<HTMLDivElement>(null)
   const [providersImagesVisible, setProvidersImagesVisible] = React.useState(false)
   const providersRef = React.useRef<HTMLDivElement>(null)
+  const [aboutUsVisible, setAboutUsVisible] = React.useState(false)
+  const aboutUsRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
     const el = servicesRef.current
@@ -44,6 +46,19 @@ export default function Home() {
         setServicesVisible(entry.isIntersecting)
       },
       { threshold: 0.15 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  React.useEffect(() => {
+    const el = aboutUsRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setAboutUsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.2 },
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -298,8 +313,12 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section id="about-us" className="group scroll-mt-24 px-6 py-16 md:py-24" style={{ backgroundColor: "var(--brand-blue)" }}>
-        <div className="relative -mx-6 h-0 group-hover:h-[calc(100vw*0.4122)] mb-0 group-hover:mb-8 overflow-hidden transition-all duration-500 ease-in-out">
+      <section id="about-us" ref={aboutUsRef} className="scroll-mt-24 px-6 py-16 md:py-24" style={{ backgroundColor: "var(--brand-blue)" }}>
+        <div
+          className={`relative -mx-6 overflow-hidden transition-all duration-500 ease-in-out ${
+            aboutUsVisible ? "h-[calc(100vw*0.4122)] mb-8" : "h-0 mb-0"
+          }`}
+        >
           <Image
             src="/assets/image/fpa-providers-group.webp"
             alt="Family Practice Associates of Lexington provider team"
@@ -307,7 +326,7 @@ export default function Home() {
             className="object-cover object-top"
           />
         </div>
-        <Reveal className="max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14">
+        <Reveal delay={500} className="max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14">
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
             About Us
           </RevealText>
