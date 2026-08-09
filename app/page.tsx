@@ -8,7 +8,6 @@ import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
-import { MD_PROVIDERS, ProvidersGrid } from "@/components/providers-grid"
 import { Reveal } from "@/components/reveal"
 import { RevealText } from "@/components/reveal-text"
 
@@ -395,26 +394,68 @@ export default function Home() {
 
         <div className="lg:px-[17%] xl:px-[19%]">
           <div style={{ backgroundColor: "var(--brand-blue)" }}>
-            <Reveal className="max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14">
-              <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
-                About Our Providers
-              </RevealText>
-              <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed">
-                Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
-                Our board-certified providers are committed to providing compassionate, personalized care for
-                you and your family.
-              </RevealText>
+            <Reveal className="relative max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14 overflow-hidden">
+              {/* Halo glow, same crescent motif as the hero, centered on the divider */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 h-40 md:h-56 flex items-center justify-center opacity-70"
+              >
+                <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-20 md:w-28 -mr-2 md:-mr-4 blur-lg">
+                  <defs>
+                    <linearGradient id="providersGlowLeft" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
+                      <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#providersGlowLeft)" d="M170,0 C20,80 20,520 170,600 C100,520 100,80 170,0 Z" />
+                </svg>
+                <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-20 md:w-28 -ml-2 md:-ml-4 blur-lg">
+                  <defs>
+                    <linearGradient id="providersGlowRight" x1="1" y1="0" x2="0" y2="0">
+                      <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
+                      <stop offset="100%" stopColor="var(--brand-blue)" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#providersGlowRight)" d="M30,0 C180,80 180,520 30,600 C100,520 100,80 30,0 Z" />
+                </svg>
+              </div>
+
+              <div className="relative z-10">
+                <RevealText as="h2" className="text-[2.344rem] md:text-[2.813rem] font-extrabold tracking-tight text-foreground mb-6 text-balance">
+                  About Our Providers
+                </RevealText>
+                <RevealText as="p" className="text-xl text-muted-foreground leading-relaxed mb-8">
+                  Meet the dedicated team of healthcare professionals at Family Practice Associates of Lexington.
+                  Our board-certified providers are committed to providing compassionate, personalized care for
+                  you and your family.
+                </RevealText>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+                >
+                  <Link href="/about/our-providers">See Providers</Link>
+                </Button>
+
+                <div className="my-10 border-t border-border" />
+
+                <RevealText as="h3" className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-4 text-balance">
+                  Book with the Provider of Your Choice
+                </RevealText>
+                <RevealText as="p" className="text-muted-foreground leading-relaxed mb-8">
+                  Not sure who to see yet? Take a look at our full team of physicians, nurse practitioners, and
+                  behavioral health providers to find the right fit for you and your family.
+                </RevealText>
+                <Button
+                  asChild
+                  size="lg"
+                  className="transition-all duration-200 hover:scale-105 hover:shadow-[0_0_18px_var(--brand-blue)]"
+                >
+                  <Link href="/book">Book Now</Link>
+                </Button>
+              </div>
             </Reveal>
-          </div>
-
-          <Reveal className="max-w-5xl mx-auto mt-10 px-6 text-left" delay={150}>
-            <ProvidersGrid providers={MD_PROVIDERS.slice(0, 4)} />
-          </Reveal>
-
-          <div className="px-6 mt-6 flex justify-end">
-            <Button asChild size="lg">
-              <Link href="/about/our-providers">Learn More</Link>
-            </Button>
           </div>
         </div>
       </section>
