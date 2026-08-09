@@ -17,7 +17,11 @@ export function LocationsHoursSection() {
             <br />
             Lexington, KY 40509
           </RevealText>
-          <RevealText as="p" className="text-xl font-bold text-white mb-6">(859) 278-5007</RevealText>
+          <RevealText as="p" className="text-xl font-bold text-white mb-6">
+            <a href="tel:+18592785007" className="hover:underline">
+              (859) 278-5007
+            </a>
+          </RevealText>
           <Button asChild size="lg" variant="secondary" className="bg-white text-[var(--brand-blue)] hover:bg-white/90">
             <Link
               href="https://www.google.com/maps/search/?api=1&query=1775+Alysheba+Way+Suite+201+Lexington+KY+40509"
@@ -39,7 +43,11 @@ export function LocationsHoursSection() {
             <br />
             Nicholasville, KY 40356
           </RevealText>
-          <RevealText as="p" className="text-xl font-bold text-white mb-6">(859) 278-5007</RevealText>
+          <RevealText as="p" className="text-xl font-bold text-white mb-6">
+            <a href="tel:+18592785007" className="hover:underline">
+              (859) 278-5007
+            </a>
+          </RevealText>
           <Button asChild size="lg" variant="secondary" className="bg-white text-[var(--brand-blue)] hover:bg-white/90">
             <Link
               href="https://www.google.com/maps/search/?api=1&query=615+East+Brannon+Road+Nicholasville+KY+40356"
