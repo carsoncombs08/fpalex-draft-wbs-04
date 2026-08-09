@@ -23,29 +23,29 @@ const FAQS: FaqItem[] = [
     body: (
       <>
         <p className="text-muted-foreground leading-relaxed mb-4">
-          <span className="font-bold text-gray-900">You must:</span>
+          <span className="font-bold text-foreground">You must:</span>
           <br />
           Have Medicare Part D prescription coverage and not have received GLP-1 medication previously through
           your Medicare Part D.
         </p>
-        <p className="font-bold text-gray-900 mb-2">You must NOT have:</p>
+        <p className="font-bold text-foreground mb-2">You must NOT have:</p>
         <ul className="list-disc pl-6 space-y-1 text-muted-foreground mb-4">
           <li>Type 2 Diabetes</li>
           <li>Moderate-to-Severe Sleep Apnea</li>
           <li>Metabolic Dysfunction-Associated Steatohepatitis (MASH)</li>
         </ul>
         <p className="text-muted-foreground leading-relaxed mb-2">
-          <span className="font-bold text-gray-900">You must meet ONE of the following criteria:</span>
+          <span className="font-bold text-foreground">You must meet ONE of the following criteria:</span>
           <br />
           BMI 35 or higher; or
         </p>
-        <p className="font-bold text-gray-900 mb-2">BMI 30 or higher plus one of these conditions:</p>
+        <p className="font-bold text-foreground mb-2">BMI 30 or higher plus one of these conditions:</p>
         <ul className="list-disc pl-6 space-y-1 text-muted-foreground mb-4">
           <li>Heart Failure with Preserved Ejection Fraction (HFpEF)</li>
           <li>Uncontrolled High Blood Pressure</li>
           <li>Chronic Kidney Disease (Stage 3a or higher)</li>
         </ul>
-        <p className="font-bold text-gray-900 mb-2">BMI 27 or higher and one of these conditions:</p>
+        <p className="font-bold text-foreground mb-2">BMI 27 or higher and one of these conditions:</p>
         <ul className="list-disc pl-6 space-y-1 text-muted-foreground mb-4">
           <li>Prediabetes</li>
           <li>Prior Heart Attack</li>
@@ -55,7 +55,7 @@ const FAQS: FaqItem[] = [
         <p className="text-muted-foreground leading-relaxed mb-4">
           Your provider can help you determine if you meet all program requirements.
         </p>
-        <p className="font-bold text-gray-900 mb-2">Covered Medications</p>
+        <p className="font-bold text-foreground mb-2">Covered Medications</p>
         <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
           <li>Wegovy&reg; injections and tablets</li>
           <li>Zepbound&reg; KwikPen&reg;. Single-dose Zepbound pens and vials are not covered.</li>

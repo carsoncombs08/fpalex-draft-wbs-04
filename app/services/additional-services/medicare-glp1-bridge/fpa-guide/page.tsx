@@ -75,13 +75,13 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
           <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight" style={{ color: "var(--brand-blue)" }}>
             Medicare GLP-1 Bridge Program
           </RevealText>
-          <RevealText as="p" className="text-lg font-bold text-gray-900 mb-1">Patient Information &amp; Frequently Asked Questions</RevealText>
+          <RevealText as="p" className="text-lg font-bold text-foreground mb-1">Patient Information &amp; Frequently Asked Questions</RevealText>
           <RevealText as="p" className="text-sm text-muted-foreground mb-8">Effective July 1, 2026</RevealText>
 
           <RevealText as="h3" className="text-xl md:text-2xl font-extrabold tracking-tight mb-3" style={{ color: "var(--brand-blue)" }}>
             What is the Medicare GLP-1 Bridge Program?
           </RevealText>
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-8">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-8">
             The Medicare GLP-1 Bridge Program may provide coverage for certain weight-loss medications for
             eligible Medicare patients.
           </RevealText>
@@ -89,47 +89,47 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
           <RevealText as="h3" className="text-xl md:text-2xl font-extrabold tracking-tight mb-3" style={{ color: "var(--brand-blue)" }}>
             Who Qualifies?
           </RevealText>
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-4">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-4">
             <span className="font-bold">You must:</span>
             <br />
             Have Medicare Part D prescription coverage and have not received GLP-1 medication previously through
             your Medicare Part D.
           </RevealText>
 
-          <RevealText as="p" className="font-bold text-gray-900 mb-2">You must NOT have:</RevealText>
-          <ul className="list-disc pl-6 space-y-1 text-gray-900 mb-4">
+          <RevealText as="p" className="font-bold text-foreground mb-2">You must NOT have:</RevealText>
+          <ul className="list-disc pl-6 space-y-1 text-foreground mb-4">
             <li>Type 2 Diabetes</li>
             <li>Moderate-to-Severe Sleep Apnea</li>
             <li>Metabolic Dysfunction-Associated Steatohepatitis (MASH)</li>
           </ul>
 
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-2">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-2">
             <span className="font-bold">You must meet ONE of the following criteria:</span>
             <br />
             BMI 35 or higher; or
           </RevealText>
 
-          <RevealText as="p" className="font-bold text-gray-900 mb-2">BMI 30 or higher plus one of these conditions:</RevealText>
-          <ul className="list-disc pl-6 space-y-1 text-gray-900 mb-4">
+          <RevealText as="p" className="font-bold text-foreground mb-2">BMI 30 or higher plus one of these conditions:</RevealText>
+          <ul className="list-disc pl-6 space-y-1 text-foreground mb-4">
             <li>Heart Failure with Preserved Ejection Fraction (HFpEF)</li>
             <li>Uncontrolled High Blood Pressure</li>
             <li>Chronic Kidney Disease (Stage 3a or higher)</li>
           </ul>
 
-          <RevealText as="p" className="font-bold text-gray-900 mb-2">BMI 27 or higher and one of these conditions:</RevealText>
-          <ul className="list-disc pl-6 space-y-1 text-gray-900 mb-4">
+          <RevealText as="p" className="font-bold text-foreground mb-2">BMI 27 or higher and one of these conditions:</RevealText>
+          <ul className="list-disc pl-6 space-y-1 text-foreground mb-4">
             <li>Prediabetes</li>
             <li>Prior Heart Attack</li>
             <li>Prior Stroke</li>
             <li>Symptomatic Peripheral Artery Disease (PAD)</li>
           </ul>
 
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-8">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-8">
             Your provider can help you determine if you meet all program requirements.
           </RevealText>
 
-          <RevealText as="p" className="font-bold text-gray-900 mb-2">Covered Medications</RevealText>
-          <ul className="list-disc pl-6 space-y-1 text-gray-900">
+          <RevealText as="p" className="font-bold text-foreground mb-2">Covered Medications</RevealText>
+          <ul className="list-disc pl-6 space-y-1 text-foreground">
             <li>Wegovy&reg; injections and tablets</li>
             <li>Zepbound&reg; KwikPen&reg;. Single-dose Zepbound pens and vials are not covered.</li>
             <li>Foundayo&reg; tablets</li>

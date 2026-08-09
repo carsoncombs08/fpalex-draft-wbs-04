@@ -60,12 +60,12 @@ export default function PatientFormsAndRecordsRequestPage() {
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             Medical and Billing Records Requests
           </RevealText>
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-2">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-2">
             Family Practice Associates (FPA) respects the health information rights of our patients and has
             partnered with Provider1st to securely provide copies of medical records to patients, guardians/legal
             representatives, or third-party requestors with appropriate HIPAA authorization.
           </RevealText>
-          <RevealText as="p" className="text-gray-900 leading-relaxed">
+          <RevealText as="p" className="text-foreground leading-relaxed">
             If you have any questions or would like to check the status of your request, you can quickly and
             conveniently contact Provider1st by email at{" "}
             <a href="mailto:requests@provider1st.com" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
@@ -83,13 +83,13 @@ export default function PatientFormsAndRecordsRequestPage() {
           >
             Records Requests
           </RevealText>
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-6">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-6">
             FPA also partners with Provider1st to provide you or your authorized representative with itemized
             copies of your billing statements upon request, for purposes such as insurance reimbursement or HSA
             claims.
           </RevealText>
           <ul className="space-y-2 mb-8">
-            <li className="flex gap-2 text-gray-900">
+            <li className="flex gap-2 text-foreground">
               <span className="shrink-0">•</span>
               <span>
                 <span className="font-bold">Email or Fax Requests</span>: If you already have a completed HIPAA
@@ -117,7 +117,7 @@ export default function PatientFormsAndRecordsRequestPage() {
                 </ul>
               </span>
             </li>
-            <li className="flex gap-2 text-gray-900">
+            <li className="flex gap-2 text-foreground">
               <span className="shrink-0">•</span>
               <span>
                 <span className="font-bold">Check Request Status</span>: Call 855-514-2378 to check the status of

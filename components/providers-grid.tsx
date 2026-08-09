@@ -174,7 +174,7 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
                     <X className="size-4" />
                   </button>
                 </div>
-                <div className="rounded-b-xl bg-white p-4 shadow-2xl">
+                <div className="rounded-b-xl bg-background p-4 shadow-2xl">
                   <h3 className="text-lg font-extrabold mb-1" style={{ color: "var(--brand-blue)" }}>
                     {provider.name}
                   </h3>

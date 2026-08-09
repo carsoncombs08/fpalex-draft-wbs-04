@@ -65,11 +65,11 @@ export default function MedicareGlp1BridgePage() {
           <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
             What You Need to Know for July 1, 2026
           </RevealText>
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-4">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-4">
             Starting July 1, 2026, Medicare has a new program called Medicare GLP-1 Bridge to help you pay for
             certain GLP-1 weight loss medicines. Medicare GLP-1 Bridge covers these GLP-1 drugs:
           </RevealText>
-          <ul className="list-disc pl-6 space-y-1 text-gray-900 mb-4">
+          <ul className="list-disc pl-6 space-y-1 text-foreground mb-4">
             <li>Foundayo&reg; (tablet)</li>
             <li>Wegovy&reg; (injection or tablet)</li>
             <li>
@@ -77,7 +77,7 @@ export default function MedicareGlp1BridgePage() {
               covered.
             </li>
           </ul>
-          <p className="text-gray-900 leading-relaxed mb-4">
+          <p className="text-foreground leading-relaxed mb-4">
             Your cost for these drugs under this program is $50 per month, no matter your income level. This $50
             payment doesn&apos;t count toward your Medicare drug plan deductible or yearly out-of-pocket limit.
             These drugs aren&apos;t eligible for the Medicare Prescription Payment Plan.
@@ -86,10 +86,10 @@ export default function MedicareGlp1BridgePage() {
           <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10" style={{ color: "var(--brand-blue)" }}>
             Am I eligible?
           </RevealText>
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-4">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-4">
             To get the GLP-1 drugs listed above under this program, you must meet all four of these requirements:
           </RevealText>
-          <ul className="list-disc pl-6 space-y-3 text-gray-900 mb-4">
+          <ul className="list-disc pl-6 space-y-3 text-foreground mb-4">
             <li>
               You have Medicare Part D drug coverage, under either a standalone Medicare Drug Plan or a Medicare
               health plan that includes drug coverage.
@@ -145,7 +145,7 @@ export default function MedicareGlp1BridgePage() {
           <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10" style={{ color: "var(--brand-blue)" }}>
             How to get GLP-1 drugs through Medicare GLP-1 Bridge
           </RevealText>
-          <ul className="list-disc pl-6 space-y-2 text-gray-900 mb-6">
+          <ul className="list-disc pl-6 space-y-2 text-foreground mb-6">
             <li>Talk to your doctor about whether a GLP-1 drug is right for you and if you qualify for this program.</li>
             <li>If one of the drugs covered is right for you, your doctor will send a prescription to the pharmacy.</li>
             <li>
@@ -166,7 +166,7 @@ export default function MedicareGlp1BridgePage() {
             </li>
           </ul>
 
-          <RevealText as="p" className="text-gray-900 leading-relaxed mb-4">
+          <RevealText as="p" className="text-foreground leading-relaxed mb-4">
             Visit{" "}
             <a
               href="https://www.medicare.gov/"
@@ -199,7 +199,7 @@ export default function MedicareGlp1BridgePage() {
             <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center" style={{ color: "var(--brand-blue)" }}>
               Questions?
             </RevealText>
-            <RevealText as="p" className="text-gray-900 leading-relaxed text-center">
+            <RevealText as="p" className="text-foreground leading-relaxed text-center">
               Please contact Family Practice Associates of Lexington at{" "}
               <a href="tel:+18592785007" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
                 (859) 278-5007
