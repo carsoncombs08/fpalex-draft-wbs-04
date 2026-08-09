@@ -323,7 +323,7 @@ export default function Home() {
               src="/assets/image/fpa-providers-group.webp"
               alt="Family Practice Associates of Lexington provider team"
               fill
-              className="object-cover object-top"
+              className="object-contain"
             />
           </div>
         </div>
