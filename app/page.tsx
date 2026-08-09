@@ -313,17 +313,19 @@ export default function Home() {
 
       {/* About Us */}
       <section id="about-us" ref={aboutUsRef} className="scroll-mt-24 px-6 py-16 md:py-24" style={{ backgroundColor: "var(--brand-blue)" }}>
-        <div
-          className={`relative -mx-6 overflow-hidden transition-all duration-500 ease-in-out ${
-            aboutUsVisible ? "h-[calc(100vw*0.4122)] mb-8" : "h-0 mb-0"
-          }`}
-        >
-          <Image
-            src="/assets/image/fpa-providers-group.webp"
-            alt="Family Practice Associates of Lexington provider team"
-            fill
-            className="object-cover object-top"
-          />
+        <div className="relative -mx-6 h-[calc(100vw*0.4122)] mb-8 overflow-hidden">
+          <div
+            className={`absolute inset-0 origin-top transition-transform duration-500 ease-in-out ${
+              aboutUsVisible ? "scale-y-100" : "scale-y-0"
+            }`}
+          >
+            <Image
+              src="/assets/image/fpa-providers-group.webp"
+              alt="Family Practice Associates of Lexington provider team"
+              fill
+              className="object-cover object-top"
+            />
+          </div>
         </div>
         <Reveal delay={500} className="max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14">
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
@@ -395,12 +397,12 @@ export default function Home() {
         <div className="lg:px-[17%] xl:px-[19%]">
           <div style={{ backgroundColor: "var(--brand-blue)" }}>
             <Reveal className="relative max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14 overflow-hidden">
-              {/* Halo glow, same crescent motif as the hero, centered on the divider */}
+              {/* Halo glow framing the text from the outside, same crescent motif as the hero */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 h-40 md:h-56 flex items-center justify-center opacity-70"
+                className="pointer-events-none absolute inset-y-0 left-0 z-0 w-24 md:w-36 opacity-70"
               >
-                <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-20 md:w-28 -mr-2 md:-mr-4 blur-lg">
+                <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-full blur-lg">
                   <defs>
                     <linearGradient id="providersGlowLeft" x1="0" y1="0" x2="1" y2="0">
                       <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
@@ -409,7 +411,12 @@ export default function Home() {
                   </defs>
                   <path fill="url(#providersGlowLeft)" d="M170,0 C20,80 20,520 170,600 C100,520 100,80 170,0 Z" />
                 </svg>
-                <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-20 md:w-28 -ml-2 md:-ml-4 blur-lg">
+              </div>
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 right-0 z-0 w-24 md:w-36 opacity-70"
+              >
+                <svg viewBox="0 0 200 600" preserveAspectRatio="none" className="h-full w-full blur-lg">
                   <defs>
                     <linearGradient id="providersGlowRight" x1="1" y1="0" x2="0" y2="0">
                       <stop offset="0%" stopColor="var(--brand-blue)" stopOpacity="1" />
@@ -438,7 +445,7 @@ export default function Home() {
                   <Link href="/about/our-providers">See Providers</Link>
                 </Button>
 
-                <div className="my-10 border-t border-border" />
+                <div className="my-10 md:my-14" />
 
                 <RevealText as="h3" className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-4 text-balance">
                   Book with the Provider of Your Choice
