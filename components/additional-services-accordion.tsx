@@ -189,7 +189,7 @@ function linkifyPhone(text: string): React.ReactNode {
   if (parts.length === 1) return text
   return parts.map((part, i) =>
     /^\(?859\)?[-.\s]?278[-.\s]?5007$/.test(part) ? (
-      <a key={i} href="tel:+18592785007" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+      <a key={i} href="tel:+18592785007" className="hover:underline text-foreground">
         {part}
       </a>
     ) : (
@@ -281,7 +281,7 @@ export function AdditionalServicesAccordion() {
             >
               {imageBlock}
               <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
-                <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
+                <span className="text-xl md:text-2xl font-extrabold text-foreground">
                   {service.title}
                 </span>
                 <span className="flex items-center justify-center size-11 rounded-full bg-black text-white shrink-0">
@@ -303,7 +303,7 @@ export function AdditionalServicesAccordion() {
           >
             {imageBlock}
             <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
-              <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
+              <span className="text-xl md:text-2xl font-extrabold text-foreground">
                 {service.title}
               </span>
               <span className="flex items-center justify-center size-11 rounded-full bg-black text-white shrink-0">

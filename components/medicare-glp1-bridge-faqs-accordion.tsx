@@ -168,7 +168,7 @@ export function MedicareGlp1BridgeFaqsAccordion() {
             }`}
           >
             <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
-              <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
+              <span className="text-xl md:text-2xl font-extrabold text-foreground">
                 {faq.title}
               </span>
               <span

@@ -39,7 +39,7 @@ export default function PatientFormsAndRecordsRequestPage() {
       <nav aria-label="Breadcrumb" className="px-6 py-4">
         <ol className="max-w-4xl mx-auto flex items-center gap-2 text-sm">
           <li>
-            <Link href="/" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="/" className="hover:underline text-foreground">
               Home
             </Link>
           </li>
@@ -50,14 +50,14 @@ export default function PatientFormsAndRecordsRequestPage() {
           <li>
             <ChevronRight className="size-4 text-muted-foreground" />
           </li>
-          <li style={{ color: "var(--brand-blue)" }}>Patient Forms and Records Request</li>
+          <li className="text-foreground">Patient Forms and Records Request</li>
         </ol>
       </nav>
 
       {/* Content */}
       <section className="px-6 py-10 md:py-14 flex-1" style={{ backgroundColor: "var(--brand-blue)" }}>
         <Reveal className="max-w-4xl mx-auto text-center mb-10 bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
-          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-foreground">
             Medical and Billing Records Requests
           </RevealText>
           <RevealText as="p" className="text-foreground leading-relaxed mb-2">
@@ -68,7 +68,7 @@ export default function PatientFormsAndRecordsRequestPage() {
           <RevealText as="p" className="text-foreground leading-relaxed">
             If you have any questions or would like to check the status of your request, you can quickly and
             conveniently contact Provider1st by email at{" "}
-            <a href="mailto:requests@provider1st.com" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+            <a href="mailto:requests@provider1st.com" className="hover:underline text-foreground">
               requests@provider1st.com
             </a>{" "}
             or by phone:
@@ -78,8 +78,7 @@ export default function PatientFormsAndRecordsRequestPage() {
         <Reveal className="max-w-4xl mx-auto mt-10 bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
           <RevealText
             as="h2"
-            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-center"
-            style={{ color: "var(--brand-blue)" }}
+            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-center text-foreground"
           >
             Records Requests
           </RevealText>
@@ -101,8 +100,7 @@ export default function PatientFormsAndRecordsRequestPage() {
                       <span className="font-bold">Email:</span>{" "}
                       <a
                         href="mailto:requests@provider1st.com"
-                        className="hover:underline"
-                        style={{ color: "var(--brand-blue)" }}
+                        className="hover:underline text-foreground"
                       >
                         requests@provider1st.com
                       </a>
@@ -143,7 +141,7 @@ export default function PatientFormsAndRecordsRequestPage() {
         </Reveal>
 
         <Reveal className="max-w-4xl mx-auto text-center mt-10 bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
-          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-foreground">
             Patient Forms:
           </RevealText>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

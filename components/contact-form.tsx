@@ -42,7 +42,7 @@ export function ContactForm({
         if (canSubmit) setSubmitted(true)
       }}
     >
-      <h2 className="text-3xl font-extrabold mb-2" style={{ color: "var(--brand-blue)" }}>
+      <h2 className="text-3xl font-extrabold mb-2 text-foreground">
         {heading}
       </h2>
       <p className="text-foreground mb-6">{subheading}</p>

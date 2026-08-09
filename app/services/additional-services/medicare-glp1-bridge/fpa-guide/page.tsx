@@ -33,7 +33,7 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
       <nav aria-label="Breadcrumb" className="px-6 py-4">
         <ol className="max-w-4xl mx-auto flex items-center gap-2 text-sm flex-wrap">
           <li>
-            <Link href="/" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="/" className="hover:underline text-foreground">
               Home
             </Link>
           </li>
@@ -45,7 +45,7 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
             <ChevronRight className="size-4 text-muted-foreground" />
           </li>
           <li>
-            <Link href="/services/additional-services" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="/services/additional-services" className="hover:underline text-foreground">
               Additional Services
             </Link>
           </li>
@@ -55,8 +55,7 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
           <li>
             <Link
               href="/services/additional-services/medicare-glp1-bridge"
-              className="hover:underline"
-              style={{ color: "var(--brand-blue)" }}
+              className="hover:underline text-foreground"
             >
               Medicare GLP-1 Bridge Program
             </Link>
@@ -64,7 +63,7 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
           <li>
             <ChevronRight className="size-4 text-muted-foreground" />
           </li>
-          <li style={{ color: "var(--brand-blue)" }}>FPA Guide</li>
+          <li className="text-foreground">FPA Guide</li>
         </ol>
       </nav>
 
@@ -72,13 +71,13 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
       <section className="px-6 py-8 md:py-12 flex-1">
         <div className="px-6 py-10 md:py-14 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
         <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
-          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
             Medicare GLP-1 Bridge Program
           </RevealText>
           <RevealText as="p" className="text-lg font-bold text-foreground mb-1">Patient Information &amp; Frequently Asked Questions</RevealText>
           <RevealText as="p" className="text-sm text-muted-foreground mb-8">Effective July 1, 2026</RevealText>
 
-          <RevealText as="h3" className="text-xl md:text-2xl font-extrabold tracking-tight mb-3" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h3" className="text-xl md:text-2xl font-extrabold tracking-tight mb-3 text-foreground">
             What is the Medicare GLP-1 Bridge Program?
           </RevealText>
           <RevealText as="p" className="text-foreground leading-relaxed mb-8">
@@ -86,7 +85,7 @@ export default function FpaGuideToMedicareGlp1BridgePage() {
             eligible Medicare patients.
           </RevealText>
 
-          <RevealText as="h3" className="text-xl md:text-2xl font-extrabold tracking-tight mb-3" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h3" className="text-xl md:text-2xl font-extrabold tracking-tight mb-3 text-foreground">
             Who Qualifies?
           </RevealText>
           <RevealText as="p" className="text-foreground leading-relaxed mb-4">

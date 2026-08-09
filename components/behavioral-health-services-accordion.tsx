@@ -126,7 +126,7 @@ export function BehavioralHealthServicesAccordion() {
               </div>
             )}
             <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
-              <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
+              <span className="text-xl md:text-2xl font-extrabold text-foreground">
                 {service.title}
               </span>
               <span className="flex items-center justify-center size-11 rounded-full bg-black text-white shrink-0">

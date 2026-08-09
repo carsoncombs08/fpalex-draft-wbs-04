@@ -35,7 +35,7 @@ export default function OurProvidersPage() {
       <nav aria-label="Breadcrumb" className="px-6 py-4">
         <ol className="max-w-5xl mx-auto flex items-center gap-2 text-sm">
           <li>
-            <Link href="/" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="/" className="hover:underline text-foreground">
               Home
             </Link>
           </li>
@@ -46,7 +46,7 @@ export default function OurProvidersPage() {
           <li>
             <ChevronRight className="size-4 text-muted-foreground" />
           </li>
-          <li style={{ color: "var(--brand-blue)" }}>Our Providers</li>
+          <li className="text-foreground">Our Providers</li>
         </ol>
       </nav>
 

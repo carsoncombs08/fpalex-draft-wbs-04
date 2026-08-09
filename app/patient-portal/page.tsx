@@ -168,19 +168,19 @@ export default function PatientPortalPage() {
           </div>
 
           <div className="flex items-center gap-2 text-sm">
-            <Link href="#" className="underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="#" className="underline text-foreground">
               FAQ
             </Link>
             <span className="text-muted-foreground">|</span>
-            <Link href="#" className="underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="#" className="underline text-foreground">
               Help
             </Link>
             <span className="text-muted-foreground">|</span>
-            <span className="flex items-center gap-1" style={{ color: "var(--brand-blue)" }}>
+            <span className="flex items-center gap-1 text-foreground">
               English <ChevronDown className="size-3.5" />
             </span>
             <span className="text-muted-foreground">|</span>
-            <Link href="/" className="underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="/" className="underline text-foreground">
               About
             </Link>
           </div>

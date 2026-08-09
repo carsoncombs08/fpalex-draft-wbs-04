@@ -257,7 +257,7 @@ function CalendarModal({
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="font-extrabold text-foreground text-lg mb-4 flex items-center gap-2">
-          <CalendarDays className="size-5" style={{ color: "var(--brand-blue)" }} />
+          <CalendarDays className="size-5 text-foreground"  />
           Choose a Date &amp; Time
         </h3>
 
@@ -320,19 +320,19 @@ function Sidebar() {
         <h3 className="font-extrabold text-foreground mb-4">Why patients trust FPA</h3>
         <ul className="space-y-3 text-sm text-muted-foreground">
           <li className="flex items-center gap-2">
-            <Star className="size-4 shrink-0" style={{ color: "var(--brand-blue)" }} />
+            <Star className="size-4 shrink-0 text-foreground"  />
             4.8/5 from 340+ Google reviews
           </li>
           <li className="flex items-center gap-2">
-            <Award className="size-4 shrink-0" style={{ color: "var(--brand-blue)" }} />
+            <Award className="size-4 shrink-0 text-foreground"  />
             NCQA Recognized Practice
           </li>
           <li className="flex items-center gap-2">
-            <Stethoscope className="size-4 shrink-0" style={{ color: "var(--brand-blue)" }} />
+            <Stethoscope className="size-4 shrink-0 text-foreground"  />
             20+ board-certified providers
           </li>
           <li className="flex items-center gap-2">
-            <Clock className="size-4 shrink-0" style={{ color: "var(--brand-blue)" }} />
+            <Clock className="size-4 shrink-0 text-foreground"  />
             Same-week appointments available
           </li>
         </ul>
@@ -351,7 +351,7 @@ function Sidebar() {
 
       <div className="rounded-xl border border-border p-6">
         <h3 className="font-extrabold text-foreground mb-2">Prefer to call?</h3>
-        <a href="tel:+18592785007" className="flex items-center gap-2 font-bold text-lg" style={{ color: "var(--brand-blue)" }}>
+        <a href="tel:+18592785007" className="flex items-center gap-2 font-bold text-lg text-foreground">
           <Phone className="size-4" />
           (859) 278-5007
         </a>
@@ -426,7 +426,7 @@ export default function BookPage() {
               href="tel:+18592785007"
               className="hidden sm:flex items-center gap-1.5 font-bold text-sm text-foreground hover:text-[var(--brand-blue)] transition-colors"
             >
-              <Phone className="size-4" style={{ color: "var(--brand-blue)" }} />
+              <Phone className="size-4 text-foreground"  />
               (859) 278-5007
             </a>
             <Button asChild variant="outline" size="sm">
@@ -569,8 +569,7 @@ export default function BookPage() {
                           <button
                             type="button"
                             onClick={() => setIsCalendarOpen(true)}
-                            className="text-sm font-bold underline"
-                            style={{ color: "var(--brand-blue)" }}
+                            className="text-sm font-bold underline text-foreground"
                           >
                             Change
                           </button>

@@ -151,7 +151,7 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
               <div className="relative w-full aspect-[448/279] overflow-hidden rounded-xl">
                 <Image src={provider.image} alt={provider.name} fill className="object-cover" />
               </div>
-              <h3 className="mt-3 text-lg font-extrabold" style={{ color: "var(--brand-blue)" }}>
+              <h3 className="mt-3 text-lg font-extrabold text-foreground">
                 {provider.name}
               </h3>
 
@@ -175,7 +175,7 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
                   </button>
                 </div>
                 <div className="rounded-b-xl bg-background p-4 shadow-2xl">
-                  <h3 className="text-lg font-extrabold mb-1" style={{ color: "var(--brand-blue)" }}>
+                  <h3 className="text-lg font-extrabold mb-1 text-foreground">
                     {provider.name}
                   </h3>
                   <div className="max-h-[45vh] overflow-y-auto mb-3 pr-1">

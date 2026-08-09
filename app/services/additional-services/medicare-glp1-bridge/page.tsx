@@ -35,7 +35,7 @@ export default function MedicareGlp1BridgePage() {
       <nav aria-label="Breadcrumb" className="px-6 py-4">
         <ol className="max-w-4xl mx-auto flex items-center gap-2 text-sm flex-wrap">
           <li>
-            <Link href="/" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="/" className="hover:underline text-foreground">
               Home
             </Link>
           </li>
@@ -47,14 +47,14 @@ export default function MedicareGlp1BridgePage() {
             <ChevronRight className="size-4 text-muted-foreground" />
           </li>
           <li>
-            <Link href="/services/additional-services" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="/services/additional-services" className="hover:underline text-foreground">
               Additional Services
             </Link>
           </li>
           <li>
             <ChevronRight className="size-4 text-muted-foreground" />
           </li>
-          <li style={{ color: "var(--brand-blue)" }}>Medicare GLP-1 Bridge Program</li>
+          <li className="text-foreground">Medicare GLP-1 Bridge Program</li>
         </ol>
       </nav>
 
@@ -62,7 +62,7 @@ export default function MedicareGlp1BridgePage() {
       <section className="px-6 py-8 md:py-12 flex-1">
         <div className="px-6 py-10 md:py-14 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
         <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
-          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-foreground">
             What You Need to Know for July 1, 2026
           </RevealText>
           <RevealText as="p" className="text-foreground leading-relaxed mb-4">
@@ -83,7 +83,7 @@ export default function MedicareGlp1BridgePage() {
             These drugs aren&apos;t eligible for the Medicare Prescription Payment Plan.
           </p>
 
-          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10 text-foreground">
             Am I eligible?
           </RevealText>
           <RevealText as="p" className="text-foreground leading-relaxed mb-4">
@@ -142,7 +142,7 @@ export default function MedicareGlp1BridgePage() {
             doctor what your BMI is if you don&apos;t know.
           </RevealText>
 
-          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 mt-10 text-foreground">
             How to get GLP-1 drugs through Medicare GLP-1 Bridge
           </RevealText>
           <ul className="list-disc pl-6 space-y-2 text-foreground mb-6">
@@ -172,8 +172,7 @@ export default function MedicareGlp1BridgePage() {
               href="https://www.medicare.gov/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline"
-              style={{ color: "var(--brand-blue)" }}
+              className="hover:underline text-foreground"
             >
               Medicare.gov
             </a>{" "}
@@ -188,7 +187,7 @@ export default function MedicareGlp1BridgePage() {
         </div>
 
         <Reveal className="max-w-4xl mx-auto mt-14">
-          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-6" style={{ color: "var(--brand-blue)" }}>
+          <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-6 text-foreground">
             Frequently Asked Questions
           </RevealText>
           <MedicareGlp1BridgeFaqsAccordion />
@@ -196,12 +195,12 @@ export default function MedicareGlp1BridgePage() {
 
         <div className="px-6 py-10 md:py-14 mt-14 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
           <Reveal className="max-w-2xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
-            <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center" style={{ color: "var(--brand-blue)" }}>
+            <RevealText as="h2" className="text-2xl md:text-3xl font-extrabold tracking-tight mb-4 text-center text-foreground">
               Questions?
             </RevealText>
             <RevealText as="p" className="text-foreground leading-relaxed text-center">
               Please contact Family Practice Associates of Lexington at{" "}
-              <a href="tel:+18592785007" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+              <a href="tel:+18592785007" className="hover:underline text-foreground">
                 (859) 278-5007
               </a>{" "}
               or via Sophie, the ChatBot on the website at{" "}
@@ -209,8 +208,7 @@ export default function MedicareGlp1BridgePage() {
                 href="https://www.fpalex.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
-                style={{ color: "var(--brand-blue)" }}
+                className="hover:underline text-foreground"
               >
                 www.fpalex.com
               </a>{" "}

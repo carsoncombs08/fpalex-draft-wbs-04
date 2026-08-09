@@ -35,7 +35,7 @@ export default function AdditionalServicesPage() {
       <nav aria-label="Breadcrumb" className="px-6 py-4">
         <ol className="max-w-4xl mx-auto flex items-center gap-2 text-sm">
           <li>
-            <Link href="/" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+            <Link href="/" className="hover:underline text-foreground">
               Home
             </Link>
           </li>
@@ -46,7 +46,7 @@ export default function AdditionalServicesPage() {
           <li>
             <ChevronRight className="size-4 text-muted-foreground" />
           </li>
-          <li style={{ color: "var(--brand-blue)" }}>Additional Services</li>
+          <li className="text-foreground">Additional Services</li>
         </ol>
       </nav>
 
@@ -54,7 +54,7 @@ export default function AdditionalServicesPage() {
       <section className="px-6 py-8 md:py-12 flex-1">
         <div className="px-6 py-10 md:py-14 mb-10 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
           <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
-            <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance" style={{ color: "var(--brand-blue)" }}>
+            <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-balance text-foreground">
               Looking For Additional Services
             </RevealText>
             <RevealText as="p" className="text-muted-foreground leading-relaxed">

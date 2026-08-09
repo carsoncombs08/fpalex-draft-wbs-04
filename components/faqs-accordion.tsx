@@ -16,7 +16,7 @@ const FAQS: ServiceItem[] = [
         While we prefer in-person consultations for most medical issues to allow for physical examinations and
         necessary lab work, we understand that some patients may have safety concerns. For those interested in
         telehealth, please call{" "}
-        <a href="tel:+18592785007" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+        <a href="tel:+18592785007" className="hover:underline text-foreground">
           (859) 278-5007
         </a>{" "}
         to schedule an appointment. Most smartphones are compatible with
@@ -56,8 +56,7 @@ const FAQS: ServiceItem[] = [
           href="https://cdn.hibuwebsites.com/7e29e1036607439698f5a108b9fc30dd/files/uploaded/accessing-the-fpa-health-portal-setup-family-practice--associates-of-lexington.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline"
-          style={{ color: "var(--brand-blue)" }}
+          className="hover:underline text-foreground"
         >
           link
         </a>
@@ -95,7 +94,7 @@ export function FaqsAccordion() {
             }`}
           >
             <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
-              <span className="text-xl md:text-2xl font-extrabold" style={{ color: "var(--brand-blue)" }}>
+              <span className="text-xl md:text-2xl font-extrabold text-foreground">
                 {faq.title}
               </span>
               <span className="flex items-center justify-center size-11 rounded-full shrink-0" style={{ backgroundColor: "var(--brand-blue)" }}>
