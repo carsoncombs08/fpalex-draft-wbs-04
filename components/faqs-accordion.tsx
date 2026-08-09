@@ -15,7 +15,11 @@ const FAQS: ServiceItem[] = [
       <p className="text-muted-foreground leading-relaxed">
         While we prefer in-person consultations for most medical issues to allow for physical examinations and
         necessary lab work, we understand that some patients may have safety concerns. For those interested in
-        telehealth, please call (859) 278-5007 to schedule an appointment. Most smartphones are compatible with
+        telehealth, please call{" "}
+        <a href="tel:+18592785007" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+          (859) 278-5007
+        </a>{" "}
+        to schedule an appointment. Most smartphones are compatible with
         our telehealth system. You&apos;ll receive a text message with a link to join a secure video chat when our
         clinical staff is ready. Please note that insurance will be billed for these visits, and copays and
         coinsurances may apply. We recommend checking with your insurance provider regarding their telehealth

@@ -200,8 +200,11 @@ export default function MedicareGlp1BridgePage() {
               Questions?
             </RevealText>
             <RevealText as="p" className="text-gray-900 leading-relaxed text-center">
-              Please contact Family Practice Associates of Lexington at (859) 278-5007 or via Sophie, the ChatBot on
-              the website at{" "}
+              Please contact Family Practice Associates of Lexington at{" "}
+              <a href="tel:+18592785007" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+                (859) 278-5007
+              </a>{" "}
+              or via Sophie, the ChatBot on the website at{" "}
               <a
                 href="https://www.fpalex.com"
                 target="_blank"

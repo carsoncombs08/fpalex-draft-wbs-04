@@ -182,16 +182,32 @@ const ADDITIONAL_SERVICES: ServiceItem[] = [
   },
 ]
 
+const PHONE_REGEX = /(\(?859\)?[-.\s]?278[-.\s]?5007)/g
+
+function linkifyPhone(text: string): React.ReactNode {
+  const parts = text.split(PHONE_REGEX)
+  if (parts.length === 1) return text
+  return parts.map((part, i) =>
+    /^\(?859\)?[-.\s]?278[-.\s]?5007$/.test(part) ? (
+      <a key={i} href="tel:+18592785007" className="hover:underline" style={{ color: "var(--brand-blue)" }}>
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  )
+}
+
 function BlockContent({ block }: { block: Block }) {
   if (block.type === "heading") {
-    return <p className="font-bold text-foreground mb-2">{block.text}</p>
+    return <p className="font-bold text-foreground mb-2">{linkifyPhone(block.text)}</p>
   }
   if (block.type === "list") {
     return (
       <ul className="list-disc pl-5 mb-4 space-y-1 text-muted-foreground">
         {block.items.map((item, i) => (
           <li key={i} className="leading-relaxed">
-            {item}
+            {linkifyPhone(item)}
           </li>
         ))}
       </ul>
@@ -200,7 +216,7 @@ function BlockContent({ block }: { block: Block }) {
   return (
     <p className="text-muted-foreground leading-relaxed mb-4">
       {block.bold && <span className="font-bold text-foreground">{block.bold} </span>}
-      {block.text}
+      {linkifyPhone(block.text)}
     </p>
   )
 }
