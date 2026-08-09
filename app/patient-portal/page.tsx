@@ -61,7 +61,7 @@ function CernerLogo() {
 
 export default function PatientPortalPage() {
   return (
-    <main className="min-h-[100dvh] flex flex-col items-center bg-white px-6 py-16">
+    <main className="min-h-[100dvh] flex flex-col items-center bg-background px-6 py-16">
       <Reveal className="w-full max-w-2xl">
         <div className="flex items-center justify-center gap-4 mb-8">
           <Image
@@ -74,7 +74,7 @@ export default function PatientPortalPage() {
           />
         </div>
 
-        <div className="border-b border-gray-200 pb-10 mb-8">
+        <div className="border-b border-border pb-10 mb-8">
           <Link
             href={PORTAL_URL}
             target="_blank"
@@ -87,14 +87,14 @@ export default function PatientPortalPage() {
           </Link>
         </div>
 
-        <div className="rounded-lg border border-gray-300 p-6 mb-8">
-          <p className="text-center font-bold text-gray-800 mb-4">or, use an alternative</p>
+        <div className="rounded-lg border border-border p-6 mb-8">
+          <p className="text-center font-bold text-foreground mb-4">or, use an alternative</p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href={PORTAL_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2.5 font-bold text-gray-800 hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-2 rounded-md border border-border px-4 py-2.5 font-bold text-foreground hover:bg-accent transition-colors"
             >
               <Apple className="size-5" fill="currentColor" />
               Apple
@@ -103,7 +103,7 @@ export default function PatientPortalPage() {
               href={PORTAL_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2.5 font-bold text-gray-800 hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-2 rounded-md border border-border px-4 py-2.5 font-bold text-foreground hover:bg-accent transition-colors"
             >
               <CernerLogo />
               Cerner
@@ -112,7 +112,7 @@ export default function PatientPortalPage() {
               href={PORTAL_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2.5 font-bold text-gray-800 hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-2 rounded-md border border-border px-4 py-2.5 font-bold text-foreground hover:bg-accent transition-colors"
             >
               <GoogleLogo />
               Google
@@ -121,7 +121,7 @@ export default function PatientPortalPage() {
               href={PORTAL_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2.5 font-bold text-gray-800 hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-2 rounded-md border border-border px-4 py-2.5 font-bold text-foreground hover:bg-accent transition-colors"
             >
               <MicrosoftLogo />
               Microsoft
@@ -168,19 +168,19 @@ export default function PatientPortalPage() {
           </div>
 
           <div className="flex items-center gap-2 text-sm">
-            <Link href="#" className="text-blue-800 underline">
+            <Link href="#" className="underline" style={{ color: "var(--brand-blue)" }}>
               FAQ
             </Link>
-            <span className="text-gray-400">|</span>
-            <Link href="#" className="text-blue-800 underline">
+            <span className="text-muted-foreground">|</span>
+            <Link href="#" className="underline" style={{ color: "var(--brand-blue)" }}>
               Help
             </Link>
-            <span className="text-gray-400">|</span>
-            <span className="flex items-center gap-1 text-blue-800">
+            <span className="text-muted-foreground">|</span>
+            <span className="flex items-center gap-1" style={{ color: "var(--brand-blue)" }}>
               English <ChevronDown className="size-3.5" />
             </span>
-            <span className="text-gray-400">|</span>
-            <Link href="/" className="text-blue-800 underline">
+            <span className="text-muted-foreground">|</span>
+            <Link href="/" className="underline" style={{ color: "var(--brand-blue)" }}>
               About
             </Link>
           </div>
