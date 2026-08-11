@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { Facebook, Instagram, Linkedin, Newspaper } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Newspaper, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
@@ -10,6 +10,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { LocationsHoursSection } from "@/components/locations-hours-section"
 import { Reveal } from "@/components/reveal"
 import { RevealText } from "@/components/reveal-text"
+import { GoogleLogo } from "@/components/google-logo"
 
 const HOME_SERVICES = [
   { href: "/services/primary-care", label: "Primary Care", image: "/assets/image/fpa-homepage-primary-care.webp" },
@@ -28,6 +29,7 @@ const HOME_SERVICES = [
 
 export default function Home() {
   const [awardsHovered, setAwardsHovered] = React.useState(false)
+  const [reviewHovered, setReviewHovered] = React.useState(false)
   const [hoveredService, setHoveredService] = React.useState<number | null>(null)
   const [servicesVisible, setServicesVisible] = React.useState(false)
   const [servicesSectionHovered, setServicesSectionHovered] = React.useState(false)
@@ -232,6 +234,51 @@ export default function Home() {
               </Button>
             </div>
           </div>
+      </section>
+
+      {/* Highlighted Review */}
+      <section className="w-full px-6 pt-14 pb-4 md:pt-20">
+        <Reveal className="max-w-2xl mx-auto">
+          <div
+            onMouseEnter={() => setReviewHovered(true)}
+            onMouseLeave={() => setReviewHovered(false)}
+            className={`relative rounded-2xl border-2 border-[var(--brand-blue)] bg-background p-6 md:p-8 transition-all duration-300 ${
+              reviewHovered ? "z-50 scale-105 shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
+            }`}
+          >
+            <span className="inline-block rounded-full bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-[var(--brand-blue)] mb-4">
+              Highlighted Review
+            </span>
+
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="relative shrink-0">
+                  <div className="flex items-center justify-center size-14 rounded-full bg-[var(--brand-blue)] text-white text-lg font-extrabold">
+                    DL
+                  </div>
+                  <span className="absolute -bottom-1 -right-1 flex items-center justify-center size-6 rounded-full bg-white shadow">
+                    <GoogleLogo className="size-4" />
+                  </span>
+                </div>
+                <div>
+                  <p className="font-extrabold text-foreground leading-tight">
+                    David Leach <span className="font-normal text-muted-foreground">on Google</span>
+                  </p>
+                  <div className="flex items-center gap-0.5 mt-1" aria-label="5 out of 5 stars">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="size-4 text-amber-400 fill-amber-400" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <span className="text-sm text-muted-foreground shrink-0">27 days ago</span>
+            </div>
+
+            <p className="mt-4 text-foreground leading-relaxed">
+              Great with kiddos and geriatric patients!! shout out to the best lab team ever so ran!!
+            </p>
+          </div>
+        </Reveal>
       </section>
 
       {/* Awards and Certificates */}
