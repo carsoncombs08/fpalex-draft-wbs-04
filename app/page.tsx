@@ -313,7 +313,7 @@ export default function Home() {
 
       {/* About Us */}
       <section id="about-us" ref={aboutUsRef} className="scroll-mt-24 px-6 py-16 md:py-24" style={{ backgroundColor: "var(--brand-blue)" }}>
-        <div className="relative -mx-6 h-[calc(100vw*0.4122)] mb-8 overflow-hidden">
+        <div className="relative -mx-6 h-[calc(100vw*0.6608)] mb-8 overflow-hidden">
           <div
             className={`absolute inset-0 origin-top transition-transform duration-500 ease-in-out ${
               aboutUsVisible ? "scale-y-100" : "scale-y-0"
@@ -323,7 +323,7 @@ export default function Home() {
               src="/assets/image/fpa-providers-group.webp"
               alt="Family Practice Associates of Lexington provider team"
               fill
-              className="object-contain"
+              className="object-cover"
             />
           </div>
         </div>
