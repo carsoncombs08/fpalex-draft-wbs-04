@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { Facebook, Instagram, Linkedin, Newspaper, Star, Stethoscope } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Newspaper, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
@@ -11,6 +11,7 @@ import { LocationsHoursSection } from "@/components/locations-hours-section"
 import { Reveal } from "@/components/reveal"
 import { RevealText } from "@/components/reveal-text"
 import { GoogleLogo } from "@/components/google-logo"
+import { StethoscopeIllustration } from "@/components/stethoscope-illustration"
 
 const REVIEWS = [
   {
@@ -48,6 +49,17 @@ const REVIEWS = [
     time: "5 months ago",
     text: "I've had really solid experiences with this office for the last 5 years. They are very thorough, have on site labs, and I've had very understanding practitioners. Office is nice and always clean. Wait times have never been too crazy for me. Once you're an established patient, they reserve “emergency appointment” time slots that you can book on a first come first serve basis. Calling first thing in the morning can usually get you in pretty quick.",
   },
+]
+
+const FALLING_LOGOS = [
+  { left: 4, duration: 11, delay: -1 },
+  { left: 16, duration: 14, delay: -6 },
+  { left: 28, duration: 9, delay: -3 },
+  { left: 42, duration: 13, delay: -8 },
+  { left: 55, duration: 10, delay: -2 },
+  { left: 67, duration: 15, delay: -10 },
+  { left: 79, duration: 11.5, delay: -5 },
+  { left: 90, duration: 12.5, delay: -7 },
 ]
 
 const HOME_SERVICES = [
@@ -277,13 +289,35 @@ export default function Home() {
 
       {/* Highlighted Reviews */}
       <section className="w-full px-6 pt-14 pb-4 md:pt-20">
-        <Reveal className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+        <Reveal className="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+            {FALLING_LOGOS.map((logo, i) => (
+              <div
+                key={i}
+                className="absolute"
+                style={{
+                  left: `${logo.left}%`,
+                  animation: `fall-logo ${logo.duration}s linear infinite`,
+                  animationDelay: `${logo.delay}s`,
+                }}
+              >
+                <Image
+                  src="/assets/image/fpa-logo.png"
+                  alt=""
+                  width={140}
+                  height={25}
+                  style={{ opacity: 0.35 }}
+                />
+              </div>
+            ))}
+          </div>
+
           {REVIEWS.map((review, index) => {
             const isHovered = hoveredReview === index
             return (
               <div
                 key={review.name}
-                className={index % 2 === 1 ? "md:mt-10" : ""}
+                className={`relative z-10 ${index % 2 === 1 ? "md:mt-10" : ""}`}
                 style={{ animation: "float-card 4.25s ease-in-out infinite", animationDelay: `${index * 0.4}s` }}
               >
                 <div
@@ -411,30 +445,33 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section id="about-us" ref={aboutUsRef} className="scroll-mt-24 px-6 py-16 md:py-24 bg-background">
-        <div className="relative -mx-6 mb-8 flex justify-center overflow-hidden">
-          <div
-            className={`relative w-[85%] aspect-[1804/1192] origin-top transition-transform duration-500 ease-in-out ${
-              aboutUsVisible ? "scale-y-100" : "scale-y-0"
-            }`}
-          >
-            <Image
-              src="/assets/image/fpa-providers-group.webp"
-              alt="Family Practice Associates of Lexington provider team"
-              fill
-              className="object-cover"
-            />
+      <section id="about-us" ref={aboutUsRef} className="scroll-mt-24 bg-background">
+        <div className="px-6 py-10 md:py-14" style={{ backgroundColor: "var(--brand-blue)" }}>
+          <div className="relative max-w-5xl mx-auto flex justify-center overflow-hidden">
+            <div
+              className={`relative w-full aspect-[1804/1192] origin-top transition-transform duration-500 ease-in-out ${
+                aboutUsVisible ? "scale-y-100" : "scale-y-0"
+              }`}
+            >
+              <Image
+                src="/assets/image/fpa-providers-group.webp"
+                alt="Family Practice Associates of Lexington provider team"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
 
+        <div className="px-6 py-16 md:py-24">
         <Reveal delay={500} className="max-w-5xl mx-auto">
           <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-10 text-center text-balance">
             About Us
           </RevealText>
 
-          <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-10 items-start">
-            <div className="hidden md:flex items-center justify-center shrink-0 w-32 pt-4">
-              <Stethoscope className="size-28" style={{ color: "var(--brand-blue)" }} strokeWidth={1.25} />
+          <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-10 items-stretch">
+            <div className="hidden md:flex items-center justify-center shrink-0 w-28 -my-6">
+              <StethoscopeIllustration className="h-full w-auto" />
             </div>
 
             <div className="flex flex-col gap-6">
@@ -500,6 +537,7 @@ export default function Home() {
             </Button>
           </div>
         </Reveal>
+        </div>
       </section>
 
       {/* About Our Providers */}
