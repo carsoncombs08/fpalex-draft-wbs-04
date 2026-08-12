@@ -12,6 +12,44 @@ import { Reveal } from "@/components/reveal"
 import { RevealText } from "@/components/reveal-text"
 import { GoogleLogo } from "@/components/google-logo"
 
+const REVIEWS = [
+  {
+    name: "David Leach",
+    initials: "DL",
+    avatarColor: "var(--brand-blue)",
+    rating: 5,
+    time: "27 days ago",
+    text: "Great with kiddos and geriatric patients!! shout out to the best lab team ever so ran!!",
+  },
+  {
+    name: "Ben Darby",
+    initials: "B",
+    avatarColor: "#64748b",
+    meta: "1 review",
+    rating: 5,
+    time: "8 months ago",
+    text: "Alitia Farmer M.D. is an outstanding physician. She has exceptional medical knowledge, skills, and she puts her patients first. When deemed necessary she efficiently refers her patients to specialists. Her genuine caring is obvious and aids immensely in the healing process.",
+  },
+  {
+    name: "Ron Boots",
+    initials: "R",
+    avatarColor: "#6b4a3a",
+    meta: "5 reviews · 1 photo",
+    rating: 5,
+    time: "a year ago",
+    text: "Family Practice has always treated me with respect. Dr. Applegate is my PCP and hope he never retires. He is awesome. Would recommend them to anyone.",
+  },
+  {
+    name: "Tommy",
+    initials: "T",
+    avatarColor: "#7c5cbf",
+    meta: "Local Guide · 43 reviews · 31 photos",
+    rating: 5,
+    time: "5 months ago",
+    text: "I've had really solid experiences with this office for the last 5 years. They are very thorough, have on site labs, and I've had very understanding practitioners. Office is nice and always clean. Wait times have never been too crazy for me. Once you're an established patient, they reserve “emergency appointment” time slots that you can book on a first come first serve basis. Calling first thing in the morning can usually get you in pretty quick.",
+  },
+]
+
 const HOME_SERVICES = [
   { href: "/services/primary-care", label: "Primary Care", image: "/assets/image/fpa-homepage-primary-care.webp" },
   { href: "/services/pediatric-care", label: "Pediatric Care", image: "/assets/image/fpa-homepage-pediatric-care.webp" },
@@ -29,7 +67,7 @@ const HOME_SERVICES = [
 
 export default function Home() {
   const [awardsHovered, setAwardsHovered] = React.useState(false)
-  const [reviewHovered, setReviewHovered] = React.useState(false)
+  const [hoveredReview, setHoveredReview] = React.useState<number | null>(null)
   const [hoveredService, setHoveredService] = React.useState<number | null>(null)
   const [servicesVisible, setServicesVisible] = React.useState(false)
   const [servicesSectionHovered, setServicesSectionHovered] = React.useState(false)
@@ -236,48 +274,56 @@ export default function Home() {
           </div>
       </section>
 
-      {/* Highlighted Review */}
+      {/* Highlighted Reviews */}
       <section className="w-full px-6 pt-14 pb-4 md:pt-20">
-        <Reveal className="max-w-2xl mx-auto">
-          <div
-            onMouseEnter={() => setReviewHovered(true)}
-            onMouseLeave={() => setReviewHovered(false)}
-            className={`relative rounded-2xl border-2 border-[var(--brand-blue)] bg-background p-6 md:p-8 transition-all duration-300 ${
-              reviewHovered ? "z-50 scale-105 shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
-            }`}
-          >
-            <span className="inline-block rounded-full bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-[var(--brand-blue)] mb-4">
-              Highlighted Review
-            </span>
+        <Reveal className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {REVIEWS.map((review, index) => {
+            const isHovered = hoveredReview === index
+            return (
+              <div
+                key={review.name}
+                onMouseEnter={() => setHoveredReview(index)}
+                onMouseLeave={() => setHoveredReview((prev) => (prev === index ? null : prev))}
+                className={`relative rounded-2xl border-2 border-[var(--brand-blue)] bg-background p-6 md:p-8 transition-all duration-300 ${
+                  index % 2 === 1 ? "md:mt-10" : ""
+                } ${isHovered ? "z-50 scale-105 shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""}`}
+              >
+                <span className="inline-block rounded-full bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-[var(--brand-blue)] mb-4">
+                  Highlighted Review
+                </span>
 
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="relative shrink-0">
-                  <div className="flex items-center justify-center size-14 rounded-full bg-[var(--brand-blue)] text-white text-lg font-extrabold">
-                    DL
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="relative shrink-0">
+                      <div
+                        className="flex items-center justify-center size-14 rounded-full text-white text-lg font-extrabold"
+                        style={{ backgroundColor: review.avatarColor }}
+                      >
+                        {review.initials}
+                      </div>
+                      <span className="absolute -bottom-1 -right-1 flex items-center justify-center size-6 rounded-full bg-white shadow">
+                        <GoogleLogo className="size-4" />
+                      </span>
+                    </div>
+                    <div>
+                      <p className="font-extrabold text-foreground leading-tight">
+                        {review.name} <span className="font-normal text-muted-foreground">on Google</span>
+                      </p>
+                      {review.meta && <p className="text-xs text-muted-foreground">{review.meta}</p>}
+                      <div className="flex items-center gap-0.5 mt-1" aria-label={`${review.rating} out of 5 stars`}>
+                        {Array.from({ length: review.rating }).map((_, i) => (
+                          <Star key={i} className="size-4 text-amber-400 fill-amber-400" />
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <span className="absolute -bottom-1 -right-1 flex items-center justify-center size-6 rounded-full bg-white shadow">
-                    <GoogleLogo className="size-4" />
-                  </span>
+                  <span className="text-sm text-muted-foreground shrink-0">{review.time}</span>
                 </div>
-                <div>
-                  <p className="font-extrabold text-foreground leading-tight">
-                    David Leach <span className="font-normal text-muted-foreground">on Google</span>
-                  </p>
-                  <div className="flex items-center gap-0.5 mt-1" aria-label="5 out of 5 stars">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="size-4 text-amber-400 fill-amber-400" />
-                    ))}
-                  </div>
-                </div>
+
+                <p className="mt-4 text-foreground leading-relaxed">{review.text}</p>
               </div>
-              <span className="text-sm text-muted-foreground shrink-0">27 days ago</span>
-            </div>
-
-            <p className="mt-4 text-foreground leading-relaxed">
-              Great with kiddos and geriatric patients!! shout out to the best lab team ever so ran!!
-            </p>
-          </div>
+            )
+          })}
         </Reveal>
       </section>
 
