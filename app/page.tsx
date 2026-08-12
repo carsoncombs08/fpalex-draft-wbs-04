@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { Facebook, Instagram, Linkedin, Newspaper, Star } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Newspaper, Star, Stethoscope } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
@@ -68,6 +68,7 @@ const HOME_SERVICES = [
 export default function Home() {
   const [awardsHovered, setAwardsHovered] = React.useState(false)
   const [hoveredReview, setHoveredReview] = React.useState<number | null>(null)
+  const [hoveredAboutCard, setHoveredAboutCard] = React.useState<number | null>(null)
   const [hoveredService, setHoveredService] = React.useState<number | null>(null)
   const [servicesVisible, setServicesVisible] = React.useState(false)
   const [servicesSectionHovered, setServicesSectionHovered] = React.useState(false)
@@ -283,7 +284,7 @@ export default function Home() {
               <div
                 key={review.name}
                 className={index % 2 === 1 ? "md:mt-10" : ""}
-                style={{ animation: "float-card 5s ease-in-out infinite", animationDelay: `${index * 0.4}s` }}
+                style={{ animation: "float-card 4.25s ease-in-out infinite", animationDelay: `${index * 0.4}s` }}
               >
                 <div
                   onMouseEnter={() => setHoveredReview(index)}
@@ -410,7 +411,7 @@ export default function Home() {
       </section>
 
       {/* About Us */}
-      <section id="about-us" ref={aboutUsRef} className="scroll-mt-24 px-6 py-16 md:py-24" style={{ backgroundColor: "var(--brand-blue)" }}>
+      <section id="about-us" ref={aboutUsRef} className="scroll-mt-24 px-6 py-16 md:py-24 bg-background">
         <div className="relative -mx-6 mb-8 flex justify-center overflow-hidden">
           <div
             className={`relative w-[85%] aspect-[1804/1192] origin-top transition-transform duration-500 ease-in-out ${
@@ -425,49 +426,79 @@ export default function Home() {
             />
           </div>
         </div>
-        <Reveal delay={500} className="max-w-3xl mx-auto bg-background p-8 sm:p-10 md:p-14">
-          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-8 text-balance">
+
+        <Reveal delay={500} className="max-w-5xl mx-auto">
+          <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-10 text-center text-balance">
             About Us
           </RevealText>
-          <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Mission:</RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-8">
-            Serving Central Kentucky for over 40 years, Family Practice Associates of Lexington&mdash;our
-            mission is simple: to provide preventive, diagnostic, and therapeutic health services with
-            attention to individual needs. We are dedicated to delivering family-centered care from birth
-            through the later years in an affordable, high-quality manner.{" "}
-            <span className="font-bold text-foreground">Your Family. Your Health. Our Passion.</span>
-          </RevealText>
-          <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Practice:</RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
-            Family Practice Associates of Lexington (FPA) was founded by Dr. Jeffrey Foxx in 1983 and has
-            since become one of the largest family practice groups in Central Kentucky. With over 20 primary
-            care providers, including physicians, nurse practitioners, physician assistants, and a Licensed
-            Professional Clinical Counselor, FPA is dedicated to providing family-centered care from birth to
-            later years. Recognized as a Patient-Centered Medical Home (PCMH) by the National Commission on
-            Quality Assurance, FPA&apos;s professionally trained staff ensures award-winning care.
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-6">
-            The PCMH model emphasizes accessibility, continuity, and comprehensive care, with patients
-            actively involved in decision-making. FPA&apos;s patient care teams, under the direction of the
-            primary care provider (PCP), collectively take responsibility for ongoing patient care. Through
-            integration with health information technology, including a patient portal and electronic health
-            records (EHR), FPA enhances patient care, communication, and education. By offering extended
-            hours and same-day scheduling, FPA aims to provide ultimate convenience to simplify managing your
-            health.
-          </RevealText>
-          <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
-            Click here to discover why understanding what it means to be a Patient Center Medical Home is
-            important for you:
-          </RevealText>
-          <Button asChild variant="outline">
-            <Link
-              href="https://cdn.hibuwebsites.com/7e29e1036607439698f5a108b9fc30dd/files/uploaded/FAP-What-+is-PCMH-Patient-Brochure-revised+9.16.2024.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn More about PCMH
-            </Link>
-          </Button>
+
+          <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-10 items-start">
+            <div className="hidden md:flex items-center justify-center shrink-0 w-32 pt-4">
+              <Stethoscope className="size-28" style={{ color: "var(--brand-blue)" }} strokeWidth={1.25} />
+            </div>
+
+            <div className="flex flex-col gap-6">
+              <div
+                onMouseEnter={() => setHoveredAboutCard(0)}
+                onMouseLeave={() => setHoveredAboutCard((prev) => (prev === 0 ? null : prev))}
+                className={`rounded-2xl border-2 border-[var(--brand-blue)] bg-background p-6 md:p-8 shadow-lg transition-all duration-300 ${
+                  hoveredAboutCard === 0 ? "z-50 scale-105 shadow-[0_0_40px_12px_var(--brand-blue)]" : ""
+                }`}
+              >
+                <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Mission:</RevealText>
+                <RevealText as="p" className="text-muted-foreground leading-relaxed">
+                  Serving Central Kentucky for over 40 years, Family Practice Associates of Lexington&mdash;our
+                  mission is simple: to provide preventive, diagnostic, and therapeutic health services with
+                  attention to individual needs. We are dedicated to delivering family-centered care from birth
+                  through the later years in an affordable, high-quality manner.{" "}
+                  <span className="font-bold text-foreground">Your Family. Your Health. Our Passion.</span>
+                </RevealText>
+              </div>
+
+              <div
+                onMouseEnter={() => setHoveredAboutCard(1)}
+                onMouseLeave={() => setHoveredAboutCard((prev) => (prev === 1 ? null : prev))}
+                className={`rounded-2xl border-2 border-[var(--brand-blue)] bg-background p-6 md:p-8 shadow-lg transition-all duration-300 ${
+                  hoveredAboutCard === 1 ? "z-50 scale-105 shadow-[0_0_40px_12px_var(--brand-blue)]" : ""
+                }`}
+              >
+                <RevealText as="h3" className="font-extrabold text-foreground mb-2">Our Practice:</RevealText>
+                <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
+                  Family Practice Associates of Lexington (FPA) was founded by Dr. Jeffrey Foxx in 1983 and has
+                  since become one of the largest family practice groups in Central Kentucky. With over 20 primary
+                  care providers, including physicians, nurse practitioners, physician assistants, and a Licensed
+                  Professional Clinical Counselor, FPA is dedicated to providing family-centered care from birth to
+                  later years. Recognized as a Patient-Centered Medical Home (PCMH) by the National Commission on
+                  Quality Assurance, FPA&apos;s professionally trained staff ensures award-winning care.
+                </RevealText>
+                <RevealText as="p" className="text-muted-foreground leading-relaxed">
+                  The PCMH model emphasizes accessibility, continuity, and comprehensive care, with patients
+                  actively involved in decision-making. FPA&apos;s patient care teams, under the direction of the
+                  primary care provider (PCP), collectively take responsibility for ongoing patient care. Through
+                  integration with health information technology, including a patient portal and electronic health
+                  records (EHR), FPA enhances patient care, communication, and education. By offering extended
+                  hours and same-day scheduling, FPA aims to provide ultimate convenience to simplify managing your
+                  health.
+                </RevealText>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-2xl mx-auto text-center mt-10">
+            <RevealText as="p" className="text-muted-foreground leading-relaxed mb-4">
+              Click here to discover why understanding what it means to be a Patient Center Medical Home is
+              important for you:
+            </RevealText>
+            <Button asChild variant="outline">
+              <Link
+                href="https://cdn.hibuwebsites.com/7e29e1036607439698f5a108b9fc30dd/files/uploaded/FAP-What-+is-PCMH-Patient-Brochure-revised+9.16.2024.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn More about PCMH
+              </Link>
+            </Button>
+          </div>
         </Reveal>
       </section>
 
