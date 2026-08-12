@@ -276,21 +276,25 @@ export default function Home() {
 
       {/* Highlighted Reviews */}
       <section className="w-full px-6 pt-14 pb-4 md:pt-20">
-        <Reveal className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <Reveal className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
           {REVIEWS.map((review, index) => {
             const isHovered = hoveredReview === index
             return (
               <div
                 key={review.name}
-                onMouseEnter={() => setHoveredReview(index)}
-                onMouseLeave={() => setHoveredReview((prev) => (prev === index ? null : prev))}
-                className={`relative rounded-2xl border-2 border-[var(--brand-blue)] bg-background p-6 md:p-8 transition-all duration-300 ${
-                  index % 2 === 1 ? "md:mt-10" : ""
-                } ${isHovered ? "z-50 scale-105 shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""}`}
+                className={index % 2 === 1 ? "md:mt-10" : ""}
+                style={{ animation: "float-card 5s ease-in-out infinite", animationDelay: `${index * 0.4}s` }}
               >
-                <span className="inline-block rounded-full bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-[var(--brand-blue)] mb-4">
-                  Highlighted Review
-                </span>
+                <div
+                  onMouseEnter={() => setHoveredReview(index)}
+                  onMouseLeave={() => setHoveredReview((prev) => (prev === index ? null : prev))}
+                  className={`relative rounded-2xl border-2 border-[var(--brand-blue)] bg-background p-6 md:p-8 shadow-xl transition-all duration-300 ${
+                    isHovered ? "z-50 scale-105 shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
+                  }`}
+                >
+                  <span className="inline-block rounded-full bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-[var(--brand-blue)] mb-4">
+                    Highlighted Review
+                  </span>
 
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
@@ -320,7 +324,8 @@ export default function Home() {
                   <span className="text-sm text-muted-foreground shrink-0">{review.time}</span>
                 </div>
 
-                <p className="mt-4 text-foreground leading-relaxed">{review.text}</p>
+                  <p className="mt-4 text-foreground leading-relaxed">{review.text}</p>
+                </div>
               </div>
             )
           })}
