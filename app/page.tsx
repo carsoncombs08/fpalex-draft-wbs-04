@@ -52,14 +52,16 @@ const REVIEWS = [
 ]
 
 const FALLING_LOGOS = [
-  { left: 4, duration: 11, delay: -1 },
-  { left: 16, duration: 14, delay: -6 },
-  { left: 28, duration: 9, delay: -3 },
-  { left: 42, duration: 13, delay: -8 },
+  { left: 2, duration: 11, delay: -1 },
+  { left: 12, duration: 9.5, delay: -9 },
+  { left: 22, duration: 14, delay: -6 },
+  { left: 33, duration: 9, delay: -3 },
+  { left: 44, duration: 13, delay: -8 },
   { left: 55, duration: 10, delay: -2 },
-  { left: 67, duration: 15, delay: -10 },
-  { left: 79, duration: 11.5, delay: -5 },
-  { left: 90, duration: 12.5, delay: -7 },
+  { left: 65, duration: 12, delay: -11 },
+  { left: 75, duration: 15, delay: -10 },
+  { left: 85, duration: 11.5, delay: -5 },
+  { left: 93, duration: 12.5, delay: -7 },
 ]
 
 const HOME_SERVICES = [
@@ -469,7 +471,7 @@ export default function Home() {
             About Us
           </RevealText>
 
-          <div className="grid md:grid-cols-[auto_1fr] gap-8 md:gap-10 items-stretch">
+          <div className="grid md:grid-cols-[auto_1fr_auto] gap-8 md:gap-10 items-stretch">
             <div className="hidden md:flex items-center justify-center shrink-0 w-28 -my-6">
               <StethoscopeIllustration className="h-full w-auto" />
             </div>
@@ -518,6 +520,10 @@ export default function Home() {
                   health.
                 </RevealText>
               </div>
+            </div>
+
+            <div className="hidden md:flex items-center justify-center shrink-0 w-28 -my-6">
+              <StethoscopeIllustration className="h-full w-auto scale-x-[-1]" />
             </div>
           </div>
 

@@ -1,43 +1,43 @@
 export function StethoscopeIllustration({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 200 620" fill="none" className={className} aria-hidden="true">
+    <svg viewBox="0 0 200 640" fill="none" className={className} aria-hidden="true">
       {/* earpieces */}
-      <path d="M62 22 L62 44" stroke="#111827" strokeWidth="16" strokeLinecap="round" />
-      <path d="M138 22 L138 44" stroke="#111827" strokeWidth="16" strokeLinecap="round" />
+      <path d="M58 24 L50 54" stroke="#1f2937" strokeWidth="18" strokeLinecap="round" />
+      <path d="M126 24 L134 54" stroke="#1f2937" strokeWidth="18" strokeLinecap="round" />
 
       {/* tubes from earpieces down to the Y-junction */}
       <path
-        d="M62 46 C 62 90, 70 96, 90 100"
-        stroke="#9ca3af"
-        strokeWidth="14"
+        d="M50 56 C 46 92, 55 105, 82 112"
+        stroke="#a3a9b3"
+        strokeWidth="15"
         strokeLinecap="round"
         fill="none"
       />
       <path
-        d="M138 46 C 138 90, 130 96, 110 100"
-        stroke="#9ca3af"
-        strokeWidth="14"
+        d="M134 56 C 138 92, 129 105, 102 112"
+        stroke="#a3a9b3"
+        strokeWidth="15"
         strokeLinecap="round"
         fill="none"
       />
 
-      {/* main tube flowing down to the chestpiece */}
+      {/* main tube, loose flowing curves down to the chestpiece */}
       <path
-        d="M100 100
-           C 60 150, 60 220, 100 260
-           C 150 300, 150 360, 100 400
-           C 60 440, 60 480, 110 520
-           C 135 540, 138 555, 138 575"
+        d="M92 112
+           C 30 160, 30 260, 100 300
+           C 175 344, 175 440, 105 490
+           C 70 516, 60 545, 92 575
+           C 112 594, 128 600, 140 605"
         stroke="var(--brand-blue)"
-        strokeWidth="14"
+        strokeWidth="15"
         strokeLinecap="round"
         fill="none"
       />
 
-      {/* chestpiece */}
-      <circle cx="138" cy="590" r="26" fill="#9ca3af" />
-      <circle cx="138" cy="590" r="15" fill="#6b7280" />
-      <circle cx="138" cy="590" r="4" fill="#e5e7eb" />
+      {/* chestpiece, tilted disc for a 3/4 perspective */}
+      <ellipse cx="150" cy="610" rx="34" ry="24" fill="#a3a9b3" transform="rotate(-18 150 610)" />
+      <ellipse cx="150" cy="610" rx="20" ry="13" fill="#6b7280" transform="rotate(-18 150 610)" />
+      <circle cx="150" cy="610" r="4" fill="#e5e7eb" />
     </svg>
   )
 }
