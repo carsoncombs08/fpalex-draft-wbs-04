@@ -66,6 +66,27 @@ const FALLING_LOGOS = [
   { left: 95, duration: 13.5, delay: -12 },
 ]
 
+const AWARDS = [
+  {
+    src: "/assets/image/fpa-award-lexington-2024.png",
+    alt: "Best of Lexington 2024 Winner, Herald-Leader",
+    width: 207,
+    height: 287,
+  },
+  {
+    src: "/assets/image/fpa-award-ncqa-recognized-practice.png",
+    alt: "NCQA Patient-Centered Medical Home Recognized Practice",
+    width: 258,
+    height: 287,
+  },
+  {
+    src: "/assets/image/fpa-award-ncqa-pcmh.png",
+    alt: "NCQA Recognized Patient-Centered Medical Home",
+    width: 205,
+    height: 287,
+  },
+]
+
 const HOME_SERVICES = [
   { href: "/services/primary-care", label: "Primary Care", image: "/assets/image/fpa-homepage-primary-care.webp" },
   { href: "/services/pediatric-care", label: "Pediatric Care", image: "/assets/image/fpa-homepage-pediatric-care.webp" },
@@ -82,7 +103,7 @@ const HOME_SERVICES = [
 ]
 
 export default function Home() {
-  const [awardsHovered, setAwardsHovered] = React.useState(false)
+  const [hoveredAward, setHoveredAward] = React.useState<number | null>(null)
   const [hoveredReview, setHoveredReview] = React.useState<number | null>(null)
   const [hoveredAboutCard, setHoveredAboutCard] = React.useState<number | null>(null)
   const [hoveredService, setHoveredService] = React.useState<number | null>(null)
@@ -291,31 +312,33 @@ export default function Home() {
           </div>
       </section>
 
-      {/* Highlighted Reviews */}
-      <section className="w-full px-6 pt-14 pb-4 md:pt-20">
-        <Reveal className="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
-          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-            {FALLING_LOGOS.map((logo, i) => (
-              <div
-                key={i}
-                className="absolute"
-                style={{
-                  left: `${logo.left}%`,
-                  animation: `fall-logo ${logo.duration}s linear infinite`,
-                  animationDelay: `${logo.delay}s`,
-                }}
-              >
-                <Image
-                  src="/assets/image/fpa-logo.png"
-                  alt=""
-                  width={140}
-                  height={25}
-                  style={{ opacity: 0.35 }}
-                />
-              </div>
-            ))}
-          </div>
+      {/* Highlighted Reviews + Awards and Certificates share one falling-logo background */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          {FALLING_LOGOS.map((logo, i) => (
+            <div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${logo.left}%`,
+                animation: `fall-logo ${logo.duration}s linear infinite`,
+                animationDelay: `${logo.delay}s`,
+              }}
+            >
+              <Image
+                src="/assets/image/fpa-logo.png"
+                alt=""
+                width={140}
+                height={25}
+                style={{ opacity: 0.35 }}
+              />
+            </div>
+          ))}
+        </div>
 
+      {/* Highlighted Reviews */}
+      <section className="relative z-10 w-full px-6 pt-14 pb-4 md:pt-20">
+        <Reveal className="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
           {REVIEWS.map((review, index) => {
             const isHovered = hoveredReview === index
             return (
@@ -372,23 +395,29 @@ export default function Home() {
       </section>
 
       {/* Awards and Certificates */}
-      <section className="w-full relative">
-        <div
-          onMouseEnter={() => setAwardsHovered(true)}
-          onMouseLeave={() => setAwardsHovered(false)}
-          className={`relative transition-all duration-300 ${
-            awardsHovered ? "z-50 scale-105 shadow-[0_0_40px_12px_rgba(255,255,255,0.85)]" : ""
-          }`}
-        >
-          <Image
-            src="/assets/image/fpa-awards-certificates.webp"
-            alt="Awards and Certificates: Best of Lexington 2024 Winner, NCQA Patient-Centered Medical Home Recognized Practice, NCQA Recognized Patient-Centered Medical Home"
-            width={2000}
-            height={442}
-            className="w-full h-auto"
-          />
-        </div>
+      <section className="relative z-10 w-full px-6 py-16 md:py-20">
+        <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-10 text-center text-balance">
+          Awards and Certificates
+        </RevealText>
+        <Reveal className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-10 md:gap-16">
+          {AWARDS.map((award, index) => {
+            const isHovered = hoveredAward === index
+            return (
+              <div
+                key={award.alt}
+                onMouseEnter={() => setHoveredAward(index)}
+                onMouseLeave={() => setHoveredAward((prev) => (prev === index ? null : prev))}
+                className={`transition-all duration-300 ${
+                  isHovered ? "scale-110 drop-shadow-[0_0_22px_var(--brand-blue)]" : ""
+                }`}
+              >
+                <Image src={award.src} alt={award.alt} width={award.width} height={award.height} className="w-36 sm:w-44 md:w-48 h-auto" />
+              </div>
+            )
+          })}
+        </Reveal>
       </section>
+      </div>
 
       {/* Explore Our Services */}
       <section
