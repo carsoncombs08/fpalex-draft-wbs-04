@@ -53,15 +53,17 @@ const REVIEWS = [
 
 const FALLING_LOGOS = [
   { left: 2, duration: 11, delay: -1 },
-  { left: 12, duration: 9.5, delay: -9 },
-  { left: 22, duration: 14, delay: -6 },
-  { left: 33, duration: 9, delay: -3 },
-  { left: 44, duration: 13, delay: -8 },
-  { left: 55, duration: 10, delay: -2 },
-  { left: 65, duration: 12, delay: -11 },
-  { left: 75, duration: 15, delay: -10 },
-  { left: 85, duration: 11.5, delay: -5 },
-  { left: 93, duration: 12.5, delay: -7 },
+  { left: 10, duration: 9.5, delay: -9 },
+  { left: 19, duration: 14, delay: -6 },
+  { left: 27, duration: 9, delay: -3 },
+  { left: 36, duration: 13, delay: -8 },
+  { left: 44, duration: 10, delay: -2 },
+  { left: 53, duration: 12, delay: -11 },
+  { left: 61, duration: 15, delay: -10 },
+  { left: 70, duration: 11.5, delay: -5 },
+  { left: 78, duration: 12.5, delay: -7 },
+  { left: 87, duration: 10.5, delay: -4 },
+  { left: 95, duration: 13.5, delay: -12 },
 ]
 
 const HOME_SERVICES = [
@@ -472,7 +474,10 @@ export default function Home() {
           </RevealText>
 
           <div className="grid md:grid-cols-[auto_1fr_auto] gap-8 md:gap-10 items-stretch">
-            <div className="hidden md:flex items-center justify-center shrink-0 w-28 -my-6">
+            <div
+              className="hidden md:flex items-center justify-center shrink-0 w-28 -my-6"
+              style={{ animation: "float-card 4.25s ease-in-out infinite" }}
+            >
               <StethoscopeIllustration className="h-full w-auto" />
             </div>
 
@@ -522,7 +527,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hidden md:flex items-center justify-center shrink-0 w-28 -my-6">
+            <div
+              className="hidden md:flex items-center justify-center shrink-0 w-28 -my-6"
+              style={{ animation: "float-card 4.25s ease-in-out infinite", animationDelay: "-2s" }}
+            >
               <StethoscopeIllustration className="h-full w-auto scale-x-[-1]" />
             </div>
           </div>
