@@ -12,6 +12,13 @@ import { Reveal } from "@/components/reveal"
 import { RevealText } from "@/components/reveal-text"
 import { GoogleLogo } from "@/components/google-logo"
 import { StethoscopeIllustration } from "@/components/stethoscope-illustration"
+import { HeroCarousel } from "@/components/hero-carousel"
+
+// TODO: add the second and third building photos here once the image files are
+// available in public/assets/image (see fpa-building-2.webp / fpa-building-3.webp).
+const HERO_IMAGES = [
+  { src: "/assets/image/fpa-building.webp", alt: "Family Practice Associates of Lexington building exterior" },
+]
 
 const REVIEWS = [
   {
@@ -70,20 +77,20 @@ const AWARDS = [
   {
     src: "/assets/image/fpa-award-lexington-2024.png",
     alt: "Best of Lexington 2024 Winner, Herald-Leader",
-    width: 207,
-    height: 287,
+    width: 196,
+    height: 192,
   },
   {
     src: "/assets/image/fpa-award-ncqa-recognized-practice.png",
     alt: "NCQA Patient-Centered Medical Home Recognized Practice",
-    width: 258,
-    height: 287,
+    width: 251,
+    height: 193,
   },
   {
     src: "/assets/image/fpa-award-ncqa-pcmh.png",
     alt: "NCQA Recognized Patient-Centered Medical Home",
-    width: 205,
-    height: 287,
+    width: 214,
+    height: 196,
   },
 ]
 
@@ -158,23 +165,9 @@ export default function Home() {
     <main className="min-h-[100dvh] flex flex-col overflow-x-hidden overflow-y-visible">
       <SiteHeader activePage="home" />
 
-      {/* Building Photo (hovering/enlarging this does NOT affect the glow below) */}
+      {/* Building Photo Carousel (hovering/enlarging this does NOT affect the glow below) */}
       <div className="group/photo relative w-full h-[35vh] hover:h-[calc(100vw*0.458)] bg-background overflow-hidden transition-[height] duration-500 ease-in-out">
-        <Image
-          src="/assets/image/fpa-building.webp"
-          alt=""
-          aria-hidden="true"
-          fill
-          className="object-cover"
-          priority
-        />
-        <Image
-          src="/assets/image/fpa-building.webp"
-          alt="Family Practice Associates of Lexington building exterior"
-          fill
-          className="object-cover transition-opacity duration-500 ease-in-out group-hover/photo:opacity-0"
-          priority
-        />
+        <HeroCarousel images={HERO_IMAGES} intervalMs={9000} />
       </div>
 
       {/* Hero Section (glow only fades when hovering directly over the button menu areas below) */}
@@ -312,33 +305,31 @@ export default function Home() {
           </div>
       </section>
 
-      {/* Highlighted Reviews + Awards and Certificates share one falling-logo background */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
-          {FALLING_LOGOS.map((logo, i) => (
-            <div
-              key={i}
-              className="absolute"
-              style={{
-                left: `${logo.left}%`,
-                animation: `fall-logo ${logo.duration}s linear infinite`,
-                animationDelay: `${logo.delay}s`,
-              }}
-            >
-              <Image
-                src="/assets/image/fpa-logo.png"
-                alt=""
-                width={140}
-                height={25}
-                style={{ opacity: 0.35 }}
-              />
-            </div>
-          ))}
-        </div>
-
       {/* Highlighted Reviews */}
-      <section className="relative z-10 w-full px-6 pt-14 pb-4 md:pt-20">
+      <section className="w-full px-6 pt-14 pb-4 md:pt-20">
         <Reveal className="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+            {FALLING_LOGOS.map((logo, i) => (
+              <div
+                key={i}
+                className="absolute"
+                style={{
+                  left: `${logo.left}%`,
+                  animation: `fall-logo ${logo.duration}s linear infinite`,
+                  animationDelay: `${logo.delay}s`,
+                }}
+              >
+                <Image
+                  src="/assets/image/fpa-logo.png"
+                  alt=""
+                  width={140}
+                  height={25}
+                  style={{ opacity: 0.35 }}
+                />
+              </div>
+            ))}
+          </div>
+
           {REVIEWS.map((review, index) => {
             const isHovered = hoveredReview === index
             return (
@@ -395,7 +386,7 @@ export default function Home() {
       </section>
 
       {/* Awards and Certificates */}
-      <section className="relative z-10 w-full px-6 py-16 md:py-20">
+      <section className="w-full px-6 py-16 md:py-20">
         <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-10 text-center text-balance">
           Awards and Certificates
         </RevealText>
@@ -405,19 +396,22 @@ export default function Home() {
             return (
               <div
                 key={award.alt}
-                onMouseEnter={() => setHoveredAward(index)}
-                onMouseLeave={() => setHoveredAward((prev) => (prev === index ? null : prev))}
-                className={`transition-all duration-300 ${
-                  isHovered ? "scale-110 drop-shadow-[0_0_22px_var(--brand-blue)]" : ""
-                }`}
+                style={{ animation: "float-card 4.25s ease-in-out infinite", animationDelay: `${index * 0.4}s` }}
               >
-                <Image src={award.src} alt={award.alt} width={award.width} height={award.height} className="w-36 sm:w-44 md:w-48 h-auto" />
+                <div
+                  onMouseEnter={() => setHoveredAward(index)}
+                  onMouseLeave={() => setHoveredAward((prev) => (prev === index ? null : prev))}
+                  className={`transition-all duration-300 ${
+                    isHovered ? "scale-110 drop-shadow-[0_0_22px_var(--brand-blue)]" : ""
+                  }`}
+                >
+                  <Image src={award.src} alt={award.alt} width={award.width} height={award.height} className="w-36 sm:w-44 md:w-48 h-auto" />
+                </div>
               </div>
             )
           })}
         </Reveal>
       </section>
-      </div>
 
       {/* Explore Our Services */}
       <section

@@ -53,12 +53,6 @@ export default function BehavioralHealthPage() {
 
       {/* Content */}
       <section className="px-6 py-8 md:py-12 flex-1">
-        <Reveal className="max-w-4xl mx-auto">
-          <ContactForm
-            heading="Register or Request More Information on Grief Group Therapy:"
-            subheading="Please fill out this short form and we'll contact you shortly."
-          />
-        </Reveal>
         <div className="px-6 py-10 md:py-14 my-10 rounded-2xl md:rounded-3xl" style={{ backgroundColor: "var(--brand-blue)" }}>
           <Reveal className="max-w-4xl mx-auto bg-background rounded-2xl md:rounded-3xl shadow-xl p-8 sm:p-10 md:p-14">
             <RevealText as="h2" className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-balance text-foreground">
@@ -99,7 +93,13 @@ export default function BehavioralHealthPage() {
         <div className="max-w-6xl mx-auto">
           <BehavioralHealthServicesAccordion />
         </div>
-        <div className="max-w-4xl mx-auto mt-4 text-center">
+        <Reveal className="max-w-4xl mx-auto mt-10">
+          <ContactForm
+            heading="Register or Request More Information on Grief Group Therapy:"
+            subheading="Please fill out this short form and we'll contact you shortly."
+          />
+        </Reveal>
+        <div className="max-w-4xl mx-auto mt-6 text-center">
           <Button
             asChild
             size="lg"
