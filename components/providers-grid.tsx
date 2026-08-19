@@ -4,7 +4,7 @@ import React from "react"
 import { createPortal } from "react-dom"
 import Image from "next/image"
 import Link from "next/link"
-import { X } from "lucide-react"
+import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export type ProviderLocation = "hamburg" | "brannon" | "both"
@@ -158,11 +158,19 @@ export const BEHAVIORAL_HEALTH_PROVIDERS: Provider[] = [
 ]
 
 export function ProvidersGrid({ providers }: { providers: Provider[] }) {
+  // hoveredIndex anchors the popover's on-screen position to a grid card.
+  // activeIndex controls which provider's content is shown, and moves
+  // independently via the prev/next arrows so paging through providers
+  // doesn't relocate the popover out from under the cursor.
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
   const cardRefs = React.useRef<(HTMLDivElement | null)[]>([])
   const popoverRef = React.useRef<HTMLDivElement | null>(null)
   const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null)
   const [pos, setPos] = React.useState<{ top: number; left: number } | null>(null)
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => setMounted(true), [])
 
   const clearCloseTimer = () => {
     if (closeTimer.current) {
@@ -174,6 +182,7 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
   const openIndex = (index: number) => {
     clearCloseTimer()
     setHoveredIndex(index)
+    setActiveIndex(index)
   }
 
   const scheduleClose = () => {
@@ -184,6 +193,16 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
   const closeNow = () => {
     clearCloseTimer()
     setHoveredIndex(null)
+  }
+
+  const goPrev = () => {
+    clearCloseTimer()
+    setActiveIndex((cur) => (cur === null ? null : (cur - 1 + providers.length) % providers.length))
+  }
+
+  const goNext = () => {
+    clearCloseTimer()
+    setActiveIndex((cur) => (cur === null ? null : (cur + 1) % providers.length))
   }
 
   React.useEffect(() => clearCloseTimer, [])
@@ -211,16 +230,16 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
     if (top < margin) top = margin
 
     setPos({ top, left })
-  }, [hoveredIndex])
+  }, [hoveredIndex, activeIndex])
 
-  const activeProvider = hoveredIndex !== null ? providers[hoveredIndex] : null
+  const activeProvider = activeIndex !== null ? providers[activeIndex] : null
   const isOpen = hoveredIndex !== null && pos !== null
 
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {providers.map((provider, index) => {
-          const isCardHovered = hoveredIndex === index
+          const isCardHovered = activeIndex === index
           return (
             <div
               key={provider.name}
@@ -247,7 +266,7 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
         })}
       </div>
 
-      {typeof document !== "undefined" &&
+      {mounted &&
         createPortal(
           <>
             <div
@@ -278,10 +297,36 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
                       e.stopPropagation()
                       closeNow()
                     }}
-                    className="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+                    className="absolute top-2 right-2 z-10 flex items-center justify-center size-8 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
                   >
                     <X className="size-4" />
                   </button>
+                  {providers.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        aria-label="Previous provider"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          goPrev()
+                        }}
+                        className="absolute left-2 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center size-9 rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
+                      >
+                        <ChevronLeft className="size-5" />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Next provider"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          goNext()
+                        }}
+                        className="absolute right-2 top-1/2 z-10 flex -translate-y-1/2 items-center justify-center size-9 rounded-full bg-black/40 text-white transition-colors hover:bg-black/60"
+                      >
+                        <ChevronRight className="size-5" />
+                      </button>
+                    </>
+                  )}
                 </div>
                 <div className="max-h-[80vh] overflow-y-auto p-4 sm:p-5">
                   <h3 className="text-lg font-extrabold mb-1 text-foreground">
