@@ -1,15 +1,25 @@
 "use client"
 
 import React from "react"
+import { createPortal } from "react-dom"
 import Image from "next/image"
 import Link from "next/link"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+export type ProviderLocation = "hamburg" | "brannon" | "both"
+
 export type Provider = {
   name: string
   image: string
   bio?: string
+  location: ProviderLocation
+}
+
+export const LOCATION_LABELS: Record<ProviderLocation, string> = {
+  hamburg: "Hamburg",
+  brannon: "Brannon",
+  both: "Both Locations",
 }
 
 export const MD_PROVIDERS: Provider[] = [
@@ -17,56 +27,67 @@ export const MD_PROVIDERS: Provider[] = [
     name: "Keith Applegate, MD, FAAFP",
     image: "/assets/image/providers/keith-applegate.webp",
     bio: "Dr. Applegate joined FPA in 1987 and is originally from Louisville, KY. He earned his medical degree at the University of Kentucky in 1984. He completed his residency at the University of Cincinnati and went on to complete his fellowship at the American Academy of Family Physicians in 1985. Dr. Applegate specializes in family medicine and can see patients of all ages.\n\nFor fun, Dr. Applegate enjoys bicycling, gardening, and traveling.",
+    location: "both",
   },
   {
     name: "Rajeana Conway, MD",
     image: "/assets/image/providers/rajeana-conway.webp",
     bio: "Originally from Maysville, KY, Dr. Conway joined FPA in 2018. Dr. Conway earned her medical degree from The University of Cincinnati College of Medicine in 2015 and completed her residency in internal medicine at The Christ Hospital in 2018. Her clinical interests include preventative medicine, management of chronic diseases, and primary care dermatology. Dr. Conway can see patients who are 18 years old and older.\n\nIn her free time, Dr. Conway enjoys spending time with her family, going to church, watching TV, crafting, and going to the lake.",
+    location: "both",
   },
   {
     name: "Aletia Farmer, MD",
     image: "/assets/image/providers/aletia-farmer.webp",
     bio: "Dr. Farmer joined FPA in 2021 and is a native of Lexington, KY. Dr. Farmer graduated from medical school at the University of Kentucky in 2005 and completed her residency in Internal Medicine in 2008. While at UK, she received numerous awards and recognitions, including Beale Primary Care Scholarship and Primary Care Resident Award. Dr. Farmer is trained in all aspects of internal medicine and its specialties, managing both acute and chronic conditions. Her clinical interests include Women's Health, preventative medicine, and chronic disease management. Dr. Farmer can see patients who are 18 years old and older.\n\nFor fun, Dr. Farmer enjoys boating, snow skiing, and gardening.",
+    location: "both",
   },
   {
     name: "Amanda Foxx, MD",
     image: "/assets/image/providers/amanda-foxx.webp",
     bio: "Dr. Foxx is originally from Lexington, KY, and joined FPA in 2015. Dr. Foxx attended medical school at the University of Kentucky and graduated in 2011. She went on to complete a dual residency in Internal Medicine and Pediatrics at UK in 2015, where she was Chief Resident. Dr. Amanda Foxx has a special interest in preventative care and women's health. She enjoys taking care of all patients from newborns to the elderly.\n\nDuring her free time, Dr. Foxx enjoys spending time with family, reading, playing piano, and going to the lake.",
+    location: "both",
   },
   {
     name: "Joseph Gerhardstein, MD, FAAFP",
     image: "/assets/image/providers/joseph-gerhardstein.webp",
     bio: "Dr. Gerhardstein joined FPA in 2003 and is originally from Fort Thomas, KY. He graduated from medical school at the University of Kentucky in 1987. He completed his residency at the University of Kentucky and went on to complete a fellowship at the American Academy of Family Physicians in 1999. Dr. Gerhardstein specializes in all aspects of family medicine for patients of all ages.",
+    location: "both",
   },
   {
     name: "Mary Henkel, MD",
     image: "/assets/image/providers/mary-henkel.webp",
     bio: "Originally from Ashland, KY, Dr. Henkel joined FPA in 1996. Dr. Henkel attended medical school at the University of Kentucky in 1992 and completed her internship in Internal Medicine and residency in Family Medicine at the University of Kentucky in 1995. Dr. Henkel specializes in all aspects of family medicine for patients 6 years old and older.\n\nDuring her free time, Dr. Henkel enjoys biking, Pilates, and skiing.",
+    location: "both",
   },
   {
     name: "Susan Monohan, MD",
     image: "/assets/image/providers/susan-monohan.webp",
     bio: "A native of Winchester, KY, Dr. Monohan has been with FPA since 2011. Dr. Monohan attended medical school at the University of Kentucky in 2000 and completed her residency at Indiana University in 2004. Dr. Monohan specializes in Internal Medicine and Pediatrics and can see patients of all ages.\n\nDr. Monohan resides in Lexington with her husband and her 3 children. Most of her free time is spent cheering on her children in their many sporting activities, including track, cross country, and gymnastics. Dr. Monohan's other hobbies include boating and watching UK sports.",
+    location: "both",
   },
   {
     name: "John Ressor, MD",
     image: "/assets/image/providers/john-ressor.webp",
     bio: "Dr. Reesor joined FPA in 2001 and is originally from Louisville, KY. He attended medical school at the University of Kentucky and completed his residency at the Memorial Medical Center in Savannah, GA. Dr. Reesor specializes in family medicine for patients who are 2 years old or older.\n\nFor fun, Dr. Reesor enjoys fishing and golfing.",
+    location: "both",
   },
   {
     name: "Ashley Rollins, MD",
     image: "/assets/image/providers/ashley-rollins.webp",
     bio: "Dr. Rollins joined FPA in 2018 and is originally from Lexington, KY. Dr. Rollins earned her medical degree from The University of Kentucky in 2014 and completed her residency in Internal Medicine at the University of Kentucky Hospital in 2018. Dr. Rollins specializes in Internal Medicine and Pediatrics. She also has an interest in women's health and preventative medicine. Dr. Rollins enjoys taking care of all patients, from newborns to the elderly.\n\nIn her free time, Dr. Rollins enjoys spending time with her family, skiing, camping, and going to the lake.",
+    location: "both",
   },
   {
     name: "James Rossi, MD",
     image: "/assets/image/providers/james-rossi.webp",
     bio: "Dr. Rossi graduated from medical school at the University of Kentucky in 2017. He went on to complete his residency in Family Medicine and joined FPA in 2020. While at UK, he received numerous awards and recognitions, including the Otis Singletary Scholarship. Dr. Rossi is trained in all aspects of family medicine and primary care, including management of acute & chronic conditions for patients of all ages.",
+    location: "both",
   },
   {
     name: "Hasanki Warnakula, MD",
     image: "/assets/image/providers/hasanki-warnakula.webp",
     bio: "Dr. Warnakula joined FPA in 2025 and is originally from Lexington, KY. She earned her medical degree at the University of Kentucky in 2020. Dr. Warnakula completed her dual residency in Internal Medicine and Pediatrics at the University of Illinois in 2024 and then completed a year as a Chief Resident following graduation. While in residency, she was also inducted into the Alpha Omega Alpha Medical Honors Society. Dr. Warnakula has an interest in preventative medicine, chronic disease management, newborn care, and medical education. She enjoys caring for patients of all ages, from newborns to the elderly.\n\nDuring her free time, Dr. Warnakula enjoys spending time with family, reading fiction, cheering on the UK Wildcats, and baking.",
+    location: "both",
   },
 ]
 
@@ -75,41 +96,49 @@ export const NP_PA_PROVIDERS: Provider[] = [
     name: "Lindsey Clickner, APRN",
     image: "/assets/image/providers/lindsey-clickner.webp",
     bio: "Lindsey Clickner graduated from Gardner Webb in May 2016 with a master's degree in nursing and is Board-Certified as a Family Nurse Practitioner. Prior to joining FPA in 2016, Clickner worked as an RN in critical and intensive care units. Clickner can see patients who are 2 years old and older. Her clinical interests include women's health and annual Medicare Wellness exams.\n\nIn her free time, she enjoys hiking, skiing, and reading.",
+    location: "hamburg",
   },
   {
     name: "Samantha Criswell, APRN",
     image: "/assets/image/providers/samantha-criswell.webp",
     bio: "Samantha Criswell obtained her master's degree in nursing from Northern Kentucky University and became a Board-Certified Family Nurse Practitioner in 2024. Prior to joining FPA in 2025, Criswell worked in the neuro/stroke ICU and a clinical house supervisor at a local hospital for 10 years. Her interests include preventative medicine, chronic disease management, and acute visits. Criswell can see patients who are 5 years old and older.\n\nDuring her free time, she loves to hike, run, play tennis and pickleball.",
+    location: "hamburg",
   },
   {
     name: "Todd Greene, PA-C",
     image: "/assets/image/providers/todd-greene.webp",
     bio: "Todd graduated from the University of Kentucky Physician Assistant Program in 1989. He has maintained continuous national board certification as a physician assistant since 1990 and brings extensive experience in emergency medicine, primary care, and adult medicine. His clinical focus is acute care, with interests in adult internal medicine and men's health. Outside of his professional work, Todd serves as president of a local children's charity. In his free time, he enjoys cooking for family and friends, spending time with loved ones, playing music with his band, and participating in outdoor activities.",
+    location: "brannon",
   },
   {
     name: "Todd Martin, APRN",
     image: "/assets/image/providers/todd-martin.webp",
     bio: "Todd Martin graduated from Northern Kentucky University with a master's degree in nursing and has been a Board-Certified Family Nurse Practitioner since 1999. Prior to joining FPA in 2013, he had extensive experience in emergency and family medicine. Martin specializes in all aspects of family medicine for patients of all ages.\n\nIn his free time, Martin is an avid fly fisherman and outdoor enthusiast.",
+    location: "both",
   },
   {
     name: "Mary Oaks, PA-C",
     image: "/assets/image/providers/mary-oaks.webp",
     bio: "Mary Oaks graduated from the University of Kentucky in 2018 with a master's degree in physician assistant studies. Prior to joining FPA in 2019, Oaks had extensive experience working in the urgent care setting. She can see patients of all ages and is the main provider of acute care at the same-day clinic.\n\nFor fun, Oaks enjoys gardening and trying new cuisine.",
+    location: "both",
   },
   {
     name: "Meagan Obst, APRN",
     image: "/assets/image/providers/meagan-obst.webp",
     bio: "Meagan Obst received her master's degree in nursing at Chamberlain University. She became a Board-Certified Family Nurse Practitioner in 2019. Prior to joining FPA in 2023, Obst worked in the urgent care setting and family medicine. Obst enjoys seeing patients of all ages, and her clinical interests include pediatrics, women's health, weight loss management, urgent care visits, and mental health management.\n\nShe enjoys hiking, sporting events, cooking, reading, and being outdoors with her family during her time off.",
+    location: "brannon",
   },
   {
     name: "Shelby Riggs, APRN",
     image: "/assets/image/providers/shelby-riggs.webp",
     bio: "Shelby Riggs graduated as a Board-Certified Family Nurse Practitioner in 2017 from Indiana Wesleyan University. Prior to joining FPA in 2017, she worked as an RN for 10 years in pediatrics and endocrinology. Riggs enjoys women's health and pediatric issues but can see patients of all ages.\n\nIn her free time, Riggs enjoys reading and crafting.",
+    location: "hamburg",
   },
   {
     name: "Amanda Shackleford, APRN",
     image: "/assets/image/providers/amanda-shackleford.webp",
     bio: "Amanda Shackelford obtained her master's degree in nursing from Chamberlain University and became a Board-Certified Family Nurse Practitioner in 2022. Prior to joining FPA as an APRN in 2023, Shackelford worked as a CMA for 6 years at FPA. Her interests include women's health, preventative medicine, and chronic disease management. Shackelford can see patients who are 2 years old and older.\n\nDuring her free time, she loves to travel (especially to Disney World), spend time with family and friends, bake, and plan events.",
+    location: "hamburg",
   },
 ]
 
@@ -118,77 +147,151 @@ export const BEHAVIORAL_HEALTH_PROVIDERS: Provider[] = [
     name: "Michael Bennett, LPCC",
     image: "/assets/image/providers/michael-bennett.webp",
     bio: "Michael joined FPA in 2025 as a Licensed Professional Clinical Counselor with over 10 years of experience in PTSD treatment and child abuse prevention. He holds a Master's degree in Clinical Mental Health Counseling and is currently pursuing a Ph.D. in Intercultural Studies. Michael works with clients across the lifespan, ages 5 and older, providing comprehensive therapeutic support for anxiety, depression, grief, and behavioral concerns. He specializes in the treatment of Complex PTSD, dissociative disorders (including dissociative identity disorder), religious and spiritual trauma, and ADHD.\n\nMichael is committed to providing culturally responsive care and supports individuals of all backgrounds with respect to sex, race, religion, and sexual orientation. He helps clients navigate life distress, transitions, decision-making, and the pursuit of self-actualization.",
+    location: "both",
   },
   {
     name: "Kristy Carter, APRN, PMHNP-BC",
     image: "/assets/image/providers/kristy-carter.webp",
     bio: "Kristy Carter joined FPA in 2023 and is an advanced practice registered nurse, ANCC board certified as a family psychiatric mental health nurse practitioner. She earned her master's degree at the University of Kentucky College of Nursing in 2011. In addition to her Bachelor of Nursing, she has completed a Bachelor of Science in Psychology from the University of Kentucky, at which time she was also a member of the Psi Chi International Honor Society in Psychology. She practiced nursing for several years on a neurological/stroke/telemetry unit at Saint Joseph Hospital, where she received the DAISY Award for Extraordinary Nurses. She is currently a member of the American Psychiatric Nurses Association and the Neuroscience Education Institute. Kristy sees a variety of ages, from children five years old to geriatric, and provides medication management for a variety of mental health conditions, including addiction, anger management, anxiety, mood disorders (depression and bipolar), obsessive-compulsive disorder, psychosis, and trauma/PTSD.\n\nFor fun, Kristy enjoys hiking, spending time with her dog, and cooking.",
+    location: "both",
   },
 ]
 
 export function ProvidersGrid({ providers }: { providers: Provider[] }) {
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
+  const cardRefs = React.useRef<(HTMLDivElement | null)[]>([])
+  const popoverRef = React.useRef<HTMLDivElement | null>(null)
+  const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [pos, setPos] = React.useState<{ top: number; left: number } | null>(null)
+
+  const clearCloseTimer = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current)
+      closeTimer.current = null
+    }
+  }
+
+  const openIndex = (index: number) => {
+    clearCloseTimer()
+    setHoveredIndex(index)
+  }
+
+  const scheduleClose = () => {
+    clearCloseTimer()
+    closeTimer.current = setTimeout(() => setHoveredIndex(null), 150)
+  }
+
+  const closeNow = () => {
+    clearCloseTimer()
+    setHoveredIndex(null)
+  }
+
+  React.useEffect(() => clearCloseTimer, [])
+
+  React.useLayoutEffect(() => {
+    if (hoveredIndex === null) return
+    const cardEl = cardRefs.current[hoveredIndex]
+    const popEl = popoverRef.current
+    if (!cardEl || !popEl) return
+
+    const cardRect = cardEl.getBoundingClientRect()
+    const popRect = popEl.getBoundingClientRect()
+    const margin = 16
+
+    let left = cardRect.left
+    if (left + popRect.width > window.innerWidth - margin) {
+      left = window.innerWidth - margin - popRect.width
+    }
+    if (left < margin) left = margin
+
+    let top = cardRect.top
+    if (top + popRect.height > window.innerHeight - margin) {
+      top = window.innerHeight - margin - popRect.height
+    }
+    if (top < margin) top = margin
+
+    setPos({ top, left })
+  }, [hoveredIndex])
+
+  const activeProvider = hoveredIndex !== null ? providers[hoveredIndex] : null
+  const isOpen = hoveredIndex !== null && pos !== null
 
   return (
     <>
-      <div
-        aria-hidden="true"
-        className={`fixed inset-0 z-40 bg-black/70 pointer-events-none transition-opacity duration-300 ${
-          hoveredIndex !== null ? "opacity-100" : "opacity-0"
-        }`}
-      />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {providers.map((provider, index) => {
-          const isHovered = hoveredIndex === index
-          return (
-            <div
-              key={provider.name}
-              className="relative"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => setHoveredIndex(index)}
-            >
-              <div className="relative w-full aspect-[448/279] overflow-hidden rounded-xl">
-                <Image src={provider.image} alt={provider.name} fill className="object-cover" />
-              </div>
-              <h3 className="mt-3 text-lg font-extrabold text-foreground">
-                {provider.name}
-              </h3>
+        {providers.map((provider, index) => (
+          <div
+            key={provider.name}
+            ref={(el) => {
+              cardRefs.current[index] = el
+            }}
+            className="relative"
+            onMouseEnter={() => openIndex(index)}
+            onMouseLeave={scheduleClose}
+            onClick={() => openIndex(index)}
+          >
+            <div className="relative w-full aspect-[448/279] overflow-hidden rounded-xl">
+              <Image src={provider.image} alt={provider.name} fill className="object-cover" />
+            </div>
+            <h3 className="mt-3 text-lg font-extrabold text-foreground">
+              {provider.name} <span className="text-muted-foreground font-bold">&bull; {LOCATION_LABELS[provider.location]}</span>
+            </h3>
+          </div>
+        ))}
+      </div>
 
-              <div
-                className={`absolute left-0 top-0 z-50 w-[85vw] max-w-[420px] origin-top-left transition-all duration-200 ${
-                  isHovered ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
-                }`}
-              >
-                <div className="relative w-full aspect-[448/279] overflow-hidden rounded-xl shadow-2xl">
-                  <Image src={provider.image} alt={provider.name} fill className="object-cover" />
+      {typeof document !== "undefined" &&
+        createPortal(
+          <>
+            <div
+              aria-hidden="true"
+              className={`fixed inset-0 z-40 bg-black/70 pointer-events-none transition-opacity duration-300 ${
+                isOpen ? "opacity-100" : "opacity-0"
+              }`}
+            />
+            <div
+              ref={popoverRef}
+              style={{ top: pos?.top ?? -9999, left: pos?.left ?? -9999 }}
+              className={`fixed z-50 flex w-[min(94vw,720px)] flex-col overflow-hidden rounded-xl bg-background shadow-2xl transition-all duration-200 sm:flex-row ${
+                isOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
+              }`}
+              onMouseEnter={clearCloseTimer}
+              onMouseLeave={scheduleClose}
+            >
+              {activeProvider && (
+                <>
+                <div className="relative w-full shrink-0 aspect-[448/279] overflow-hidden sm:w-64 sm:aspect-auto">
+                  <Image src={activeProvider.image} alt={activeProvider.name} fill className="object-cover" />
                   <button
                     type="button"
                     aria-label="Close"
                     onClick={(e) => {
                       e.stopPropagation()
-                      setHoveredIndex(null)
+                      closeNow()
                     }}
                     className="absolute top-2 right-2 flex items-center justify-center size-8 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
                   >
                     <X className="size-4" />
                   </button>
                 </div>
-                <div className="rounded-b-xl bg-background p-4 shadow-2xl">
+                <div className="max-h-[80vh] overflow-y-auto p-4 sm:p-5">
                   <h3 className="text-lg font-extrabold mb-1 text-foreground">
-                    {provider.name}
+                    {activeProvider.name}{" "}
+                    <span className="text-muted-foreground font-bold text-sm">
+                      &bull; {LOCATION_LABELS[activeProvider.location]}
+                    </span>
                   </h3>
-                  <div className="max-h-[45vh] overflow-y-auto mb-3 pr-1">
-                    {provider.bio ? (
-                      provider.bio.split("\n\n").map((paragraph, i) => (
+                  <div className="mb-3">
+                    {activeProvider.bio ? (
+                      activeProvider.bio.split("\n\n").map((paragraph, i) => (
                         <p key={i} className="text-muted-foreground leading-relaxed text-sm mb-3 last:mb-0">
                           {paragraph}
                         </p>
                       ))
                     ) : (
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        Ready to schedule a visit with {provider.name.split(",")[0]}? Contact our office or book an
-                        appointment online.
+                        Ready to schedule a visit with {activeProvider.name.split(",")[0]}? Contact our office or
+                        book an appointment online.
                       </p>
                     )}
                   </div>
@@ -196,11 +299,12 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
                     <Link href="/book">Book Appointment</Link>
                   </Button>
                 </div>
-              </div>
+                </>
+              )}
             </div>
-          )
-        })}
-      </div>
+          </>,
+          document.body,
+        )}
     </>
   )
 }

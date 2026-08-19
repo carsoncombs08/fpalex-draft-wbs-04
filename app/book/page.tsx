@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/reveal"
+import { MD_PROVIDERS, NP_PA_PROVIDERS, BEHAVIORAL_HEALTH_PROVIDERS, type Provider } from "@/components/providers-grid"
 import {
   UserPlus,
   UserCheck,
@@ -28,6 +29,8 @@ type ReasonKey = "sick" | "wellness" | "followup" | "pediatric"
 type LocationKey = "hamburg" | "brannon"
 type DayKey = "today" | "tomorrow" | "custom"
 type Page = "booking" | "confirm"
+
+const ALL_PROVIDERS: Provider[] = [...MD_PROVIDERS, ...NP_PA_PROVIDERS, ...BEHAVIORAL_HEALTH_PROVIDERS]
 
 const WEEKDAY_LABELS = ["S", "M", "T", "W", "T", "F", "S"]
 const CUSTOM_TIMES = ["9:00 AM", "10:30 AM", "1:00 PM", "2:30 PM", "4:00 PM"]
@@ -369,12 +372,15 @@ export default function BookPage() {
   const [day, setDay] = React.useState<DayKey>("today")
   const [customDate, setCustomDate] = React.useState<Date | null>(null)
   const [time, setTime] = React.useState<string | null>(null)
+  const [selectedProvider, setSelectedProvider] = React.useState<string | null>(null)
   const [isCalendarOpen, setIsCalendarOpen] = React.useState(false)
   const [name, setName] = React.useState("")
   const [phone, setPhone] = React.useState("")
   const [email, setEmail] = React.useState("")
   const [submitted, setSubmitted] = React.useState(false)
   const [activeStep, setActiveStep] = React.useState(1)
+
+  const locationProviders = ALL_PROVIDERS.filter((p) => p.location === "both" || p.location === location)
 
   const locationLabel = LOCATIONS.find((l) => l.key === location)?.label
   const reasonLabel = REASONS.find((r) => r.key === reason)?.label
@@ -396,6 +402,7 @@ export default function BookPage() {
     setPatientType(null)
     setReason(null)
     setLocation("hamburg")
+    setSelectedProvider(null)
     setDay("today")
     setCustomDate(null)
     setTime(null)
@@ -509,8 +516,17 @@ export default function BookPage() {
                     <select
                       value={location}
                       onChange={(e) => {
-                        setLocation(e.target.value as LocationKey)
+                        const nextLocation = e.target.value as LocationKey
+                        setLocation(nextLocation)
                         setActiveStep(2)
+                        setSelectedProvider((prev) => {
+                          if (!prev) return prev
+                          const provider = ALL_PROVIDERS.find((p) => p.name === prev)
+                          if (provider && provider.location !== "both" && provider.location !== nextLocation) {
+                            return null
+                          }
+                          return prev
+                        })
                       }}
                       className="w-full rounded-lg border border-border px-4 py-3 font-bold text-foreground bg-background"
                     >
@@ -520,6 +536,41 @@ export default function BookPage() {
                         </option>
                       ))}
                     </select>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-extrabold uppercase tracking-wide text-muted-foreground mb-3">
+                      Providers at {locationLabel}
+                    </h3>
+                    <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1">
+                      {locationProviders.map((provider) => {
+                        const isSelected = selectedProvider === provider.name
+                        return (
+                          <button
+                            key={provider.name}
+                            type="button"
+                            onClick={() => setSelectedProvider((prev) => (prev === provider.name ? null : provider.name))}
+                            className={`flex flex-col items-center shrink-0 w-24 rounded-lg border p-2 text-center transition-all duration-200 hover:scale-105 ${
+                              isSelected
+                                ? "border-transparent shadow-[0_0_14px_var(--brand-blue)]"
+                                : "border-border hover:border-transparent hover:shadow-[0_0_14px_var(--brand-blue)]"
+                            }`}
+                            style={isSelected ? { backgroundColor: "var(--brand-blue)" } : undefined}
+                          >
+                            <span className="relative size-14 rounded-full overflow-hidden shrink-0">
+                              <Image src={provider.image} alt={provider.name} fill className="object-cover" />
+                            </span>
+                            <span
+                              className={`mt-1.5 text-xs font-bold leading-tight ${
+                                isSelected ? "text-white" : "text-foreground"
+                              }`}
+                            >
+                              {provider.name.split(",")[0]}
+                            </span>
+                          </button>
+                        )
+                      })}
+                    </div>
                   </div>
 
                   <div>
@@ -649,6 +700,12 @@ export default function BookPage() {
                       <span className="font-bold text-foreground">Location:</span>{" "}
                       <span className="text-muted-foreground">{locationLabel}</span>
                     </p>
+                    {selectedProvider && (
+                      <p>
+                        <span className="font-bold text-foreground">Provider:</span>{" "}
+                        <span className="text-muted-foreground">{selectedProvider}</span>
+                      </p>
+                    )}
                     <p>
                       <span className="font-bold text-foreground">When:</span>{" "}
                       <span className="text-muted-foreground">
