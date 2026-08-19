@@ -19,7 +19,7 @@ export type Provider = {
 export const LOCATION_LABELS: Record<ProviderLocation, string> = {
   hamburg: "Hamburg",
   brannon: "Brannon",
-  both: "Both Locations",
+  both: "Hamburg • Brannon",
 }
 
 export const MD_PROVIDERS: Provider[] = [
@@ -219,25 +219,32 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {providers.map((provider, index) => (
-          <div
-            key={provider.name}
-            ref={(el) => {
-              cardRefs.current[index] = el
-            }}
-            className="relative"
-            onMouseEnter={() => openIndex(index)}
-            onMouseLeave={scheduleClose}
-            onClick={() => openIndex(index)}
-          >
-            <div className="relative w-full aspect-[448/279] overflow-hidden rounded-xl">
-              <Image src={provider.image} alt={provider.name} fill className="object-cover" />
+        {providers.map((provider, index) => {
+          const isCardHovered = hoveredIndex === index
+          return (
+            <div
+              key={provider.name}
+              ref={(el) => {
+                cardRefs.current[index] = el
+              }}
+              className="relative"
+              onMouseEnter={() => openIndex(index)}
+              onMouseLeave={scheduleClose}
+              onClick={() => openIndex(index)}
+            >
+              <div
+                className={`relative w-full aspect-[448/279] overflow-hidden rounded-xl transition-all duration-300 ${
+                  isCardHovered ? "scale-105 shadow-[0_0_28px_8px_var(--brand-blue)]" : ""
+                }`}
+              >
+                <Image src={provider.image} alt={provider.name} fill className="object-cover" />
+              </div>
+              <h3 className="mt-3 text-lg font-extrabold text-foreground">
+                {provider.name} <span className="text-muted-foreground font-bold">&bull; {LOCATION_LABELS[provider.location]}</span>
+              </h3>
             </div>
-            <h3 className="mt-3 text-lg font-extrabold text-foreground">
-              {provider.name} <span className="text-muted-foreground font-bold">&bull; {LOCATION_LABELS[provider.location]}</span>
-            </h3>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       {typeof document !== "undefined" &&
@@ -252,8 +259,10 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
             <div
               ref={popoverRef}
               style={{ top: pos?.top ?? -9999, left: pos?.left ?? -9999 }}
-              className={`fixed z-50 flex w-[min(94vw,720px)] flex-col overflow-hidden rounded-xl bg-background shadow-2xl transition-all duration-200 sm:flex-row ${
-                isOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
+              className={`fixed z-50 flex w-[min(94vw,720px)] flex-col overflow-hidden rounded-xl border-2 border-[var(--brand-blue)] bg-background transition-all duration-300 sm:flex-row ${
+                isOpen
+                  ? "opacity-100 scale-100 pointer-events-auto shadow-[0_0_40px_12px_var(--brand-blue)]"
+                  : "opacity-0 scale-95 pointer-events-none"
               }`}
               onMouseEnter={clearCloseTimer}
               onMouseLeave={scheduleClose}
