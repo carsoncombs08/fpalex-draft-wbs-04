@@ -167,6 +167,7 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
   const cardRefs = React.useRef<(HTMLDivElement | null)[]>([])
   const popoverRef = React.useRef<HTMLDivElement | null>(null)
   const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+  const anchorRef = React.useRef<number | null>(null)
   const [pos, setPos] = React.useState<{ top: number; left: number } | null>(null)
   const [mounted, setMounted] = React.useState(false)
 
@@ -207,29 +208,48 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
 
   React.useEffect(() => clearCloseTimer, [])
 
+  // Anchors to the hovered card only when it first opens. Paging through
+  // providers with the arrows keeps the previous position as the baseline
+  // and only nudges it enough to keep the (possibly resized) popover
+  // on-screen — jumping back to the card's raw position on every bio
+  // length change would relocate the popover out from under the cursor
+  // and re-trigger the underlying card's hover.
   React.useLayoutEffect(() => {
-    if (hoveredIndex === null) return
-    const cardEl = cardRefs.current[hoveredIndex]
+    if (hoveredIndex === null) {
+      anchorRef.current = null
+      return
+    }
     const popEl = popoverRef.current
-    if (!cardEl || !popEl) return
-
-    const cardRect = cardEl.getBoundingClientRect()
+    if (!popEl) return
     const popRect = popEl.getBoundingClientRect()
     const margin = 16
 
-    let left = cardRect.left
+    let left: number
+    let top: number
+    if (anchorRef.current === hoveredIndex && pos) {
+      left = pos.left
+      top = pos.top
+    } else {
+      const cardEl = cardRefs.current[hoveredIndex]
+      if (!cardEl) return
+      const cardRect = cardEl.getBoundingClientRect()
+      left = cardRect.left
+      top = cardRect.top
+    }
+    anchorRef.current = hoveredIndex
+
     if (left + popRect.width > window.innerWidth - margin) {
       left = window.innerWidth - margin - popRect.width
     }
     if (left < margin) left = margin
 
-    let top = cardRect.top
     if (top + popRect.height > window.innerHeight - margin) {
       top = window.innerHeight - margin - popRect.height
     }
     if (top < margin) top = margin
 
     setPos({ top, left })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hoveredIndex, activeIndex])
 
   const activeProvider = activeIndex !== null ? providers[activeIndex] : null
@@ -288,7 +308,7 @@ export function ProvidersGrid({ providers }: { providers: Provider[] }) {
             >
               {activeProvider && (
                 <>
-                <div className="relative w-full shrink-0 aspect-[448/279] overflow-hidden sm:w-64 sm:aspect-auto">
+                <div className="relative w-full shrink-0 self-start aspect-[448/279] overflow-hidden sm:w-64">
                   <Image src={activeProvider.image} alt={activeProvider.name} fill className="object-cover" />
                   <button
                     type="button"

@@ -1,16 +1,6 @@
 "use client"
 
-import React from "react"
-import Image from "next/image"
-import { ChevronUp, ChevronDown } from "lucide-react"
-
-type ServiceItem = {
-  title: string
-  description: string
-  image?: string
-  listLabel?: string
-  list?: string[]
-}
+import { ServiceAccordionGrid, type ServiceItem } from "@/components/service-accordion-grid"
 
 const SERVICES: ServiceItem[] = [
   {
@@ -98,89 +88,5 @@ const SERVICES: ServiceItem[] = [
 ]
 
 export function ServicesAccordion() {
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
-  const [gridVisible, setGridVisible] = React.useState(false)
-  const gridRef = React.useRef<HTMLDivElement>(null)
-
-  React.useEffect(() => {
-    const el = gridRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => setGridVisible(entry.isIntersecting),
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  const toggle = (index: number) => {
-    setActiveIndex((prev) => (prev === index ? null : index))
-  }
-
-  return (
-    <div ref={gridRef} className="relative flex flex-wrap justify-center gap-6 mb-10 items-start">
-      <div
-        className={`absolute inset-0 z-40 backdrop-blur-md pointer-events-none transition-opacity duration-150 ease-out ${
-          activeIndex !== null ? "opacity-100" : "opacity-0"
-        }`}
-        aria-hidden="true"
-      />
-      {SERVICES.map((service, index) => {
-        const isOpen = activeIndex === index
-        return (
-          <div
-            key={service.title}
-            onMouseEnter={() => setActiveIndex(index)}
-            onMouseLeave={() => setActiveIndex((prev) => (prev === index ? null : prev))}
-            onClick={() => toggle(index)}
-            className={`relative w-full md:w-[calc(33.333%-1rem)] rounded-2xl border-2 border-black bg-muted overflow-hidden cursor-pointer transition-all duration-500 ease-out ${
-              isOpen ? "z-50 scale-125 shadow-[0_0_30px_var(--brand-blue)]" : ""
-            } ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            style={{ transitionDelay: isOpen ? "0ms" : `${index * 80}ms` }}
-          >
-            {service.image && (
-              <div className="relative w-full aspect-[16/9] overflow-hidden">
-                <Image src={service.image} alt={service.title} fill className="object-cover" />
-              </div>
-            )}
-            <div className="w-full flex items-start justify-between gap-4 bg-muted px-6 py-5 text-left">
-              <span className="text-xl md:text-2xl font-extrabold text-foreground">
-                {service.title}
-              </span>
-              <span className="flex items-center justify-center size-11 rounded-full bg-black text-white shrink-0">
-                {isOpen ? <ChevronUp className="size-5" /> : <ChevronDown className="size-5" />}
-              </span>
-            </div>
-            <div
-              className={`overflow-hidden transition-[max-width,max-height,opacity] duration-500 ease-in-out ${
-                isOpen ? "max-w-full max-h-[600px] opacity-100" : "max-w-0 max-h-0 opacity-0"
-              }`}
-            >
-              <div className="w-full pt-0 pb-5 px-6 bg-muted">
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                {service.list && (
-                  <div className="mt-4">
-                    {service.listLabel && (
-                      <p className="font-bold text-foreground mb-2">{service.listLabel}</p>
-                    )}
-                    <ul className="space-y-1">
-                      {service.list.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-muted-foreground">
-                          <span
-                            className="size-1.5 rounded-full shrink-0"
-                            style={{ backgroundColor: "var(--brand-blue)" }}
-                          />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )
-      })}
-    </div>
-  )
+  return <ServiceAccordionGrid services={SERVICES} />
 }
